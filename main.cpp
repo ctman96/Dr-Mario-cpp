@@ -3,7 +3,6 @@
 #include "Engine/States/MainMenuState.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
     GameEngine game{};
     game.init();
     GameState *start = new MainMenuState;
