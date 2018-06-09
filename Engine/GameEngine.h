@@ -5,6 +5,7 @@
 #ifndef DRMARIO_GAMEENGINE_H
 #define DRMARIO_GAMEENGINE_H
 
+#include "SDL.h"
 
 class GameState;
 
@@ -21,6 +22,9 @@ public:
 
     bool isRunning(){return running;}
     void quit() {running = false;}
+
+    SDL_Window* window;
+    SDL_Surface* screen;
 
 private:
     bool running;
