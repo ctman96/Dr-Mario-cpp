@@ -2,6 +2,8 @@
 # Download and unpack googletest at configure time
 #configure_file(google googletest-download/CMakeLists.txt)
 macro(fetch_googletest _download_module_path _download_root)
+
+
     set(GOOGLETEST_DOWNLOAD_ROOT ${_download_root})
     configure_file(
             ${_download_module_path}/googletest-download.cmake

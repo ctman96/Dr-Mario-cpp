@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 
 project(googletest-download NONE)
 
-MESSAGE("Adding googletest git")
-
 include(ExternalProject)
 
 ExternalProject_Add(
