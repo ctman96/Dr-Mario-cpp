@@ -10,7 +10,7 @@ set(
         Engine/GameEngine.cpp Engine/GameEngine.h
         Engine/States/GameState.h
         Engine/States/MainMenuState.cpp Engine/States/MainMenuState.h
-)
+        Engine/States/OptionsState.cpp Engine/States/OptionsState.h)
 
 
 

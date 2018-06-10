@@ -26,7 +26,7 @@ void GameEngine::init() {
     }
 
     // Set scaling interpolation algorithm
-    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, 0);
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, SCALING_QUALITY);
 
     // Create renderer for window
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);

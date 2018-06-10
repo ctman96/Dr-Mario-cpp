@@ -104,9 +104,12 @@ void MainMenuState::handle(GameEngine *game) {
                     case SDLK_DOWN:
                         cursor = true;
                         break;
-                    case SDLK_a:
+                    case SDLK_w:
                     case SDLK_UP:
                         cursor = false;
+                        break;
+                    case SDLK_KP_ENTER:
+                        //TODO change state options
                         break;
                     default:
                         break;
@@ -133,13 +136,13 @@ void MainMenuState::draw(GameEngine *game) {
     // Pill
     renderSprite(game->renderer, 16, 32, &sprites[ 1 ]);
     // Title animation
-    renderSprite(game->renderer, 37,56, &sprites[ 2 + ((ticks/275)%2) ]); //TODO animate
+    renderSprite(game->renderer, 37,56, &sprites[ 2 + ((ticks/275)%2) ]);
     // Selection Area
     renderSprite(game->renderer, 33, 152, &sprites[ 4 ]);
     // Selection options
     renderSprite(game->renderer, 60, 154, &sprites[ 5 ]);
     // Dr Mario animation
-    renderSprite(game->renderer, 43, 162, &sprites[ 6 + ((ticks/200)%2)]); //TODO animate
+    renderSprite(game->renderer, 43, 162, &sprites[ 6 + ((ticks/200)%2)]);
     // Cursor
     y = cursor ? 176 : 160;
     renderSprite(game->renderer, 69, y, &sprites[ 8 ]);
@@ -148,7 +151,7 @@ void MainMenuState::draw(GameEngine *game) {
     if (frame >= 3){
         frame = 5-frame;
     }
-    renderSprite(game->renderer, 192, 169, &sprites [ 9 + frame ]);//TODO animate
+    renderSprite(game->renderer, 192, 169, &sprites [ 9 + frame ]);
 
 
     SDL_RenderPresent(game->renderer);
