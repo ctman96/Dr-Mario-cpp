@@ -5,12 +5,11 @@
 #ifndef DRMARIO_GAMESTATE_H
 #define DRMARIO_GAMESTATE_H
 
-
 #include "../GameEngine.h"
 
 class GameState {
 public:
-    virtual void init() = 0;
+    virtual void init(GameEngine *game) = 0;
     virtual void terminate() = 0;
 
     virtual void handle(GameEngine *game) = 0;

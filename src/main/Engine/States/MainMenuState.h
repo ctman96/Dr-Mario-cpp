@@ -5,12 +5,11 @@
 #ifndef DRMARIO_MAINMENUSTATE_H
 #define DRMARIO_MAINMENUSTATE_H
 
-
 #include "GameState.h"
 
 class MainMenuState  : public GameState{
 public:
-    void init() override;
+    void init(GameEngine *game) override;
 
     void terminate() override;
 
@@ -19,7 +18,10 @@ public:
     void draw(GameEngine *game) override;
 
 private:
-    SDL_Surface* background;
+    SDL_Texture* spritesheet;
+    SDL_Rect sprites[12];
+    bool cursor = false;
+    void renderSprite(SDL_Renderer* renderer, int x, int y, SDL_Rect* sprite);
 };
 
 
