@@ -7,12 +7,14 @@
 
 #include "GameState.h"
 
-enum class selection {level, speed, music};
-enum class speed {low, med, hi};
-enum class music {fever, chill, off};
+enum class Selection {level, speed, music};
+enum class Speed {low, med, hi};
+enum class Music {fever, chill, off};
 
 class OptionsState : public GameState {
 public:
+    explicit OptionsState(bool twoplayer);
+
     void init(GameEngine *game) override;
 
     void terminate() override;
@@ -22,12 +24,22 @@ public:
     void draw(GameEngine *game) override;
 
 private:
+    bool twoplayer;
+
+    Selection selection;
     int level;
-    speed speed;
-    music music;
+    Speed speed;
+    Music music;
 
     SDL_Texture* spritesheet;
-    SDL_Rect sprites[1]; //TODO change
+    SDL_Rect sprites[37];
+
+    void selectionDown();
+    void selectionUp();
+
+    void renderSprite(SDL_Renderer* renderer, int x, int y, SDL_Rect* sprite);
+
+    void loadSprites();
 };
 
 

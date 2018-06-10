@@ -6,6 +6,7 @@
 #include "MainMenuState.h"
 #include "../../resources.h"
 #include "../../Constants.h"
+#include "OptionsState.h"
 
 void MainMenuState::init(GameEngine* game) {
 
@@ -20,6 +21,92 @@ void MainMenuState::init(GameEngine* game) {
     SDL_FreeSurface(tmp);
 
     // Create the sprites
+    loadSprites();
+}
+
+void MainMenuState::terminate() {
+    SDL_DestroyTexture(spritesheet);
+    spritesheet = nullptr;
+
+}
+
+void MainMenuState::handle(GameEngine *game) {
+    SDL_Event event;
+
+    if(SDL_PollEvent(&event)){
+        switch(event.type){
+            case SDL_QUIT:
+                game->quit();
+                break;
+
+            case SDL_KEYDOWN:
+                switch (event.key.keysym.sym){
+                    case SDLK_s:
+                    case SDLK_DOWN:
+                        cursor = true;
+                        break;
+                    case SDLK_w:
+                    case SDLK_UP:
+                        cursor = false;
+                        break;
+                    case SDLK_RETURN:
+                        game->changeState(new OptionsState(cursor));
+                        break;
+                    default:
+                        break;
+                }
+            default:
+                break;
+        }
+    }
+}
+
+void MainMenuState::update(GameEngine *game) {
+
+}
+
+void MainMenuState::draw(GameEngine *game) {
+    int x, y = 0;
+    int ticks = SDL_GetTicks();
+    int spr3 = (ticks/100)%3;
+
+    SDL_RenderClear(game->renderer);
+
+    // Background
+    renderSprite(game->renderer, 0, 0, &sprites[ 0 ]);
+    // Pill
+    renderSprite(game->renderer, 16, 32, &sprites[ 1 ]);
+    // Title animation
+    renderSprite(game->renderer, 37,56, &sprites[ 2 + ((ticks/275)%2) ]);
+    // Selection Area
+    renderSprite(game->renderer, 33, 152, &sprites[ 4 ]);
+    // Selection options
+    renderSprite(game->renderer, 60, 154, &sprites[ 5 ]);
+    // Dr Mario animation
+    renderSprite(game->renderer, 43, 162, &sprites[ 6 + ((ticks/200)%2)]);
+    // Cursor
+    y = cursor ? 176 : 160;
+    renderSprite(game->renderer, 69, y, &sprites[ 8 ]);
+    // Virus animation
+    int frame = (ticks/150)%6;
+    if (frame >= 3){
+        frame = 5-frame;
+    }
+    renderSprite(game->renderer, 192, 169, &sprites [ 9 + frame ]);
+
+
+    SDL_RenderPresent(game->renderer);
+}
+
+void MainMenuState::renderSprite(SDL_Renderer* renderer, int x, int y, SDL_Rect* sprite) {
+    if (sprite == nullptr){
+        return;
+    }
+    SDL_Rect render = {x*SCALING,y*SCALING,sprite->w*SCALING,sprite->h*SCALING};
+    SDL_RenderCopy(renderer, spritesheet, sprite, &render);
+}
+
+void MainMenuState::loadSprites(){
     // Background
     sprites[ 0 ].x = 0;
     sprites[ 0 ].y = 0;
@@ -80,87 +167,4 @@ void MainMenuState::init(GameEngine* game) {
     sprites[ 11 ].y = 178;
     sprites[ 11 ].w = 24;
     sprites[ 11 ].h = 24;
-
-}
-
-void MainMenuState::terminate() {
-    SDL_DestroyTexture(spritesheet);
-    spritesheet = nullptr;
-
-}
-
-void MainMenuState::handle(GameEngine *game) {
-    SDL_Event event;
-
-    if(SDL_PollEvent(&event)){
-        switch(event.type){
-            case SDL_QUIT:
-                game->quit();
-                break;
-
-            case SDL_KEYDOWN:
-                switch (event.key.keysym.sym){
-                    case SDLK_s:
-                    case SDLK_DOWN:
-                        cursor = true;
-                        break;
-                    case SDLK_w:
-                    case SDLK_UP:
-                        cursor = false;
-                        break;
-                    case SDLK_KP_ENTER:
-                        //TODO change state options
-                        break;
-                    default:
-                        break;
-                }
-            default:
-                break;
-        }
-    }
-}
-
-void MainMenuState::update(GameEngine *game) {
-
-}
-
-void MainMenuState::draw(GameEngine *game) {
-    int x, y = 0;
-    int ticks = SDL_GetTicks();
-    int spr3 = (ticks/100)%3;
-
-    SDL_RenderClear(game->renderer);
-
-    // Background
-    renderSprite(game->renderer, 0, 0, &sprites[ 0 ]);
-    // Pill
-    renderSprite(game->renderer, 16, 32, &sprites[ 1 ]);
-    // Title animation
-    renderSprite(game->renderer, 37,56, &sprites[ 2 + ((ticks/275)%2) ]);
-    // Selection Area
-    renderSprite(game->renderer, 33, 152, &sprites[ 4 ]);
-    // Selection options
-    renderSprite(game->renderer, 60, 154, &sprites[ 5 ]);
-    // Dr Mario animation
-    renderSprite(game->renderer, 43, 162, &sprites[ 6 + ((ticks/200)%2)]);
-    // Cursor
-    y = cursor ? 176 : 160;
-    renderSprite(game->renderer, 69, y, &sprites[ 8 ]);
-    // Virus animation
-    int frame = (ticks/150)%6;
-    if (frame >= 3){
-        frame = 5-frame;
-    }
-    renderSprite(game->renderer, 192, 169, &sprites [ 9 + frame ]);
-
-
-    SDL_RenderPresent(game->renderer);
-}
-
-void MainMenuState::renderSprite(SDL_Renderer* renderer, int x, int y, SDL_Rect* sprite) {
-    if (sprite == nullptr){
-        return;
-    }
-    SDL_Rect render = {x*SCALING,y*SCALING,sprite->w*SCALING,sprite->h*SCALING};
-    SDL_RenderCopy(renderer, spritesheet, sprite, &render);
 }

@@ -21,7 +21,10 @@ private:
     SDL_Texture* spritesheet;
     SDL_Rect sprites[12];
     bool cursor = false;
+
     void renderSprite(SDL_Renderer* renderer, int x, int y, SDL_Rect* sprite);
+
+    void loadSprites();
 };
 
 
