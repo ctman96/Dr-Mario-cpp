@@ -18,7 +18,8 @@ public:
     void update(GameEngine *game) override;
     void draw(GameEngine *game) override;
 
-
+private:
+    SDL_Surface* background;
 };
 
 
