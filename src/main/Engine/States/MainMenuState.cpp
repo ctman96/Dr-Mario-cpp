@@ -102,6 +102,10 @@ void MainMenuState::draw(GameEngine *game) {
 }
 
 void MainMenuState::loadSprites(){
+    for(int i = 0; i < 12; i++){
+        sprites[i] = spr_mainmenu[i];
+    }
+    /*
     // Background
     sprites[ 0 ].x = 0;
     sprites[ 0 ].y = 0;
@@ -162,4 +166,5 @@ void MainMenuState::loadSprites(){
     sprites[ 11 ].y = 178;
     sprites[ 11 ].w = 24;
     sprites[ 11 ].h = 24;
+     */
 }

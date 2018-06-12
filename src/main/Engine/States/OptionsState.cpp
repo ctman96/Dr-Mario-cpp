@@ -160,6 +160,10 @@ void OptionsState::draw(GameEngine *game) {
 }
 
 void OptionsState::loadSprites(){
+    for(int i = 0; i < 37; i++){
+        sprites[i] = spr_options[i];
+    }
+    /*
     // Background
     sprites[ 0 ].x = 228;
     sprites[ 0 ].y = 3;
@@ -355,4 +359,5 @@ void OptionsState::loadSprites(){
     sprites[ 36 ].y = 208;
     sprites[ 36 ].w = 7;
     sprites[ 36 ].h = 7;
+     */
 }
