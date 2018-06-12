@@ -7,6 +7,9 @@
 #include "../../resources.h"
 #include "MainMenuState.h"
 #include "../../Constants.h"
+#include "../RenderUtils.h"
+
+using namespace RenderUtils;
 
 OptionsState::OptionsState(bool twoplayer) : twoplayer(twoplayer) {}
 
@@ -107,61 +110,53 @@ void OptionsState::draw(GameEngine *game) {
     SDL_RenderClear(game->renderer);
 
     // Background
-    renderSprite(game->renderer, 0, 0, &sprites[ 0 ]);
+    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 0 ]);
 
     // Selection Area
-    renderSprite(game->renderer, 24, 16, &sprites[ 1 ]);
+    renderSpriteFromSheet(game->renderer, 24, 16, spritesheet, &sprites[ 1 ]);
 
     // Title
     if (!twoplayer) {
-        renderSprite(game->renderer, 81, 32, &sprites[2]);
+        renderSpriteFromSheet(game->renderer, 81, 32, spritesheet, &sprites[2]);
     }
     else{
-        renderSprite(game->renderer, 81, 32, &sprites[3]);
+        renderSpriteFromSheet(game->renderer, 81, 32, spritesheet, &sprites[3]);
     }
 
 
     // Level Title
     if (selection == Selection::level){
-        renderSprite(game->renderer, 42, 50, &sprites[6]);
+        renderSpriteFromSheet(game->renderer, 42, 50, spritesheet, &sprites[6]);
     }else{
-        renderSprite(game->renderer, 42, 50, &sprites[7]);
+        renderSpriteFromSheet(game->renderer, 42, 50, spritesheet, &sprites[7]);
     }
     // P1 indicator
-    renderSprite(game->renderer, 66, 79, &sprites[4]);
+    renderSpriteFromSheet(game->renderer, 66, 79, spritesheet, &sprites[4]);
     // P2 indicator
     if (twoplayer){
-        renderSprite(game->renderer, 66, 87, &sprites[5]);
+        renderSpriteFromSheet(game->renderer, 66, 87, spritesheet, &sprites[5]);
     }
     // Level bar
-    renderSprite(game->renderer, 89, 83, &sprites[8]);
+    renderSpriteFromSheet(game->renderer, 89, 83, spritesheet, &sprites[8]);
 
 
 
     // Speed Title
     if (selection == Selection::speed){
-        renderSprite(game->renderer, 42, 104, &sprites[12]);
+        renderSpriteFromSheet(game->renderer, 42, 104, spritesheet, &sprites[12]);
     }else{
-        renderSprite(game->renderer, 42, 104, &sprites[13]);
+        renderSpriteFromSheet(game->renderer, 42, 104, spritesheet, &sprites[13]);
     }
 
 
     // Music Title
     if (selection == Selection::music){
-        renderSprite(game->renderer, 42, 154, &sprites[19]);
+        renderSpriteFromSheet(game->renderer, 42, 154, spritesheet, &sprites[19]);
     }else{
-        renderSprite(game->renderer, 42, 154, &sprites[20]);
+        renderSpriteFromSheet(game->renderer, 42, 154, spritesheet, &sprites[20]);
     }
 
     SDL_RenderPresent(game->renderer);
-}
-
-void OptionsState::renderSprite(SDL_Renderer* renderer, int x, int y, SDL_Rect* sprite) {
-    if (sprite == nullptr){
-        return;
-    }
-    SDL_Rect render = {x*SCALING,y*SCALING,sprite->w*SCALING,sprite->h*SCALING};
-    SDL_RenderCopy(renderer, spritesheet, sprite, &render);
 }
 
 void OptionsState::loadSprites(){

@@ -37,8 +37,6 @@ private:
     void selectionDown();
     void selectionUp();
 
-    void renderSprite(SDL_Renderer* renderer, int x, int y, SDL_Rect* sprite);
-
     void loadSprites();
 };
 

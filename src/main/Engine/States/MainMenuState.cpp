@@ -7,6 +7,9 @@
 #include "../../resources.h"
 #include "../../Constants.h"
 #include "OptionsState.h"
+#include "../RenderUtils.h"
+
+using namespace RenderUtils;
 
 void MainMenuState::init(GameEngine* game) {
 
@@ -73,37 +76,29 @@ void MainMenuState::draw(GameEngine *game) {
     SDL_RenderClear(game->renderer);
 
     // Background
-    renderSprite(game->renderer, 0, 0, &sprites[ 0 ]);
+    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 0 ]);
     // Pill
-    renderSprite(game->renderer, 16, 32, &sprites[ 1 ]);
+    renderSpriteFromSheet(game->renderer, 16, 32, spritesheet, &sprites[ 1 ]);
     // Title animation
-    renderSprite(game->renderer, 37,56, &sprites[ 2 + ((ticks/275)%2) ]);
+    renderSpriteFromSheet(game->renderer, 37,56, spritesheet, &sprites[ 2 + ((ticks/275)%2) ]);
     // Selection Area
-    renderSprite(game->renderer, 33, 152, &sprites[ 4 ]);
+    renderSpriteFromSheet(game->renderer, 33, 152, spritesheet, &sprites[ 4 ]);
     // Selection options
-    renderSprite(game->renderer, 60, 154, &sprites[ 5 ]);
+    renderSpriteFromSheet(game->renderer, 60, 154, spritesheet, &sprites[ 5 ]);
     // Dr Mario animation
-    renderSprite(game->renderer, 43, 162, &sprites[ 6 + ((ticks/200)%2)]);
+    renderSpriteFromSheet(game->renderer, 43, 162, spritesheet, &sprites[ 6 + ((ticks/200)%2)]);
     // Cursor
     y = cursor ? 176 : 160;
-    renderSprite(game->renderer, 69, y, &sprites[ 8 ]);
+    renderSpriteFromSheet(game->renderer, 69, y, spritesheet, &sprites[ 8 ]);
     // Virus animation
     int frame = (ticks/150)%6;
     if (frame >= 3){
         frame = 5-frame;
     }
-    renderSprite(game->renderer, 192, 169, &sprites [ 9 + frame ]);
+    renderSpriteFromSheet(game->renderer, 192, 169, spritesheet, &sprites [ 9 + frame ]);
 
 
     SDL_RenderPresent(game->renderer);
-}
-
-void MainMenuState::renderSprite(SDL_Renderer* renderer, int x, int y, SDL_Rect* sprite) {
-    if (sprite == nullptr){
-        return;
-    }
-    SDL_Rect render = {x*SCALING,y*SCALING,sprite->w*SCALING,sprite->h*SCALING};
-    SDL_RenderCopy(renderer, spritesheet, sprite, &render);
 }
 
 void MainMenuState::loadSprites(){

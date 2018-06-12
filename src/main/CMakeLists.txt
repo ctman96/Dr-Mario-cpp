@@ -8,9 +8,10 @@ set(
         Capsule.cpp Capsule.h
         Virus.cpp Virus.h
         Engine/GameEngine.cpp Engine/GameEngine.h
+        Engine/RenderUtils.h
         Engine/States/GameState.h
         Engine/States/MainMenuState.cpp Engine/States/MainMenuState.h
-        Engine/States/OptionsState.cpp Engine/States/OptionsState.h)
+        Engine/States/OptionsState.cpp Engine/States/OptionsState.h Engine/RenderUtils.cpp)
 
 
 
