@@ -31,7 +31,7 @@ private:
     int level2 = 0;
     Speed speed1 = Speed::med;
     Speed speed2 = Speed::med;
-    Music music;
+    Music music = Music::fever;
 
     SDL_Texture* spritesheet;
     SDL_Rect sprites[37];
@@ -45,7 +45,12 @@ private:
     void incSpeed(Speed& speed);
     void decSpeed(Speed& speed);
 
+    void incMusic();
+    void decMusic();
+
     void loadSprites();
+
+    void renderNum(SDL_Renderer* renderer, int level, int x, int y);
 };
 
 

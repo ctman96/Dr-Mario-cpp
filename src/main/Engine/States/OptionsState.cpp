@@ -39,7 +39,7 @@ void OptionsState::terminate() {
     spritesheet = nullptr;
 }
 
-void OptionsState::handle(GameEngine *game) {
+void OptionsState::handle(GameEngine *game) { //TODO use SDL key states to keep track of simultaneous key presses
     SDL_Event event;
 
     if(SDL_PollEvent(&event)){
@@ -69,7 +69,7 @@ void OptionsState::handle(GameEngine *game) {
                                 incSpeed(speed1);
                                 break;
                             case Selection::music:
-                                //TODO
+                                incMusic();
                                 break;
                         }
                         break;
@@ -82,7 +82,7 @@ void OptionsState::handle(GameEngine *game) {
                                 incSpeed(speed2);
                                 break;
                             case Selection::music:
-                                //TODO
+                                incMusic();
                                 break;
                         }
                         break;
@@ -95,7 +95,7 @@ void OptionsState::handle(GameEngine *game) {
                                 decSpeed(speed1);
                                 break;
                             case Selection::music:
-                                //TODO
+                                decMusic();
                                 break;
                         }
                         break;
@@ -108,7 +108,7 @@ void OptionsState::handle(GameEngine *game) {
                                 decSpeed(speed2);
                                 break;
                             case Selection::music:
-                                //TODO
+                                decMusic();
                                 break;
                         }
                         break;
@@ -194,6 +194,30 @@ void OptionsState::incSpeed(Speed& speed){
 
     }
 }
+// Helper for swapping between musics
+void OptionsState::incMusic(){
+    switch (music){
+        case Music::fever:
+            music = Music::chill;
+            break;
+        case Music::chill:
+        case Music::off:
+            music = Music::off;
+            break;
+    }
+}
+// Helper for swapping between musics
+void OptionsState::decMusic(){
+    switch (music){
+        case Music::off:
+            music = Music::chill;
+            break;
+        case Music::chill:
+        case Music::fever:
+            music = Music::fever;
+            break;
+    }
+}
 
 void OptionsState::update(GameEngine *game) {
 
@@ -230,17 +254,19 @@ void OptionsState::draw(GameEngine *game) {
         renderSpriteFromSheet(game->renderer, 66, 87, spritesheet, &sprites[5]);
     }
     // Level bar
-    renderSpriteFromSheet(game->renderer, 89, 83, spritesheet, &sprites[8]);
+    renderSpriteFromSheet(game->renderer, 90, 83, spritesheet, &sprites[8]);
     // Level Display
     renderSpriteFromSheet(game->renderer, 182,66,spritesheet, &sprites[9]);
+    renderNum(game->renderer, level1, 187,71);
     if (twoplayer){
         renderSpriteFromSheet(game->renderer, 182,89,spritesheet, &sprites[9]);
+        renderNum(game->renderer, level2, 187,94);
     }
     // Level Cursor P1
-    renderSpriteFromSheet(game->renderer, 87+level1*4, 76,spritesheet, &sprites[10]);
+    renderSpriteFromSheet(game->renderer, 88+level1*4, 76,spritesheet, &sprites[10]);
     // Level Cursor P2
     if (twoplayer) {
-        renderSpriteFromSheet(game->renderer, 87+level2*4, 91,spritesheet, &sprites[11]);
+        renderSpriteFromSheet(game->renderer, 88+level2*4, 91,spritesheet, &sprites[11]);
     }
 
 
@@ -252,22 +278,42 @@ void OptionsState::draw(GameEngine *game) {
         renderSpriteFromSheet(game->renderer, 42, 104, spritesheet, &sprites[13]);
     }
     // Speed Low
-    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[14]); //TODO
+    renderSpriteFromSheet(game->renderer, 90, 135, spritesheet, &sprites[14]);
     // Speed Med
-    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[15]); //TODO
+    renderSpriteFromSheet(game->renderer, 129, 135, spritesheet, &sprites[15]);
     // Speed Hi
-    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[16]); //TODO
+    renderSpriteFromSheet(game->renderer, 169, 135, spritesheet, &sprites[16]);
     // Speed Cursor P1
-    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[17]); //TODO
+    switch(speed1){
+        case Speed::low:
+            renderSpriteFromSheet(game->renderer, 90, 128, spritesheet, &sprites[17]);
+            break;
+        case Speed::med:
+            renderSpriteFromSheet(game->renderer, 130, 128, spritesheet, &sprites[17]);
+            break;
+        case Speed::hi:
+            renderSpriteFromSheet(game->renderer, 166, 128, spritesheet, &sprites[17]);
+            break;
+    }
     // Speed Cursor P2
     if (twoplayer) {
-        renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[18]); //TODO
+        switch(speed2){
+            case Speed::low:
+                renderSpriteFromSheet(game->renderer, 90, 143, spritesheet, &sprites[18]);
+                break;
+            case Speed::med:
+                renderSpriteFromSheet(game->renderer, 130, 143, spritesheet, &sprites[18]);
+                break;
+            case Speed::hi:
+                renderSpriteFromSheet(game->renderer, 166, 143, spritesheet, &sprites[18]);
+                break;
+        }
     }
     // Speed P1 indicator
-    renderSpriteFromSheet(game->renderer, 66, 0, spritesheet, &sprites[4]);//TODO
+    renderSpriteFromSheet(game->renderer, 66, 131, spritesheet, &sprites[4]);
     // Speed P2 indicator
     if (twoplayer){
-        renderSpriteFromSheet(game->renderer, 66, 0, spritesheet, &sprites[5]); //TODO
+        renderSpriteFromSheet(game->renderer, 66, 139, spritesheet, &sprites[5]);
     }
 
 
@@ -277,209 +323,47 @@ void OptionsState::draw(GameEngine *game) {
     }else{
         renderSpriteFromSheet(game->renderer, 42, 154, spritesheet, &sprites[20]);
     }
+    // Music Fever
+    if (music == Music::fever){
+        renderSpriteFromSheet(game->renderer, 60, 178, spritesheet, &sprites[22]);
+    }
+    else {
+        renderSpriteFromSheet(game->renderer, 60, 178, spritesheet, &sprites[21]);
+    }
+    // Music Chill
+    if (music == Music::chill){
+        renderSpriteFromSheet(game->renderer, 116, 178, spritesheet, &sprites[24]);
+    }
+    else {
+        renderSpriteFromSheet(game->renderer, 116, 178, spritesheet, &sprites[23]);
+    }
+    // Music Off
+    if (music == Music::off){
+        renderSpriteFromSheet(game->renderer, 172, 178, spritesheet, &sprites[26]);
+    }
+    else {
+        renderSpriteFromSheet(game->renderer, 172, 178, spritesheet, &sprites[25]);
+    }
 
     SDL_RenderPresent(game->renderer);
 }
 
 void OptionsState::loadSprites(){
-    for(int i = 0; i < 37; i++){
+    for(int i = 0; i < 37; i++){ //TODO not hardcode value
         sprites[i] = spr_options[i];
     }
-    /*
-    // Background
-    sprites[ 0 ].x = 228;
-    sprites[ 0 ].y = 3;
-    sprites[ 0 ].w = 256;
-    sprites[ 0 ].h = 224;
-    // Selection area
-    sprites[ 1 ].x = 11;
-    sprites[ 1 ].y = 233;
-    sprites[ 1 ].w = 208;
-    sprites[ 1 ].h = 192;
-    // Title - 1 player
-    sprites[ 2 ].x = 61;
-    sprites[ 2 ].y = 21;
-    sprites[ 2 ].w = 103;
-    sprites[ 2 ].h = 7;
-    // Title - 2 player
-    sprites[ 3 ].x = 61;
-    sprites[ 3 ].y = 31;
-    sprites[ 3 ].w = 103;
-    sprites[ 3 ].h = 7;
-    // 1p
-    sprites[ 4 ].x = 40;
-    sprites[ 4 ].y = 21;
-    sprites[ 4 ].w = 15;
-    sprites[ 4 ].h = 7;
-    // 2p
-    sprites[ 5 ].x = 40;
-    sprites[ 5 ].y = 31;
-    sprites[ 5 ].w = 15;
-    sprites[ 5 ].h = 7;
+}
 
-    // Level Selection Sprites
+// Display a two digit number at the x,y coordinates provided
+void OptionsState::renderNum(SDL_Renderer* renderer, int num, int x, int y) {
+    int x2 = x+8;
 
-    // Level Title active
-    sprites[ 6 ].x = 8;
-    sprites[ 6 ].y = 151;
-    sprites[ 6 ].w = 103;
-    sprites[ 6 ].h = 21;
-    // Level Title inactive
-    sprites[ 7 ].x = 115;
-    sprites[ 7 ].y = 151;
-    sprites[ 7 ].w = 103;
-    sprites[ 7 ].h = 21;
-    // Level bar
-    sprites[ 8 ].x = 53;
-    sprites[ 8 ].y = 48;
-    sprites[ 8 ].w = 83;
-    sprites[ 8 ].h = 8;
-    // Level display TODO
-    sprites[ 9 ].x = 0;
-    sprites[ 9 ].y = 0;
-    sprites[ 9 ].w = 0;
-    sprites[ 9 ].h = 0;
-    // Level cursor 1 TODO
-    sprites[ 10 ].x = 0;
-    sprites[ 10 ].y = 0;
-    sprites[ 10 ].w = 0;
-    sprites[ 10 ].h = 0;
-    // Level cursor 2 TODO
-    sprites[ 11 ].x = 0;
-    sprites[ 11 ].y = 0;
-    sprites[ 11 ].w = 0;
-    sprites[ 11 ].h = 0;
+    if (num < 0  || num > 99 || x < 0 || y < 0){
+        return; //TODO errors
+    }
+    int tens = num / 10;
+    int ones = num % 10;
 
-    // Speed Selection Sprites
-
-    // Speed Title active
-    sprites[ 12 ].x = 29;
-    sprites[ 12 ].y = 175;
-    sprites[ 12 ].w = 55;
-    sprites[ 12 ].h = 21;
-    // Speed Title inactive
-    sprites[ 13 ].x = 136;
-    sprites[ 13 ].y = 175;
-    sprites[ 13 ].w = 55;
-    sprites[ 13 ].h = 21;
-    // Speed Low TODO
-    sprites[ 14 ].x = 0;
-    sprites[ 14 ].y = 0;
-    sprites[ 14 ].w = 0;
-    sprites[ 14 ].h = 0;
-    // Speed Med TODO
-    sprites[ 15 ].x = 0;
-    sprites[ 15 ].y = 0;
-    sprites[ 15 ].w = 0;
-    sprites[ 15 ].h = 0;
-    // Speed Hi TODO
-    sprites[ 16 ].x = 0;
-    sprites[ 16 ].y = 0;
-    sprites[ 16 ].w = 0;
-    sprites[ 16 ].h = 0;
-    // Speed Cursor 1 TODO
-    sprites[ 17 ].x = 0;
-    sprites[ 17 ].y = 0;
-    sprites[ 17 ].w = 0;
-    sprites[ 17 ].h = 0;
-    // Speed Cursor 2 TODO
-    sprites[ 18 ].x = 0;
-    sprites[ 18 ].y = 0;
-    sprites[ 18 ].w = 0;
-    sprites[ 18 ].h = 0;
-
-    // Music Selection
-
-    // Music Title active
-    sprites[ 19 ].x = 11;
-    sprites[ 19 ].y = 127;
-    sprites[ 19 ].w = 95;
-    sprites[ 19 ].h = 21;
-    // Music Title inactive
-    sprites[ 20 ].x = 118;
-    sprites[ 20 ].y = 127;
-    sprites[ 20 ].w = 95;
-    sprites[ 20 ].h = 21;
-    // Music Fever TODO
-    sprites[ 21 ].x = 0;
-    sprites[ 21 ].y = 0;
-    sprites[ 21 ].w = 0;
-    sprites[ 21 ].h = 0;
-    // Music Fever Selected TODO
-    sprites[ 22 ].x = 0;
-    sprites[ 22 ].y = 0;
-    sprites[ 22 ].w = 0;
-    sprites[ 22 ].h = 0;
-    // Music Chill TODO
-    sprites[ 23 ].x = 0;
-    sprites[ 23 ].y = 0;
-    sprites[ 23 ].w = 0;
-    sprites[ 23 ].h = 0;
-    // Music Chill Selected TODO
-    sprites[ 24 ].x = 0;
-    sprites[ 24 ].y = 0;
-    sprites[ 24 ].w = 0;
-    sprites[ 24 ].h = 0;
-    // Music Off TODO
-    sprites[ 25 ].x = 0;
-    sprites[ 25 ].y = 0;
-    sprites[ 25 ].w = 0;
-    sprites[ 25 ].h = 0;
-    // Music Off Selected TODO
-    sprites[ 26 ].x = 0;
-    sprites[ 26 ].y = 0;
-    sprites[ 26 ].w = 0;
-    sprites[ 26 ].h = 0;
-
-    // Num0
-    sprites[ 27 ].x = 67;
-    sprites[ 27 ].y = 208;
-    sprites[ 27 ].w = 7;
-    sprites[ 27 ].h = 7;
-    // Num1
-    sprites[ 28 ].x = 75;
-    sprites[ 28 ].y = 208;
-    sprites[ 28 ].w = 7;
-    sprites[ 28 ].h = 7;
-    // Num2
-    sprites[ 29 ].x = 84;
-    sprites[ 29 ].y = 208;
-    sprites[ 29 ].w = 7;
-    sprites[ 29 ].h = 7;
-    // Num3
-    sprites[ 30 ].x = 93;
-    sprites[ 30 ].y = 208;
-    sprites[ 30 ].w = 7;
-    sprites[ 30 ].h = 7;
-    // Num4
-    sprites[ 31 ].x = 102;
-    sprites[ 31 ].y = 208;
-    sprites[ 31 ].w = 7;
-    sprites[ 31 ].h = 7;
-    // Num5
-    sprites[ 32 ].x = 111;
-    sprites[ 32 ].y = 208;
-    sprites[ 32 ].w = 7;
-    sprites[ 32 ].h = 7;
-    // Num6
-    sprites[ 33 ].x = 120;
-    sprites[ 33 ].y = 208;
-    sprites[ 33 ].w = 7;
-    sprites[ 33 ].h = 7;
-    // Num7
-    sprites[ 34 ].x = 128;
-    sprites[ 34 ].y = 208;
-    sprites[ 34 ].w = 7;
-    sprites[ 34 ].h = 7;
-    // Num8
-    sprites[ 35 ].x = 137;
-    sprites[ 35 ].y = 208;
-    sprites[ 35 ].w = 7;
-    sprites[ 35 ].h = 7;
-    // Num9
-    sprites[ 36 ].x = 146;
-    sprites[ 36 ].y = 208;
-    sprites[ 36 ].w = 7;
-    sprites[ 36 ].h = 7;
-     */
+    renderSpriteFromSheet(renderer, x,y, spritesheet, &sprites[27+tens]);
+    renderSpriteFromSheet(renderer, x2, y, spritesheet, &sprites[27+ones]);
 }

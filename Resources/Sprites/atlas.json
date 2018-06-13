@@ -19,7 +19,7 @@
     "name":"spr_options",
     "sprites":[
       {"name":"Background", "x":228, "y":3, "w":256, "h":224},
-      {"name":"Selection area", "x":11, "y":233, "w":208, "h":224},
+      {"name":"Selection area", "x":11, "y":233, "w":208, "h":192},
       {"name":"Title 1p", "x":61, "y":21, "w":103, "h":7},
       {"name":"Title 2p", "x":61, "y":31, "w":103, "h":7},
       {"name":"1P", "x":40, "y":21, "w":15, "h":7},
