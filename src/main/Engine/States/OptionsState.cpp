@@ -61,12 +61,56 @@ void OptionsState::handle(GameEngine *game) {
                         selectionUp();
                         break;
                     case SDLK_d:
+                        switch(selection){
+                            case Selection::level:
+                                incLevel(level1);
+                                break;
+                            case Selection::speed:
+                                incSpeed(speed1);
+                                break;
+                            case Selection::music:
+                                //TODO
+                                break;
+                        }
+                        break;
                     case SDLK_RIGHT:
-                        //TODO
+                        switch(selection){
+                            case Selection::level:
+                                incLevel(level2);
+                                break;
+                            case Selection::speed:
+                                incSpeed(speed2);
+                                break;
+                            case Selection::music:
+                                //TODO
+                                break;
+                        }
                         break;
                     case SDLK_a:
+                        switch(selection){
+                            case Selection::level:
+                                decLevel(level1);
+                                break;
+                            case Selection::speed:
+                                decSpeed(speed1);
+                                break;
+                            case Selection::music:
+                                //TODO
+                                break;
+                        }
+                        break;
                     case SDLK_LEFT:
-                        //TODO
+                        switch(selection){
+                            case Selection::level:
+                                decLevel(level2);
+                                break;
+                            case Selection::speed:
+                                decSpeed(speed2);
+                                break;
+                            case Selection::music:
+                                //TODO
+                                break;
+                        }
                         break;
                     case SDLK_KP_ENTER:
                         //TODO
@@ -80,6 +124,7 @@ void OptionsState::handle(GameEngine *game) {
     }
 }
 
+// Helper for swapping between selections
 void OptionsState::selectionDown() {
     switch(selection){
         case Selection::level:
@@ -91,6 +136,7 @@ void OptionsState::selectionDown() {
             break;
     }
 }
+// Helper for swapping between selections
 void OptionsState::selectionUp() {
     switch(selection){
         case Selection::music:
@@ -99,6 +145,53 @@ void OptionsState::selectionUp() {
         case Selection::speed:
         case Selection::level:
             selection = Selection::level;
+    }
+}
+
+// Helper for incrementing an int so that it is never greater than 20
+void OptionsState::incLevel(int& level){
+    if(level < 20){
+        ++level;
+    }
+    else{
+        level = 20;
+    }
+}
+
+// Helper for decrementing an int so that it is never less than 0
+void OptionsState::decLevel(int& level){
+    if(level > 0){
+        --level;
+    }
+    else{
+        level = 0;
+    }
+}
+
+// Helper for swapping between speeds
+void OptionsState::decSpeed(Speed& speed){
+    switch (speed){
+        case Speed::hi:
+            speed = Speed::med;
+            break;
+        case Speed::med:
+        case Speed::low:
+            speed = Speed::low;
+            break;
+
+    }
+}
+// Helper for swapping between speeds
+void OptionsState::incSpeed(Speed& speed){
+    switch (speed){
+        case Speed::low:
+            speed = Speed::med;
+            break;
+        case Speed::med:
+        case Speed::hi:
+            speed = Speed::hi;
+            break;
+
     }
 }
 
@@ -130,14 +223,25 @@ void OptionsState::draw(GameEngine *game) {
     }else{
         renderSpriteFromSheet(game->renderer, 42, 50, spritesheet, &sprites[7]);
     }
-    // P1 indicator
+    // Level P1 indicator
     renderSpriteFromSheet(game->renderer, 66, 79, spritesheet, &sprites[4]);
-    // P2 indicator
+    // Level P2 indicator
     if (twoplayer){
         renderSpriteFromSheet(game->renderer, 66, 87, spritesheet, &sprites[5]);
     }
     // Level bar
     renderSpriteFromSheet(game->renderer, 89, 83, spritesheet, &sprites[8]);
+    // Level Display
+    renderSpriteFromSheet(game->renderer, 182,66,spritesheet, &sprites[9]);
+    if (twoplayer){
+        renderSpriteFromSheet(game->renderer, 182,89,spritesheet, &sprites[9]);
+    }
+    // Level Cursor P1
+    renderSpriteFromSheet(game->renderer, 87+level1*4, 76,spritesheet, &sprites[10]);
+    // Level Cursor P2
+    if (twoplayer) {
+        renderSpriteFromSheet(game->renderer, 87+level2*4, 91,spritesheet, &sprites[11]);
+    }
 
 
 
@@ -146,6 +250,24 @@ void OptionsState::draw(GameEngine *game) {
         renderSpriteFromSheet(game->renderer, 42, 104, spritesheet, &sprites[12]);
     }else{
         renderSpriteFromSheet(game->renderer, 42, 104, spritesheet, &sprites[13]);
+    }
+    // Speed Low
+    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[14]); //TODO
+    // Speed Med
+    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[15]); //TODO
+    // Speed Hi
+    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[16]); //TODO
+    // Speed Cursor P1
+    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[17]); //TODO
+    // Speed Cursor P2
+    if (twoplayer) {
+        renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[18]); //TODO
+    }
+    // Speed P1 indicator
+    renderSpriteFromSheet(game->renderer, 66, 0, spritesheet, &sprites[4]);//TODO
+    // Speed P2 indicator
+    if (twoplayer){
+        renderSpriteFromSheet(game->renderer, 66, 0, spritesheet, &sprites[5]); //TODO
     }
 
 

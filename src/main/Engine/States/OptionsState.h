@@ -27,8 +27,10 @@ private:
     bool twoplayer;
 
     Selection selection;
-    int level;
-    Speed speed;
+    int level1 = 0;
+    int level2 = 0;
+    Speed speed1 = Speed::med;
+    Speed speed2 = Speed::med;
     Music music;
 
     SDL_Texture* spritesheet;
@@ -36,6 +38,12 @@ private:
 
     void selectionDown();
     void selectionUp();
+
+    void incLevel(int& level);
+    void decLevel(int& level);
+
+    void incSpeed(Speed& speed);
+    void decSpeed(Speed& speed);
 
     void loadSprites();
 };
