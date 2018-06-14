@@ -11,7 +11,7 @@ set(
         Engine/RenderUtils.h
         Engine/States/GameState.h
         Engine/States/MainMenuState.cpp Engine/States/MainMenuState.h
-        Engine/States/OptionsState.cpp Engine/States/OptionsState.h Engine/RenderUtils.cpp)
+        Engine/States/OptionsState.cpp Engine/States/OptionsState.h Engine/RenderUtils.cpp Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerState.h Engine/GameUtils.cpp Engine/GameUtils.h)
 
 
 

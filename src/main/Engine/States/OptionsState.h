@@ -6,10 +6,7 @@
 #define DRMARIO_OPTIONSSTATE_H
 
 #include "GameState.h"
-
-enum class Selection {level, speed, music};
-enum class Speed {low, med, hi};
-enum class Music {fever, chill, off};
+#include "../GameUtils.h"
 
 class OptionsState : public GameState {
 public:
