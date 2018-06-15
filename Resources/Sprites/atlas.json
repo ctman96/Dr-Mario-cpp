@@ -63,6 +63,11 @@
   {
     "name":"spr_game",
     "sprites":[
-
+      {"name":"Background Purple", "x":5, "y":373, "w":256, "h":224},
+      {"name":"Background Grey", "x":266, "y":373, "w":256, "h":224},
+      {"name":"Background Green", "x":527, "y":373, "w":256, "h":224},
+      {"name":"Board Purple", "x":13, "y":187, "w":80, "h":176},
+      {"name":"Board Grey", "x":98, "y":187, "w":80, "h":176},
+      {"name":"Board Green", "x":183, "y":187, "w":80, "h":176}
   ]}
 ]

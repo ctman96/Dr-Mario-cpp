@@ -6,7 +6,10 @@
 #define DRMARIO_SINGLEPLAYERSTATE_H
 
 #include "GameState.h"
-#include "../GameUtils.h"
+#include "../../GameUtils.h"
+#include "../../Capsule.h"
+#include "../../Virus.h"
+#include <list>
 
 class SinglePlayerState : public GameState {
 public:
@@ -28,10 +31,16 @@ private:
     SDL_Texture* spritesheet;
     SDL_Rect sprites[1];
 
+    void loadSprites();
+
     int score;
     int topscore;
 
-    //TODO list of all capsules/blocks, viruses, active capsule, next capsule
+    std::list<Virus> viruses;
+    std::list<Block> listOfBlocks;
+    std::list<Capsule> listOfCapsules;
+    Capsule* activeCapsule;
+    Capsule nextCapsule;
 
 };
 

@@ -6,7 +6,7 @@
 #define DRMARIO_OPTIONSSTATE_H
 
 #include "GameState.h"
-#include "../GameUtils.h"
+#include "../../GameUtils.h"
 
 class OptionsState : public GameState {
 public:

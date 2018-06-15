@@ -34,7 +34,7 @@ void SinglePlayerState::init(GameEngine *game) {
     SDL_FreeSurface(tmp);
 
     // Create the sprites
-    //loadSprites();
+    loadSprites();
 
 
     //TODO: load music depending on music
@@ -91,3 +91,11 @@ void SinglePlayerState::update(GameEngine *game) {
 void SinglePlayerState::draw(GameEngine *game) {
 
 }
+
+void SinglePlayerState::loadSprites() {
+    for(int i = 0; i < 6; i++){ // TODO Not hardcode size
+        sprites[i] = spr_game[i];
+    }
+}
+
+
