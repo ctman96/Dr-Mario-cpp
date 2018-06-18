@@ -11,7 +11,7 @@
 //Initialize the game engine - SDL setup
 void GameEngine::init() {
     //Initialize SDL
-    if(SDL_Init(SDL_INIT_VIDEO) < 0){
+    if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0){
         std::string msg = "SDL could not be initialized. SDL Error: ";
         std::string error = SDL_GetError();
         throw std::runtime_error(msg+error);
@@ -48,6 +48,13 @@ void GameEngine::init() {
         throw std::runtime_error(msg+error);
     }
 
+    //Initialize SDL_mixer
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0){
+        std::string msg = "SLD_mixer could not be initialized. SDL_mixer Error: ";
+        std::string error = Mix_GetError();
+        throw std::runtime_error(msg+error);
+    }
+
     screen = SDL_GetWindowSurface(window);
 
     running = true;
@@ -62,6 +69,10 @@ void GameEngine::terminate() {
     delete(state);
     state = nullptr;
 
+    //Free the music
+    Mix_FreeMusic(music);
+    music = nullptr;
+
     // Destroy renderer and window
     SDL_DestroyRenderer(renderer);
     SDL_FreeSurface(screen);
@@ -69,6 +80,7 @@ void GameEngine::terminate() {
     renderer, screen, window = nullptr;
 
     // Quit SDL
+    Mix_Quit();
     IMG_Quit();
     SDL_Quit();
 }

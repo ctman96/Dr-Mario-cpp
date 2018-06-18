@@ -8,7 +8,7 @@
 import os, json
 
 curdir = os.path.abspath(os.path.dirname(__file__))
-out = os.path.join(curdir, "src", "main", "resources.h")
+out = os.path.join(curdir, "src", "main", "Resources")
 resources = os.path.join(curdir, "Resources")
 
 
@@ -96,12 +96,11 @@ except OSError:
     pass
 
 # Create the output file, open it for reading+writing
-f = open(out, "w+")
+spritesheets = os.path.join(out, "spritesheets.h")
+f = open(spritesheets, "w+")
 
 f.write("//This generated code contains the byte arrays of resources\n\n")
-
 f.write("#ifndef RESOURCES_H\n#define RESOURCES_H\n\n")
-
 f.write("#include <SDL_rect.h>\n")
 
 # Counter for number of resources processed
@@ -120,9 +119,28 @@ for file in os.listdir(sprites):
         write_atlas(os.path.join(sprites, file), f)
         count += 1
 
-
-# TODO: same thing for audio and fonts, if possible
-
 f.write("\n#endif")
+f.close();
 
-print("Converted " + str(count) + " resources, and added to " + out)
+print("Converted " + str(count) + " sprite resources, and added to " + out)
+
+count = 0
+
+# # TODO: same thing for audio and fonts, if possible
+# audio = os.path.join(resources, "Audio")
+# for file in os.listdir(audio):
+#     if file.endswith(".mp3"):
+#         print("Found audio file: "+file)
+#         audiotitle = file.replace(".", "_")
+#         audiofile = os.path.join(out, audiotitle+".h")
+#         f = open(audiofile, "w+")
+#         f.write("//This generated code contains the byte array for "+file+"\n\n")
+#         f.write("#ifndef "+audiotitle.upper()+"\n#define "+audiotitle.upper()+"\n\n")
+#
+#         b = convert(os.path.join(audio, file))
+#         write_array(f,b,file)
+#         f.write("\n#endif")
+#         f.close()
+#         count += 1
+
+print("Converted " + str(count) + " audio resources, and added to " + out)

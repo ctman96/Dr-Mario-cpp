@@ -4,7 +4,10 @@
 
 #include <SDL_image.h>
 #include "SinglePlayerState.h"
-#include "../../resources.h"
+#include "../../Resources/spritesheets.h"
+#include "../RenderUtils.h"
+
+using namespace RenderUtils;
 
 SinglePlayerState::SinglePlayerState(int level, Speed speed, Music music){
     // TODO Keep this handling? Or give an exception?
@@ -36,16 +39,38 @@ void SinglePlayerState::init(GameEngine *game) {
     // Create the sprites
     loadSprites();
 
-
-    //TODO: load music depending on music
+    // Load Music
+    Mix_FreeMusic(game->music);
+    switch(music){
+        case Music::fever:
+            game->music = Mix_LoadMUS("audio/mus_Fever.mp3");
+            break;
+        case Music::chill:
+            game->music = Mix_LoadMUS("audio/mus_Chill.mp3");
+            break;
+        case Music::off:
+            game->music = nullptr;
+            break;
+    }
+    if(game->music == nullptr){
+        printf("Couldn't find music");
+        //TODO
+    }
+    else if (music != Music::off){
+        Mix_PlayMusic(game->music,-1);
+    }
 
     //TODO: load the level
-
+    board = new Board();
+    board->init(level);
 }
 
 void SinglePlayerState::terminate() {
     SDL_DestroyTexture(spritesheet);
     spritesheet = nullptr;
+
+    board->clear();
+    delete(board);
 }
 
 void SinglePlayerState::handle(GameEngine *game) {
@@ -89,11 +114,57 @@ void SinglePlayerState::update(GameEngine *game) {
 }
 
 void SinglePlayerState::draw(GameEngine *game) {
+    SDL_RenderClear(game->renderer);
 
+    // Background
+    switch(speed){
+        case Speed::low:
+            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 2 ]);
+            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &sprites[ 5 ]);
+            break;
+        case Speed::med:
+            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 0 ]);
+            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &sprites[ 3 ]);
+            break;
+        case Speed::hi:
+            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 1 ]);
+            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &sprites[ 4 ]);
+            break;
+    }
+
+    // UI elements
+
+    // Title
+    renderSpriteFromSheet(game->renderer, 159, 18, spritesheet, &sprites[ 6 ]);
+    // Dr Mario Area
+    renderSpriteFromSheet(game->renderer, 176, 56, spritesheet, &sprites[ 7 ]);
+    // Viruses Area
+    renderSpriteFromSheet(game->renderer, 0, 120, spritesheet, &sprites[ 8 ]);
+    // Score board
+    renderSpriteFromSheet(game->renderer, 8, 26, spritesheet, &sprites[ 9 ]);
+    // Level stats
+    renderSpriteFromSheet(game->renderer, 176, 114, spritesheet, &sprites[ 10 ]);
+
+    // Animations / Dynamic
+
+    // Dr Mario/Next Capsule Display
+    //TODO
+    // Viruses Display
+    //TODO
+    // Scoreboard
+    //TODO
+    // Level Stats
+    //TODO
+
+
+    //Board
+    //board.draw(game->renderer, x, y); TODO
+
+    SDL_RenderPresent(game->renderer);
 }
 
 void SinglePlayerState::loadSprites() {
-    for(int i = 0; i < 6; i++){ // TODO Not hardcode size
+    for(int i = 0; i < 11; i++){ // TODO Not hardcode size
         sprites[i] = spr_game[i];
     }
 }

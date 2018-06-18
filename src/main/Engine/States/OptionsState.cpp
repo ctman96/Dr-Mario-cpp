@@ -4,10 +4,11 @@
 
 #include <SDL_image.h>
 #include "OptionsState.h"
-#include "../../resources.h"
+#include "../../Resources/spritesheets.h"
 #include "MainMenuState.h"
 #include "../../Constants.h"
 #include "../RenderUtils.h"
+#include "SinglePlayerState.h"
 
 using namespace RenderUtils;
 
@@ -32,6 +33,17 @@ void OptionsState::init(GameEngine *game) {
 
     // Create the sprites
     loadSprites();
+
+    //Load music
+    Mix_FreeMusic(game->music);
+    game->music = Mix_LoadMUS("audio/mus_Select.mp3");
+    if(game->music == nullptr){
+        printf("Couldn't find music");
+        //TODO
+    }
+    else{
+        Mix_PlayMusic(game->music,-1);
+    }
 }
 
 void OptionsState::terminate() {
@@ -112,8 +124,13 @@ void OptionsState::handle(GameEngine *game) { //TODO use SDL key states to keep 
                                 break;
                         }
                         break;
-                    case SDLK_KP_ENTER:
-                        //TODO
+                    case SDLK_RETURN:
+                        if(twoplayer){
+                            //TODO
+                        }
+                        else {
+                            game->changeState(new SinglePlayerState(level1, speed1, music));
+                        }
                         break;
                     default:
                         break;

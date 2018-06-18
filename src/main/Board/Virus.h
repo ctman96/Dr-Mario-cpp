@@ -7,9 +7,11 @@
 
 #include "Block.h"
 
-class Virus : public Block {
+class Virus : public DrawableObject {
 public:
-    void draw(SDL_Renderer *renderer) override;
+    void draw(SDL_Renderer *renderer) const override;
+private:
+    Color color;
 };
 
 

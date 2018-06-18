@@ -12,6 +12,6 @@ void Capsule::setRotation(int rotation) {
     Capsule::rotation = rotation;
 }
 
-void Capsule::draw(SDL_Renderer *renderer) {
+void Capsule::draw(SDL_Renderer *renderer) const {
     //TODO
 }

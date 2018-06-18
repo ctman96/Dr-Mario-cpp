@@ -4,7 +4,7 @@
 
 #include <SDL_image.h>
 #include "MainMenuState.h"
-#include "../../resources.h"
+#include "../../Resources/spritesheets.h"
 #include "../../Constants.h"
 #include "OptionsState.h"
 #include "../RenderUtils.h"
@@ -25,6 +25,17 @@ void MainMenuState::init(GameEngine* game) {
 
     // Create the sprites
     loadSprites();
+
+    //Load music
+    Mix_FreeMusic(game->music);
+    game->music = Mix_LoadMUS("audio/mus_Title.mp3");
+    if(game->music == nullptr){
+        printf("Couldn't find music");
+        //TODO
+    }
+    else{
+        Mix_PlayMusic(game->music,-1);
+    }
 }
 
 void MainMenuState::terminate() {

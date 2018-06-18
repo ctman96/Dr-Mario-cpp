@@ -6,17 +6,16 @@
 #define DRMARIO_BLOCK_H
 
 #include "DrawableObject.h"
-
-enum class Color {red, blue, yellow};
+#include "../GameUtils.h"
 
 class Block : public DrawableObject{
 public:
     Color getColor() const;
 
-    void draw(SDL_Renderer *renderer) override;
+    void draw(SDL_Renderer *renderer) const override;
 
 private:
-    Color color;
+    Color color{};
 };
 
 

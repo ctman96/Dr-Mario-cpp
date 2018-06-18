@@ -6,17 +6,20 @@
 #define DRMARIO_CAPSULE_H
 
 #include "Block.h"
+#include "../GameUtils.h"
 
 class Capsule : public DrawableObject{
 private:
-    int rotation;
+    Color c1{};
+    Color c2{};
+    int rotation = 0;
 
 public:
     int getRotation() const;
 
     void setRotation(int rotation);
 
-    void draw(SDL_Renderer *renderer) override;
+    void draw(SDL_Renderer *renderer) const override;
 };
 
 

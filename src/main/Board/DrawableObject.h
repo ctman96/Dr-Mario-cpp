@@ -10,9 +10,9 @@
 
 class DrawableObject {
 public:
-    int x{};
+    int x=0;
 
-    int y{};
+    int y=0;
 
     bool operator<(const DrawableObject& other) const{
         return (y < other.y) || (y == other.y && x < other.x); //Prioritize y sorting, followed by x
@@ -22,7 +22,7 @@ public:
         return y == other.y && x == other.x;
     }
 
-    virtual void draw(SDL_Renderer* renderer) = 0;
+    virtual void draw(SDL_Renderer* renderer) const = 0;
 };
 
 

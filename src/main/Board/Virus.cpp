@@ -4,6 +4,6 @@
 
 #include "Virus.h"
 
-void Virus::draw(SDL_Renderer *renderer) {
+void Virus::draw(SDL_Renderer *renderer) const {
     //TODO
 }

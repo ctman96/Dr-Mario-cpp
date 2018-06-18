@@ -34,7 +34,7 @@ private:
     int score;
     int topscore;
 
-    Board board;
+    Board* board;
 
 };
 

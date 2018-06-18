@@ -5,6 +5,7 @@
 #ifndef DRMARIO_GAMEENGINE_H
 #define DRMARIO_GAMEENGINE_H
 
+#include <SDL_mixer.h>
 #include "SDL.h"
 
 class GameState;
@@ -26,6 +27,7 @@ public:
     SDL_Window* window;
     SDL_Surface* screen;
     SDL_Renderer* renderer;
+    Mix_Music * music;
 
 private:
     bool running;

@@ -68,6 +68,11 @@
       {"name":"Background Green", "x":527, "y":373, "w":256, "h":224},
       {"name":"Board Purple", "x":13, "y":187, "w":80, "h":176},
       {"name":"Board Grey", "x":98, "y":187, "w":80, "h":176},
-      {"name":"Board Green", "x":183, "y":187, "w":80, "h":176}
+      {"name":"Board Green", "x":183, "y":187, "w":80, "h":176},
+      {"name":"Title", "x":21, "y":10, "w":88, "h":29},
+      {"name":"Mario Area", "x":125, "y":57, "w":56, "h":56},
+      {"name":"Virus Area", "x":186, "y":39, "w":80, "h":88},
+      {"name":"Scoreboard", "x":351, "y":231, "w":72, "h":78},
+      {"name":"Level stats", "x":427, "y":231, "w":64, "h":102}
   ]}
 ]

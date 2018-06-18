@@ -22,10 +22,10 @@ public:
     void init(int level);
     void clear();
     void update();
-    void draw(SDL_Renderer* renderer);
+    void draw(SDL_Renderer* renderer, int x, int y);
 private:
-    std::set<std::unique_ptr<Virus>> viruses;
-    std::set<std::unique_ptr<DrawableObject>> blocks;
+    std::set<Virus> viruses{};
+    std::set<DrawableObject*> blocks{};
     //std::set<std::unique_ptr<Capsule>> capsules;
     Capsule activeCapsule;
     Capsule nextCapsule;

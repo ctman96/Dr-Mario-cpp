@@ -25,15 +25,15 @@ void Board::update() {
     //TODO check lines, delete, add score
 }
 
-void Board::draw(SDL_Renderer* renderer) {
+void Board::draw(SDL_Renderer* renderer, int x, int y) {
     auto itv = viruses.begin();
     for( int i = 0; i < viruses.size(); i++){
-        itv->get()->draw(renderer);
+        itv->draw(renderer);
         next(itv);
     }
     auto itb = blocks.begin();
     for(int i = 0; i < blocks.size(); i++){
-        itb->get()->draw(renderer);
+        (*itb)->draw(renderer);
         next(itb);
     }
     /*auto itc = capsules.begin();
