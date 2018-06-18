@@ -12,7 +12,7 @@ out = os.path.join(curdir, "src", "main", "resources.h")
 resources = os.path.join(curdir, "Resources")
 
 
-# Takes string file, returns a bytearray generated from the file
+# Takes string file, returns a bytearrsay generated from the file
 # file is the path of the file to be converted
 def convert(file):
     print(" Converting to bytearray...")

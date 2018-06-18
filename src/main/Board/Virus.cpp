@@ -3,3 +3,7 @@
 //
 
 #include "Virus.h"
+
+void Virus::draw(SDL_Renderer *renderer) {
+    //TODO
+}

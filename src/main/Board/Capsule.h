@@ -7,20 +7,16 @@
 
 #include "Block.h"
 
-class Capsule {
+class Capsule : public DrawableObject{
 private:
-    Block b1;
-    Block b2;
     int rotation;
 
 public:
-    const Block &getB1() const;
-
-    const Block &getB2() const;
-
     int getRotation() const;
 
     void setRotation(int rotation);
+
+    void draw(SDL_Renderer *renderer) override;
 };
 
 

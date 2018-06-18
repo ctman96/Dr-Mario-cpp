@@ -9,7 +9,7 @@ enum class Selection {level, speed, music};
 enum class Speed {low, med, hi};
 enum class Music {fever, chill, off};
 
-enum class Cell {empty, virus, block, capsule};
+enum class Cell {empty, filled};
 
 namespace GameUtils {
 

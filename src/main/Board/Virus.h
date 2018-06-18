@@ -8,7 +8,8 @@
 #include "Block.h"
 
 class Virus : public Block {
-
+public:
+    void draw(SDL_Renderer *renderer) override;
 };
 
 

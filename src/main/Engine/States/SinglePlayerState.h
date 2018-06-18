@@ -7,9 +7,7 @@
 
 #include "GameState.h"
 #include "../../GameUtils.h"
-#include "../../Capsule.h"
-#include "../../Virus.h"
-#include <list>
+#include "../../Board/Board.h"
 
 class SinglePlayerState : public GameState {
 public:
@@ -36,11 +34,7 @@ private:
     int score;
     int topscore;
 
-    std::list<Virus> viruses;
-    std::list<Block> listOfBlocks;
-    std::list<Capsule> listOfCapsules;
-    Capsule* activeCapsule;
-    Capsule nextCapsule;
+    Board board;
 
 };
 

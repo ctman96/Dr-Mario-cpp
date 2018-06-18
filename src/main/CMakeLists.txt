@@ -4,14 +4,16 @@ set(
         main.cpp
         resources.h
         Constants.h
-        Block.cpp Block.h
-        Capsule.cpp Capsule.h
-        Virus.cpp Virus.h
+        Board/Block.cpp Board/Block.h
+        Board/Capsule.cpp Board/Capsule.h
+        Board/Virus.cpp Board/Virus.h
         Engine/GameEngine.cpp Engine/GameEngine.h
-        Engine/RenderUtils.h
+        Engine/RenderUtils.cpp Engine/RenderUtils.h
+        GameUtils.cpp GameUtils.h
         Engine/States/GameState.h
         Engine/States/MainMenuState.cpp Engine/States/MainMenuState.h
-        Engine/States/OptionsState.cpp Engine/States/OptionsState.h Engine/RenderUtils.cpp Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerState.h GameUtils.cpp GameUtils.h)
+        Engine/States/OptionsState.cpp Engine/States/OptionsState.h
+        Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerState.h Board/Board.cpp Board/Board.h Board/DrawableObject.h)
 
 
 
