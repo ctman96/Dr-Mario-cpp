@@ -49,9 +49,6 @@ void SinglePlayerState::init(GameEngine *game) {
     // Get rid of temp surface
     SDL_FreeSurface(tmp);
 
-    // Create the sprites
-    loadSprites();
-
     // Load Music
     Mix_FreeMusic(game->music);
     switch(music){
@@ -151,31 +148,31 @@ void SinglePlayerState::draw(GameEngine *game) {
     // Background
     switch(speed){
         case Speed::low:
-            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 2 ]);
-            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &sprites[ 5 ]);
+            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &spr_game[ 2 ]);
+            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &spr_game[ 5 ]);
             break;
         case Speed::med:
-            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 0 ]);
-            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &sprites[ 3 ]);
+            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &spr_game[ 0 ]);
+            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &spr_game[ 3 ]);
             break;
         case Speed::hi:
-            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 1 ]);
-            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &sprites[ 4 ]);
+            renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &spr_game[ 1 ]);
+            renderSpriteFromSheet(game->renderer, 88, 32, spritesheet, &spr_game[ 4 ]);
             break;
     }
 
     // UI elements
 
     // Title
-    renderSpriteFromSheet(game->renderer, 159, 18, spritesheet, &sprites[ 6 ]);
+    renderSpriteFromSheet(game->renderer, 159, 18, spritesheet, &spr_game[ 6 ]);
     // Dr Mario Area
-    renderSpriteFromSheet(game->renderer, 176, 56, spritesheet, &sprites[ 7 ]);
+    renderSpriteFromSheet(game->renderer, 176, 56, spritesheet, &spr_game[ 7 ]);
     // Viruses Area
-    renderSpriteFromSheet(game->renderer, 0, 120, spritesheet, &sprites[ 8 ]);
+    renderSpriteFromSheet(game->renderer, 0, 120, spritesheet, &spr_game[ 8 ]);
     // Score board
-    renderSpriteFromSheet(game->renderer, 8, 26, spritesheet, &sprites[ 9 ]);
+    renderSpriteFromSheet(game->renderer, 8, 26, spritesheet, &spr_game[ 9 ]);
     // Level stats
-    renderSpriteFromSheet(game->renderer, 176, 114, spritesheet, &sprites[ 10 ]);
+    renderSpriteFromSheet(game->renderer, 176, 114, spritesheet, &spr_game[ 10 ]);
 
     // Animations / Dynamic
 
@@ -193,12 +190,6 @@ void SinglePlayerState::draw(GameEngine *game) {
     //board.draw(game->renderer, x, y); TODO
 
     SDL_RenderPresent(game->renderer);
-}
-
-void SinglePlayerState::loadSprites() { //TODO: Not even necessary, just pull from the header...
-    for(int i = 0; i < 11; i++){ // TODO Not hardcode size
-        sprites[i] = spr_game[i];
-    }
 }
 
 

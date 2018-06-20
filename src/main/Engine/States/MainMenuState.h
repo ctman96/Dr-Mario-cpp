@@ -33,12 +33,9 @@ public:
 private:
     //! The spritesheet used in the state
     SDL_Texture* spritesheet;
-    //! The atlas of sprites in the spritesheet
-    SDL_Rect sprites[12]; //TODO: just pull from embed script instead. Add size to spritesheets.h through embeding script
+
     //! Position of the cursor
     bool cursor = false;
-
-    void loadSprites();
 };
 
 

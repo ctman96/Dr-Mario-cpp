@@ -60,8 +60,6 @@ private:
 
     //! The spritesheet used by the menu
     SDL_Texture* spritesheet;
-    //! The sprite atlas for the spritesheet
-    SDL_Rect sprites[37];
 
     void selectionDown();
     void selectionUp();
@@ -74,8 +72,6 @@ private:
 
     void incMusic();
     void decMusic();
-
-    void loadSprites();
 
     //! Displays a two digit number
     void renderNum(SDL_Renderer* renderer, int level, int x, int y);

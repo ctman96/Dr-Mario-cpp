@@ -29,9 +29,6 @@ void MainMenuState::init(GameEngine* game) {
     // Get rid of temp surface
     SDL_FreeSurface(tmp);
 
-    // Create the sprites
-    loadSprites();
-
     //Load music
     Mix_FreeMusic(game->music);
     game->music = Mix_LoadMUS("audio/mus_Title.mp3");
@@ -110,33 +107,27 @@ void MainMenuState::draw(GameEngine *game) {
     SDL_RenderClear(game->renderer);
 
     // Background
-    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &sprites[ 0 ]);
+    renderSpriteFromSheet(game->renderer, 0, 0, spritesheet, &spr_mainmenu[ 0 ]);
     // Pill
-    renderSpriteFromSheet(game->renderer, 16, 32, spritesheet, &sprites[ 1 ]);
+    renderSpriteFromSheet(game->renderer, 16, 32, spritesheet, &spr_mainmenu[ 1 ]);
     // Title animation
-    renderSpriteFromSheet(game->renderer, 37,56, spritesheet, &sprites[ 2 + ((ticks/275)%2) ]);
+    renderSpriteFromSheet(game->renderer, 37,56, spritesheet, &spr_mainmenu[ 2 + ((ticks/275)%2) ]);
     // Selection Area
-    renderSpriteFromSheet(game->renderer, 33, 152, spritesheet, &sprites[ 4 ]);
+    renderSpriteFromSheet(game->renderer, 33, 152, spritesheet, &spr_mainmenu[ 4 ]);
     // Selection options
-    renderSpriteFromSheet(game->renderer, 60, 154, spritesheet, &sprites[ 5 ]);
+    renderSpriteFromSheet(game->renderer, 60, 154, spritesheet, &spr_mainmenu[ 5 ]);
     // Dr Mario animation
-    renderSpriteFromSheet(game->renderer, 43, 162, spritesheet, &sprites[ 6 + ((ticks/200)%2)]);
+    renderSpriteFromSheet(game->renderer, 43, 162, spritesheet, &spr_mainmenu[ 6 + ((ticks/200)%2)]);
     // Cursor
     y = cursor ? 176 : 160;
-    renderSpriteFromSheet(game->renderer, 69, y, spritesheet, &sprites[ 8 ]);
+    renderSpriteFromSheet(game->renderer, 69, y, spritesheet, &spr_mainmenu[ 8 ]);
     // Virus animation
     int frame = (ticks/150)%6;
     if (frame >= 3){
         frame = 5-frame;
     }
-    renderSpriteFromSheet(game->renderer, 192, 169, spritesheet, &sprites [ 9 + frame ]);
+    renderSpriteFromSheet(game->renderer, 192, 169, spritesheet, &spr_mainmenu[ 9 + frame ]);
 
 
     SDL_RenderPresent(game->renderer);
-}
-
-void MainMenuState::loadSprites(){
-    for(int i = 0; i < 12; i++){
-        sprites[i] = spr_mainmenu[i];
-    }
 }

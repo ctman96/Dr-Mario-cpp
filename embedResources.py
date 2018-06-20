@@ -60,11 +60,14 @@ def write_atlas(fin, fo):
         sheets = json.load(fi)
         for sheet in sheets:
             # Start writting the array object
-            fo.write("static const SDL_Rect "+sheet['name']+"[] {")
+            #fo.write("static const SDL_Rect "+sheet['name']+"[] {")
 
             # length and counter for placing commas
             l = len(sheet['sprites'])
             c = 1
+
+            fo.write("static const std::array<SDL_Rect, "+str(l)+"> "+sheet['name']+" = {")
+
             for sprite in sheet['sprites']:
                 x = str(sprite["x"])
                 y = str(sprite["y"])
@@ -102,6 +105,7 @@ f = open(spritesheets, "w+")
 f.write("//This generated code contains the byte arrays of resources\n\n")
 f.write("#ifndef RESOURCES_H\n#define RESOURCES_H\n\n")
 f.write("#include <SDL_rect.h>\n")
+f.write("#include <array>\n")
 
 # Counter for number of resources processed
 count = 0

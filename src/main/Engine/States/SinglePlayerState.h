@@ -44,11 +44,6 @@ private:
 
     //! The spritesheet used in the state
     SDL_Texture* spritesheet;
-    //! The atlas of sprites in the spritesheet
-    SDL_Rect sprites[11]; //TODO: size
-
-    //! Loads the sprite atlas
-    void loadSprites();
 
     //! The current score
     int score;

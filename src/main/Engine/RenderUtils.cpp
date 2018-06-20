@@ -15,7 +15,7 @@
  * @param spritesheet The spritesheet SDL_Texture containing the sprite
  * @param sprite The SDL_Rect containing the sprites location and size in the spritesheet
  */
-void RenderUtils::renderSpriteFromSheet(SDL_Renderer *renderer, int x, int y, SDL_Texture *spritesheet, SDL_Rect *sprite) {
+void RenderUtils::renderSpriteFromSheet(SDL_Renderer *renderer, int x, int y, SDL_Texture *spritesheet, const SDL_Rect *sprite) {
     if (sprite == nullptr){
         return;
     }
