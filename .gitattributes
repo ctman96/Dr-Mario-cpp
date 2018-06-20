@@ -1,3 +1,4 @@
 cmake/* linguist-vendored
 src/main/Resources/* linguist-generated=true
 Resources/* linguist-vendored
+docs/* linguist-documentation
