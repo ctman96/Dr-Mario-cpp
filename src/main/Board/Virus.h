@@ -1,17 +1,24 @@
-//
-// Created by Cody on 6/8/2018.
-//
+//! Virus game object
+/*!
+ * @author: Cody Newman
+ *
+ * Created on: 08/06/2018
+ */
 
 #ifndef DRMARIO_VIRUS_H
 #define DRMARIO_VIRUS_H
 
-#include "Block.h"
+#include "DrawableObject.h"
+#include "../enums.h"
 
 class Virus : public DrawableObject {
 public:
+    //! Renders the capsule
+    //! \param renderer the Renderer to be used
     void draw(SDL_Renderer *renderer) const override;
 private:
-    Color color;
+    //! The colour of the virus
+    Color color{};
 };
 
 

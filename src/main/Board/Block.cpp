@@ -1,6 +1,8 @@
-//
-// Created by Cody on 6/8/2018.
-//
+/*!
+ * @author: Cody Newman
+ *
+ * Created on: 08/06/2018
+ */
 
 #include "Block.h"
 

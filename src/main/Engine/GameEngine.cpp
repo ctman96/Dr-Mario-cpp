@@ -1,6 +1,8 @@
-//
-// Created by Cody on 6/8/2018.
-//
+/*!
+ * @author: Cody Newman
+ *
+ * Created on: 08/06/2018
+ */
 
 #include <iostream>
 #include <SDL_image.h>
@@ -8,7 +10,9 @@
 #include "States/GameState.h"
 #include "../Constants.h"
 
-//Initialize the game engine - SDL setup
+/*!
+ * Initialize the game engine, setting up SDL libraries
+ */
 void GameEngine::init() {
     //Initialize SDL
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0){
@@ -60,7 +64,10 @@ void GameEngine::init() {
     running = true;
 }
 
-//Clean up and close the game
+/*!
+ * Cleans up the engine, terminating the running state, deleting any allocated objects,
+ * and cleaning up SDL
+ */
 void GameEngine::terminate() {
     // Clean up the current state
     if (state != nullptr){
@@ -85,23 +92,37 @@ void GameEngine::terminate() {
     SDL_Quit();
 }
 
-//Change the game state
+/*!
+ * Terminates the current state and replaces it with the
+ * provided GameState
+ * @param state the new GameState to be swapped in
+ */
 void GameEngine::changeState(GameState *state) {
+    if (this->state != nullptr) {
+        this->state->terminate();
+        delete (this->state);
+    }
     this->state = state;
     state->init(this);
 }
 
-//Handle SDL events
+/*!
+ * Runs the state's handle function for SDL Event handling
+ */
 void GameEngine::handle() {
     state->handle(this);
 }
 
-//Update the game state
+/*!
+ * Runs the state's update function
+ */
 void GameEngine::update() {
     state->update(this);
 }
 
-// Render the game state
+/*!
+ * Runs the state's render function
+ */
 void GameEngine::draw() {
     state->draw(this);
 }

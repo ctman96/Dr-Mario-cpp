@@ -1,6 +1,8 @@
-//
-// Created by Cody on 6/10/2018.
-//
+/*!
+ * @author: Cody Newman
+ *
+ * Created on: 10/06/2018
+ */
 
 #include <SDL_image.h>
 #include "OptionsState.h"
@@ -12,8 +14,18 @@
 
 using namespace RenderUtils;
 
+/*!
+ * Constructor creating an OptionsState. Sets the twoplayer flag
+ * depending on input
+ * @param twoplayer boolean representing whether or no the game is 2player
+ */
 OptionsState::OptionsState(bool twoplayer) : twoplayer(twoplayer) {}
 
+/*!
+ * Initializes the state by loading in the spritesheet and music
+ *
+ * @param game the current game engine
+ */
 void OptionsState::init(GameEngine *game) {
     if (!twoplayer){
         twoplayer = false;
@@ -46,11 +58,20 @@ void OptionsState::init(GameEngine *game) {
     }
 }
 
+/*!
+ * Cleans up the state for destruction,
+ * destroying the spritesheet
+ */
 void OptionsState::terminate() {
     SDL_DestroyTexture(spritesheet);
     spritesheet = nullptr;
 }
 
+/*!
+ * Handles any SDL_Events, such as key presses or
+ * quitting
+ * @param game the current game engine
+ */
 void OptionsState::handle(GameEngine *game) { //TODO use SDL key states to keep track of simultaneous key presses
     SDL_Event event;
 
@@ -141,7 +162,7 @@ void OptionsState::handle(GameEngine *game) { //TODO use SDL key states to keep 
     }
 }
 
-// Helper for swapping between selections
+//! Helper for swapping between selections
 void OptionsState::selectionDown() {
     switch(selection){
         case Selection::level:
@@ -153,7 +174,7 @@ void OptionsState::selectionDown() {
             break;
     }
 }
-// Helper for swapping between selections
+//! Helper for swapping between selections
 void OptionsState::selectionUp() {
     switch(selection){
         case Selection::music:
@@ -165,7 +186,7 @@ void OptionsState::selectionUp() {
     }
 }
 
-// Helper for incrementing an int so that it is never greater than 20
+//! Helper for incrementing an int so that it is never greater than 20
 void OptionsState::incLevel(int& level){
     if(level < 20){
         ++level;
@@ -175,7 +196,7 @@ void OptionsState::incLevel(int& level){
     }
 }
 
-// Helper for decrementing an int so that it is never less than 0
+//! Helper for decrementing an int so that it is never less than 0
 void OptionsState::decLevel(int& level){
     if(level > 0){
         --level;
@@ -185,7 +206,7 @@ void OptionsState::decLevel(int& level){
     }
 }
 
-// Helper for swapping between speeds
+//! Helper for swapping between speeds
 void OptionsState::decSpeed(Speed& speed){
     switch (speed){
         case Speed::hi:
@@ -198,7 +219,7 @@ void OptionsState::decSpeed(Speed& speed){
 
     }
 }
-// Helper for swapping between speeds
+//! Helper for swapping between speeds
 void OptionsState::incSpeed(Speed& speed){
     switch (speed){
         case Speed::low:
@@ -211,7 +232,7 @@ void OptionsState::incSpeed(Speed& speed){
 
     }
 }
-// Helper for swapping between musics
+//! Helper for swapping between musics
 void OptionsState::incMusic(){
     switch (music){
         case Music::fever:
@@ -223,7 +244,7 @@ void OptionsState::incMusic(){
             break;
     }
 }
-// Helper for swapping between musics
+//! Helper for swapping between musics
 void OptionsState::decMusic(){
     switch (music){
         case Music::off:
@@ -236,10 +257,18 @@ void OptionsState::decMusic(){
     }
 }
 
+/*!
+ * Updates the state of the menu. Doesn't currently need to do anything
+ * @param game the current game engine
+ */
 void OptionsState::update(GameEngine *game) {
 
 }
 
+/*!
+ * Renders the state from the spritesheet
+ * @param game the current game engine
+ */
 void OptionsState::draw(GameEngine *game) {
     SDL_RenderClear(game->renderer);
 
@@ -371,7 +400,13 @@ void OptionsState::loadSprites(){
     }
 }
 
-// Display a two digit number at the x,y coordinates provided
+/*!
+ * Renders a two digit number at the coordinates provided
+ * @param renderer the Renderer to be used
+ * @param num the number to be rendered
+ * @param x the x position to render at
+ * @param y the y position to render at
+ */
 void OptionsState::renderNum(SDL_Renderer* renderer, int num, int x, int y) {
     int x2 = x+8;
 

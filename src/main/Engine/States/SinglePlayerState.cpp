@@ -1,6 +1,8 @@
-//
-// Created by Cody on 13/06/2018.
-//
+/*!
+ * @author: Cody Newman
+ *
+ * Created on: 13/06/2018
+ */
 
 #include <SDL_image.h>
 #include "SinglePlayerState.h"
@@ -9,6 +11,12 @@
 
 using namespace RenderUtils;
 
+/*!
+ * Constructs the state based on the provided game level, speed, and music choice
+ * @param level the game difficulty level
+ * @param speed the speed of the game
+ * @param music the selected music
+ */
 SinglePlayerState::SinglePlayerState(int level, Speed speed, Music music){
     // TODO Keep this handling? Or give an exception?
     if (level < 0){
@@ -25,6 +33,11 @@ SinglePlayerState::SinglePlayerState(int level, Speed speed, Music music){
     this->music = music;
 }
 
+/*!
+ * Initializes the state by loading in the spritesheet and music,
+ * as well as setting up the Board
+ * @param game the current game engine
+ */
 void SinglePlayerState::init(GameEngine *game) {
     // Load the spritesheet from memory into a surface
     SDL_RWops *io = SDL_RWFromConstMem(spr_game_png, sizeof(spr_game_png));
@@ -65,6 +78,11 @@ void SinglePlayerState::init(GameEngine *game) {
     board->init(level);
 }
 
+/*!
+ * Cleans up the state for destruction,
+ * destroying the spritesheet and clearing
+ * the game board
+ */
 void SinglePlayerState::terminate() {
     SDL_DestroyTexture(spritesheet);
     spritesheet = nullptr;
@@ -73,6 +91,11 @@ void SinglePlayerState::terminate() {
     delete(board);
 }
 
+/*!
+ * Handles any SDL_Events, such as key presses or
+ * quitting
+ * @param game the current game engine
+ */
 void SinglePlayerState::handle(GameEngine *game) {
     SDL_Event event;
 
@@ -109,10 +132,19 @@ void SinglePlayerState::handle(GameEngine *game) {
     }
 }
 
+/*!
+ * Updates the state, ticking the game board
+ * @param game the current game engine
+ */
 void SinglePlayerState::update(GameEngine *game) {
     // TODO: Update block positions (moving down). If active capsule can't move, create a new active capsule;
+    board->update();
 }
 
+/*!
+ * Renders the state from the spritesheet
+ * @param game the current game engine
+ */
 void SinglePlayerState::draw(GameEngine *game) {
     SDL_RenderClear(game->renderer);
 
@@ -163,7 +195,7 @@ void SinglePlayerState::draw(GameEngine *game) {
     SDL_RenderPresent(game->renderer);
 }
 
-void SinglePlayerState::loadSprites() {
+void SinglePlayerState::loadSprites() { //TODO: Not even necessary, just pull from the header...
     for(int i = 0; i < 11; i++){ // TODO Not hardcode size
         sprites[i] = spr_game[i];
     }

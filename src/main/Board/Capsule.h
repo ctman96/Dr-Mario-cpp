@@ -1,25 +1,35 @@
-//
-// Created by Cody on 6/8/2018.
-//
+//! Capsule game object
+/*!
+ * @author: Cody Newman
+ *
+ * Created on: 08/06/2018
+ */
 
 #ifndef DRMARIO_CAPSULE_H
 #define DRMARIO_CAPSULE_H
 
-#include "Block.h"
-#include "../GameUtils.h"
+#include "DrawableObject.h"
+#include "../enums.h"
 
 class Capsule : public DrawableObject{
-private:
-    Color c1{};
-    Color c2{};
-    int rotation = 0;
-
 public:
-    int getRotation() const;
+    //! Returns the rotation value
+    Rotation getRotation() const;
 
-    void setRotation(int rotation);
+    //! Sets the rotation value
+    void setRotation(Rotation rotation);
 
+    //! Renders the capsule
+    //! \param renderer the Renderer to be used
     void draw(SDL_Renderer *renderer) const override;
+
+private:
+    //! The colour of the first half of the capsule
+    Color c1{};
+    //! The colour of the second half of the capsule
+    Color c2{};
+    //! The rotation of the capsule
+    Rotation rotation = Rotation::l;
 };
 
 

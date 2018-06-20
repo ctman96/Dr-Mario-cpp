@@ -1,6 +1,8 @@
-//
-// Created by Cody on 6/8/2018.
-//
+/*!
+ * @author: Cody Newman
+ *
+ * Created on: 8/06/2018
+ */
 
 #include <SDL_image.h>
 #include "MainMenuState.h"
@@ -11,6 +13,10 @@
 
 using namespace RenderUtils;
 
+/*!
+ * Initializes the state by loading in the spritesheet and music
+ * @param game the current game engine
+ */
 void MainMenuState::init(GameEngine* game) {
 
     // Load the spritesheet from memory into a surface
@@ -38,12 +44,21 @@ void MainMenuState::init(GameEngine* game) {
     }
 }
 
+/*!
+ * Cleans up the state for destruction,
+ * destroying the spritesheet
+ */
 void MainMenuState::terminate() {
     SDL_DestroyTexture(spritesheet);
     spritesheet = nullptr;
 
 }
 
+/*!
+ * Handles any SDL_Events, such as key presses or
+ * quitting
+ * @param game the current game engine
+ */
 void MainMenuState::handle(GameEngine *game) {
     SDL_Event event;
 
@@ -75,10 +90,18 @@ void MainMenuState::handle(GameEngine *game) {
     }
 }
 
+/*!
+ * Updates the state of the menu. Doesn't currently need to do anything
+ * @param game the current game engine
+ */
 void MainMenuState::update(GameEngine *game) {
 
 }
 
+/*!
+ * Renders the state from the spritesheet
+ * @param game the current game engine
+ */
 void MainMenuState::draw(GameEngine *game) {
     int x, y = 0;
     int ticks = SDL_GetTicks();
