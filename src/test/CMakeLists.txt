@@ -9,8 +9,12 @@ enable_testing()
 
 set(
         SOURCE_FILES
+        main.cpp
+
         exampleTest.cpp
-)
+
+        ../main/Board/GameUtils.cpp ../main/Board/GameUtils.h
+        GameUtilsTest.cpp)
 
 add_executable(
         unit_tests

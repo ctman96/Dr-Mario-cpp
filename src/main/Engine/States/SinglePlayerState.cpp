@@ -134,7 +134,6 @@ void SinglePlayerState::handle(GameEngine *game) {
  * @param game the current game engine
  */
 void SinglePlayerState::update(GameEngine *game) {
-    // TODO: Update block positions (moving down). If active capsule can't move, create a new active capsule;
     board->update();
 }
 

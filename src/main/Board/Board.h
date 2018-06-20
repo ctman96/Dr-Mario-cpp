@@ -48,28 +48,24 @@ public:
 private:
     //! The level of the board, 0<level<20
     int level = 0;
+
     //! The state of the board
     BoardState boardState{};
+
     //! The set of Ciruses currently on the board
     std::set<Virus> viruses{};
+
     //! The set of Blocks and Capsules currently on the board
     std::set<DrawableObject*> blocks{};
-    //std::set<std::unique_ptr<Capsule>> capsules;
+
     //! The active Capsule being controlled
     Capsule activeCapsule;
+
     //! The next capsule to become the active Capsule
     Capsule nextCapsule;
+
     //! Keeps track of which cells on the board are filled for collisions
     Cell board[BOARD_WIDTH_CELLS][BOARD_HEIGHT_CELLS]{}; //TODO: delete if don't use
-
-    //! Generates the viruses set based on the board level
-    void generateLevel();
-    //! Updates the blocks set
-    void updateBlocks();
-    //! Clears any rows of matching blocks
-    void clearMatches();
-    //! Updates the activeCapsule
-    void updateActive();
 };
 
 

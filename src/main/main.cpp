@@ -9,7 +9,6 @@
 #include "Engine/States/MainMenuState.h"
 
 int main(int argv, char** args) {
-    std::cout << "test" << std::endl;
     GameEngine game{};
     try {
         game.init();
@@ -20,7 +19,6 @@ int main(int argv, char** args) {
     }
     GameState *start = new MainMenuState;
     game.changeState(start);
-    std::cout << "test" << std::endl;
     while(game.isRunning()){
         game.handle();
         game.update();

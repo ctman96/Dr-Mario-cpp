@@ -3,15 +3,20 @@ set(
 
         main.cpp
         Constants.h
+        enums.h
+        Board/DrawableObject.h
         Board/Block.cpp Board/Block.h
         Board/Capsule.cpp Board/Capsule.h
         Board/Virus.cpp Board/Virus.h
+        Board/Board.cpp Board/Board.h
+        Board/GameUtils.cpp Board/GameUtils.h
         Engine/GameEngine.cpp Engine/GameEngine.h
         Engine/RenderUtils.cpp Engine/RenderUtils.h
         Engine/States/GameState.h
         Engine/States/MainMenuState.cpp Engine/States/MainMenuState.h
         Engine/States/OptionsState.cpp Engine/States/OptionsState.h
-        Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerState.h Board/Board.cpp Board/Board.h Board/DrawableObject.h enums.h)
+        Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerState.h)
+
 file(GLOB RESOURCE_FILES Resources/*.h)
 
 
