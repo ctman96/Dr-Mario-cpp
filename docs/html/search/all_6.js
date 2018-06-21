@@ -8,7 +8,7 @@ var searchData=
   ['gameutils',['GameUtils',['../namespace_game_utils.html',1,'']]],
   ['gameutils_2ecpp',['GameUtils.cpp',['../_game_utils_8cpp.html',1,'']]],
   ['gameutils_2eh',['GameUtils.h',['../_game_utils_8h.html',1,'']]],
-  ['generatelevel',['generateLevel',['../namespace_game_utils.html#a015cf1f518e10600c714c5c8903d774c',1,'GameUtils']]],
+  ['generatevirus',['generateVirus',['../namespace_game_utils.html#a50cc347741be16fdb0c8ef0e492dd929',1,'GameUtils']]],
   ['getactivecapsule',['getActiveCapsule',['../class_board.html#aea52e915d0f8b225132ec95a7ac47628',1,'Board']]],
   ['getblocks',['getBlocks',['../class_board.html#a908470fa8d0bb0084a3a76b7110a8a12',1,'Board']]],
   ['getboardstate',['getBoardState',['../class_board.html#af7188dffe2b87b568701f5e7a7abcd2f',1,'Board']]],

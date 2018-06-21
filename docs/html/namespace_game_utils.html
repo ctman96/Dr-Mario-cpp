@@ -74,9 +74,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a015cf1f518e10600c714c5c8903d774c"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a015cf1f518e10600c714c5c8903d774c">generateLevel</a> (int level)</td></tr>
-<tr class="memdesc:a015cf1f518e10600c714c5c8903d774c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the viruses set based on the board level.  <a href="#a015cf1f518e10600c714c5c8903d774c">More...</a><br /></td></tr>
-<tr class="separator:a015cf1f518e10600c714c5c8903d774c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50cc347741be16fdb0c8ef0e492dd929"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a50cc347741be16fdb0c8ef0e492dd929">generateVirus</a> (std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, int level)</td></tr>
+<tr class="memdesc:a50cc347741be16fdb0c8ef0e492dd929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the viruses set based on the board level.  <a href="#a50cc347741be16fdb0c8ef0e492dd929">More...</a><br /></td></tr>
+<tr class="separator:a50cc347741be16fdb0c8ef0e492dd929"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08cc1853a54e3dcfff45366f6a1c0650"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a08cc1853a54e3dcfff45366f6a1c0650">updateBlocks</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, std::set&lt; <a class="el" href="class_drawable_object.html">DrawableObject</a> *&gt; &amp;blocks)</td></tr>
 <tr class="memdesc:a08cc1853a54e3dcfff45366f6a1c0650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the blocks set.  <a href="#a08cc1853a54e3dcfff45366f6a1c0650">More...</a><br /></td></tr>
 <tr class="separator:a08cc1853a54e3dcfff45366f6a1c0650"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,28 +120,36 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Clears any rows of matching blocks. </p>
-<p>Clears any horizontal or vertical sequences of same coloured blocks and updates score depending. </p>
 
 </div>
 </div>
-<a id="a015cf1f518e10600c714c5c8903d774c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a015cf1f518e10600c714c5c8903d774c">&#9670;&nbsp;</a></span>generateLevel()</h2>
+<a id="a50cc347741be16fdb0c8ef0e492dd929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50cc347741be16fdb0c8ef0e492dd929">&#9670;&nbsp;</a></span>generateVirus()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; GameUtils::generateLevel </td>
+          <td class="memname">bool GameUtils::generateVirus </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>level</em></td><td>)</td>
+          <td class="paramtype">std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>viruses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Generates the viruses set based on the board level. </p>
-<p>Generates the set of viruses for the board's difficulty level. </p>
 
 </div>
 </div>
@@ -178,7 +186,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updates the activeCapsule. </p>
-<p>Updates the position of the active capsule, dropping it down a row if there is no collision </p>
 
 </div>
 </div>
@@ -209,7 +216,6 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updates the blocks set. </p>
-<p>Updates the positions of all blocks, dropping them if there are no collisions </p>
 
 </div>
 </div>
