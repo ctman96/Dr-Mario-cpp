@@ -11,6 +11,74 @@
 
 using namespace std;
 
+template <class T>
+bool setContains(const set<T>& set, T t){
+    return set.find(t) != set.end();
+}
+
+/*!
+ * Checks if it is safe to insert a virus at a position,
+ * in regards to the colors of the viruses around it
+ *  (ensuring a board doesn't start with groups of 4+
+ *  viruses of the same color in a row).
+ * @param viruses the set of viruses being checked against
+ * @param v the viruses to be inserted. Color may be changed
+ * @return true if safe to insert, false if not
+ */
+bool checkColors(const set<Virus>& viruses, Virus& v){
+    // Check in each direction, return true if
+    set<Color> c{};
+
+    //Check Left
+    auto it = viruses.find(Virus(v.x-2,v.y, v.color));
+    if (it != viruses.end()){
+        c.insert((*it).color);
+    }
+    //Check Up
+    it = viruses.find(Virus(v.x,v.y+2, v.color));
+    if (it != viruses.end()){
+        c.insert((*it).color);
+    }
+    //Check Right
+    it = viruses.find(Virus(v.x+2, v.y, v.color));
+    if (it != viruses.end()){
+        c.insert((*it).color);
+    }
+    //Check Down
+    it = viruses.find(Virus(v.x,v.y-2, v.color));
+    if (it != viruses.end()){
+        c.insert((*it).color);
+    }
+
+    bool red = setContains(c, Color::red);
+    bool blue = setContains(c, Color::blue);
+    bool yellow = setContains(c, Color::yellow);
+
+    // Ignore this cell
+    if (red && blue && yellow){
+        return false;
+    }
+
+    // Safe to add
+    if(!setContains(c, v.color)){
+        return true;
+    }
+
+    // else Change color
+    switch(v.color){
+        case Color::yellow:
+            v.color = Color::blue;
+            break;
+        case Color::red:
+            v.color = Color::yellow;
+            break;
+        case Color::blue:
+            v.color = Color::red;
+            break;
+    }
+    return false;
+}
+
 /*!
  * Generates the set of viruses for the board's
  * difficulty level.
@@ -70,10 +138,10 @@ bool GameUtils::generateVirus(set<Virus>& viruses, int level) {
 
     // Move across rows and up until virus is placed or reach the top
     while(true){
+        Virus v(x,y,color);
         // If position is empty, insert virus
-        if(viruses.find(Virus(x,y,color)) == viruses.end()){
-            //TODO: Check to ensure no sets of four matching colours
-            viruses.insert(Virus(x,y,color));
+        if(viruses.find(v) == viruses.end() && checkColors(viruses, v)){
+            viruses.insert(v);
             return true;
         }
         else{
