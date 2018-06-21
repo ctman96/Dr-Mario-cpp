@@ -19,10 +19,6 @@ public:
     //! Sets the rotation value
     void setRotation(Rotation rotation);
 
-    //! Renders the capsule
-    //! \param renderer the Renderer to be used
-    void draw(SDL_Renderer *renderer) const override;
-
 private:
     //! The colour of the first half of the capsule
     Color c1{};

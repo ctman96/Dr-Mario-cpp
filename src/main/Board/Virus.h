@@ -13,10 +13,10 @@
 
 class Virus : public DrawableObject {
 public:
-    //! Renders the capsule
-    //! \param renderer the Renderer to be used
-    void draw(SDL_Renderer *renderer) const override;
-private:
+
+    //! Constructor, sets position and color
+    Virus(int x, int y, Color color);
+
     //! The colour of the virus
     Color color{};
 };

@@ -45,7 +45,7 @@ static const int BOARD_WIDTH_CELLS = 8;
 static const int BOARD_HEIGHT_CELLS = 16;
 
 //! The size, in pixels, of a side of a cell
-static const int CELL_PIXELS = 16;
+static const int CELL_PIXELS = 8;
 
 //! The width, in pixels of a board
 static constexpr int BOARD_WIDTH = BOARD_WIDTH_CELLS * CELL_PIXELS;

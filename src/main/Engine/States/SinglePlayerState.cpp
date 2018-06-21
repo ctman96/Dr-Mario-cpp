@@ -186,9 +186,52 @@ void SinglePlayerState::draw(GameEngine *game) {
 
 
     //Board
-    //board.draw(game->renderer, x, y); TODO
+    auto viruses = board->getViruses();
+    auto itv = viruses.begin();
+    for( int i = 0; i < viruses.size(); i++){
+        drawVirus(game->renderer, *itv);
+        next(itv);
+    }
+    auto blocks = board->getBlocks();
+    auto itb = blocks.begin();
+    for(int i = 0; i < blocks.size(); i++){
+        if (dynamic_cast<Block*>(*itb) != nullptr){
+            drawBlock(game->renderer, dynamic_cast<Block*>(*itb));
+        }
+        else if (dynamic_cast<Capsule*>(*itb) != nullptr){
+            drawCapsule(game->renderer, dynamic_cast<Capsule*>(*itb));
+        }
+        next(itb);
+    }
+    //TODO: Draw activeCapsule, nextcapsule
 
     SDL_RenderPresent(game->renderer);
+}
+
+void SinglePlayerState::drawVirus(SDL_Renderer* renderer, Virus v){
+    int xoffset = 96;
+    int yoffset = 72;
+    int x = CELL_PIXELS*SCALING*v.x + xoffset;
+    int y = CELL_PIXELS*SCALING*v.y + yoffset;
+    switch(v.color){
+        case Color::yellow:
+            //renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[6]); //TODO sprite index
+            break;
+        case Color::blue:
+            //renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[6]); //TODO sprite index
+            break;
+        case Color::red:
+            //renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[6]); //TODO sprite index
+            break;
+    }
+}
+
+void SinglePlayerState::drawBlock(SDL_Renderer* renderer, Block* b){
+    //TODO
+}
+
+void SinglePlayerState::drawCapsule(SDL_Renderer* renderer, Capsule* c){
+    //TODO
 }
 
 

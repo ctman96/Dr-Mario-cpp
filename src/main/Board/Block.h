@@ -16,10 +16,6 @@ public:
     //! Returns the colour of the block
     Color getColor() const;
 
-    //! Renders the block
-    //! \param renderer the Renderer to be used for rendering
-    void draw(SDL_Renderer *renderer) const override;
-
 private:
     //! The colour of the block
     Color color{};

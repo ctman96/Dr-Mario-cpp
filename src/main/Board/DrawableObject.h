@@ -22,6 +22,12 @@ public:
     //! y position
     int y=0;
 
+    DrawableObject() : x(0),y(0) {}
+
+    DrawableObject(int x, int y) : x(x), y(y) {}
+
+    virtual ~DrawableObject() = default;
+
     //! Lessthan comparison based on y and x value
     /*!
      * Lessthan comparator which compares two Drawable objects and returns true
@@ -44,9 +50,6 @@ public:
         return y == other.y && x == other.x;
     }
 
-    //! Renders the object
-    //! \param renderer the Renderer to be used for rendering
-    virtual void draw(SDL_Renderer* renderer) const = 0;
 };
 
 

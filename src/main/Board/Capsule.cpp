@@ -13,7 +13,3 @@ Rotation Capsule::getRotation() const {
 void Capsule::setRotation(Rotation rotation) {
     Capsule::rotation = rotation;
 }
-
-void Capsule::draw(SDL_Renderer *renderer) const {
-    //TODO
-}

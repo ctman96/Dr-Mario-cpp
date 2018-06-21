@@ -9,7 +9,3 @@
 Color Block::getColor() const {
     return color;
 }
-
-void Block::draw(SDL_Renderer *renderer) const {
-    //TODO
-}

@@ -28,7 +28,7 @@ public:
      * active capsule is moving, or updating, in which
      * the board updates falling pieces
      */
-    enum class BoardState {active, updating};
+    enum class BoardState {active, updating, win, loss};
 
     //! Initializes the board using the game level
     void init(int level);
@@ -39,11 +39,20 @@ public:
     //! Updates all game pieces
     void update();
 
-    //! Renders all game pieces to the renderer
-    void draw(SDL_Renderer* renderer, int x, int y);
+    //! Returns the current state of the board
+    BoardState getBoardState() const;
 
     //! Returns the next capsule that will become the active capsule
     const Capsule &getNextCapsule() const;
+
+    //! Returns the capsule currently being dropped
+    const Capsule &getActiveCapsule() const;
+
+    //! Returns the list of viruses on the board
+    const std::set<Virus> &getViruses() const;
+
+    //! Returns the list of Blocks and Capsules on the board
+    const std::set<DrawableObject *> &getBlocks() const;
 
 private:
     //! The level of the board, 0<level<20

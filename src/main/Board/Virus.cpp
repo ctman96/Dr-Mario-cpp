@@ -6,6 +6,4 @@
 
 #include "Virus.h"
 
-void Virus::draw(SDL_Renderer *renderer) const {
-    //TODO
-}
+Virus::Virus(int x, int y, Color color) : DrawableObject(x, y), color(color) {}

@@ -50,27 +50,22 @@ void Board::update() {
     }
 }
 
-/*!
- * Draws the viruses, blocks, and capsules contained by the board
- *
- * @param renderer The renderer to be used
- * @param x The x coordinate of the top left corner of the board
- * @param y The y coordinate of the top left corner of the board
- */
-void Board::draw(SDL_Renderer* renderer, int x, int y) {
-    auto itv = viruses.begin();
-    for( int i = 0; i < viruses.size(); i++){
-        itv->draw(renderer);
-        next(itv);
-    }
-    auto itb = blocks.begin();
-    for(int i = 0; i < blocks.size(); i++){
-        (*itb)->draw(renderer);
-        next(itb);
-    }
-    activeCapsule.draw(renderer);
+Board::BoardState Board::getBoardState() const {
+    return boardState;
 }
 
 const Capsule &Board::getNextCapsule() const {
     return nextCapsule;
+}
+
+const Capsule &Board::getActiveCapsule() const {
+    return activeCapsule;
+}
+
+const set<Virus> &Board::getViruses() const {
+    return viruses;
+}
+
+const set<DrawableObject *> &Board::getBlocks() const {
+    return blocks;
 }
