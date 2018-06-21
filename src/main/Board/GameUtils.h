@@ -18,7 +18,7 @@
 
 namespace GameUtils {
     //! Generates the viruses set based on the board level
-    std::set<Virus> generateLevel(int level);
+    bool generateVirus(std::set<Virus>& viruses, int level);
 
     //! Updates the blocks set
     void updateBlocks(const std::set<Virus>& viruses, std::set<DrawableObject*>& blocks);

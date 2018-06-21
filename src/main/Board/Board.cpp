@@ -4,6 +4,7 @@
  * Created on: 17/06/2018
  */
 
+#include <SDL_timer.h>
 #include "Board.h"
 #include "GameUtils.h"
 
@@ -16,9 +17,14 @@ using namespace GameUtils;
  * @param level an integer representing the game level
  */
 void Board::init(int level) {
-    boardState = BoardState::active;
+    boardState = BoardState::loading;
+    if (level < 0){
+        level = 0;
+    }
+    if (level > 20){
+        level = 20;
+    }
     this->level = level;
-    viruses = generateLevel(level);
 }
 
 /*!
@@ -38,7 +44,18 @@ void Board::clear() {
  * aren't colliding, as well as checks for matches to be cleared for points.
  */
 void Board::update() {
+    int ticks = SDL_GetTicks();
     switch(boardState){
+        case BoardState::loading:
+            if (!((ticks/20)%2)){
+                loadTick = true;
+            }
+            if ((ticks/20)%2 && loadTick) {
+                loadBoard();
+                loadTick = false;
+            }
+
+            break;
         case BoardState::active:
             // TODO create new activeCapsule if necessary
             updateActive(viruses, blocks, activeCapsule);
@@ -47,6 +64,21 @@ void Board::update() {
             updateBlocks(viruses, blocks);
             clearMatches(viruses, blocks);
             break;
+        case BoardState::win:
+            //TODO
+            break;
+        case BoardState::loss:
+            //TODO
+            break;
+    }
+}
+
+void Board::loadBoard(){
+    if(viruses.size() < (level+1)*4){
+        while(!generateVirus(viruses, level));
+    }
+    else{
+        boardState = BoardState::active;
     }
 }
 

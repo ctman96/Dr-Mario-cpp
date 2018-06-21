@@ -28,9 +28,4 @@ protected:
     set<DrawableObject*> blocks;
 };
 
-TEST_F(GameUtilsTest, GameUtilsTest_GenerateLevel_Test){
-    viruses = generateLevel(0);
-    EXPECT_FALSE(viruses.empty());
-}
-
 //TODO

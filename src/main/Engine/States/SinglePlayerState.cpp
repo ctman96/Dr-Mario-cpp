@@ -144,6 +144,8 @@ void SinglePlayerState::update(GameEngine *game) {
 void SinglePlayerState::draw(GameEngine *game) {
     SDL_RenderClear(game->renderer);
 
+    int ticks = SDL_GetTicks();
+
     // Background
     switch(speed){
         case Speed::low:
@@ -187,11 +189,10 @@ void SinglePlayerState::draw(GameEngine *game) {
 
     //Board
     auto viruses = board->getViruses();
-    auto itv = viruses.begin();
-    for( int i = 0; i < viruses.size(); i++){
+    for( auto itv = viruses.begin(); itv != viruses.end(); ++itv){
         drawVirus(game->renderer, *itv);
-        next(itv);
     }
+    /*
     auto blocks = board->getBlocks();
     auto itb = blocks.begin();
     for(int i = 0; i < blocks.size(); i++){
@@ -203,25 +204,28 @@ void SinglePlayerState::draw(GameEngine *game) {
         }
         next(itb);
     }
+     */
     //TODO: Draw activeCapsule, nextcapsule
 
     SDL_RenderPresent(game->renderer);
 }
 
 void SinglePlayerState::drawVirus(SDL_Renderer* renderer, Virus v){
+    int ticks = SDL_GetTicks();
+
     int xoffset = 96;
-    int yoffset = 72;
-    int x = CELL_PIXELS*SCALING*v.x + xoffset;
-    int y = CELL_PIXELS*SCALING*v.y + yoffset;
+    int yoffset = 191;
+    int x = xoffset + (CELL_PIXELS)*v.x;
+    int y = yoffset - CELL_PIXELS*v.y;
     switch(v.color){
-        case Color::yellow:
-            //renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[6]); //TODO sprite index
-            break;
         case Color::blue:
-            //renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[6]); //TODO sprite index
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[11+(ticks/275)%2]); //TODO animate
+            break;
+        case Color::yellow:
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[13+(ticks/275)%2]); //TODO animate
             break;
         case Color::red:
-            //renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[6]); //TODO sprite index
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[15+(ticks/275)%2]); //TODO animate
             break;
     }
 }

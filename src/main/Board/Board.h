@@ -28,7 +28,7 @@ public:
      * active capsule is moving, or updating, in which
      * the board updates falling pieces
      */
-    enum class BoardState {active, updating, win, loss};
+    enum class BoardState {loading, active, updating, win, loss};
 
     //! Initializes the board using the game level
     void init(int level);
@@ -75,6 +75,12 @@ private:
 
     //! Keeps track of which cells on the board are filled for collisions
     Cell board[BOARD_WIDTH_CELLS][BOARD_HEIGHT_CELLS]{}; //TODO: delete if don't use
+
+    //! whether the load tick timer has reset
+    bool loadTick = false;
+
+    //! Loads viruses to the board
+    void loadBoard();
 };
 
 

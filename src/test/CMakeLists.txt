@@ -9,11 +9,20 @@ enable_testing()
 
 set(
         SOURCE_FILES
+
         main.cpp
+
+        ../main/Constants.h
+        ../main/enums.h
+        ../main/Board/DrawableObject.h
+        ../main/Board/Block.cpp ../main/Board/Block.h
+        ../main/Board/Capsule.cpp ../main/Board/Capsule.h
+        ../main/Board/Virus.cpp ../main/Board/Virus.h
+        ../main/Board/Board.cpp ../main/Board/Board.h
+        ../main/Board/GameUtils.cpp ../main/Board/GameUtils.h
 
         exampleTest.cpp
 
-        ../main/Board/GameUtils.cpp ../main/Board/GameUtils.h
         GameUtilsTest.cpp)
 
 add_executable(

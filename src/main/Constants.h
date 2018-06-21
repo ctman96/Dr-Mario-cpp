@@ -21,14 +21,14 @@ static const int BASE_WIDTH = 256;
 static const int BASE_HEIGHT = 224;
 
 //! The scaling multiplier to be used
-static const int SCALING = 2;
+static const int SCALING = 4;
 //! The scaling method to be used by SDL
 /*!
  * Value of "0" provides nearest pixel sampling.
  * Value of "1" provides linear filtering.
  * Value of "2" provides anisotropic filtering
  */
-static const char *SCALING_QUALITY = "1";
+static const char *SCALING_QUALITY = "0";
 
 //! The width of the screen with scaling
 static constexpr int SCREEN_WIDTH = BASE_WIDTH * SCALING;
