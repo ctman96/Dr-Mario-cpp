@@ -4,10 +4,10 @@ var indexSectionsWithContent =
   1: "bcdgmosv",
   2: "gr",
   3: "bcdegmorsv",
-  4: "cdghimoqrstu~",
-  5: "mrswxy",
+  4: "cdghimoqrstuv~",
+  5: "cmrswxy",
   6: "bcmrs",
-  7: "abcdefhlmorsuy"
+  7: "abcdefhlmorsuwy"
 };
 
 var indexSectionNames =

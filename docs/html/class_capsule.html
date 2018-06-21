@@ -92,9 +92,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa809c3276126d3001d9fc875e355361c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capsule.html#aa809c3276126d3001d9fc875e355361c">setRotation</a> (<a class="el" href="enums_8h.html#a4940d1dc528122726d2c8c475657e1a9">Rotation</a> rotation)</td></tr>
 <tr class="memdesc:aa809c3276126d3001d9fc875e355361c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the rotation value.  <a href="#aa809c3276126d3001d9fc875e355361c">More...</a><br /></td></tr>
 <tr class="separator:aa809c3276126d3001d9fc875e355361c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae54d321860129c083c72a0e858af581a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_capsule.html#ae54d321860129c083c72a0e858af581a">draw</a> (SDL_Renderer *renderer) const override</td></tr>
-<tr class="separator:ae54d321860129c083c72a0e858af581a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_drawable_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_drawable_object')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_drawable_object.html">DrawableObject</a></td></tr>
+<tr class="memitem:ac41cf4bfc6ebce29e0c1123f2c067cf0 inherit pub_methods_class_drawable_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#ac41cf4bfc6ebce29e0c1123f2c067cf0">DrawableObject</a> ()</td></tr>
+<tr class="separator:ac41cf4bfc6ebce29e0c1123f2c067cf0 inherit pub_methods_class_drawable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5224d9e5d516516419c1e10cc56fc903 inherit pub_methods_class_drawable_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#a5224d9e5d516516419c1e10cc56fc903">DrawableObject</a> (int <a class="el" href="class_drawable_object.html#ab159a844e3a7ea020d3b8f4bee1f2423">x</a>, int <a class="el" href="class_drawable_object.html#afd3126c3fa401256d992686a90acd130">y</a>)</td></tr>
+<tr class="separator:a5224d9e5d516516419c1e10cc56fc903 inherit pub_methods_class_drawable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a01d81dd2f1f6def40e93f95e3e8afb inherit pub_methods_class_drawable_object"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#a0a01d81dd2f1f6def40e93f95e3e8afb">~DrawableObject</a> ()=default</td></tr>
+<tr class="separator:a0a01d81dd2f1f6def40e93f95e3e8afb inherit pub_methods_class_drawable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8707134c8321587c0e30bc3eb6441d7c inherit pub_methods_class_drawable_object"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#a8707134c8321587c0e30bc3eb6441d7c">operator&lt;</a> (const <a class="el" href="class_drawable_object.html">DrawableObject</a> &amp;other) const</td></tr>
 <tr class="memdesc:a8707134c8321587c0e30bc3eb6441d7c inherit pub_methods_class_drawable_object"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lessthan comparison based on y and x value.  <a href="class_drawable_object.html#a8707134c8321587c0e30bc3eb6441d7c">More...</a><br /></td></tr>
 <tr class="separator:a8707134c8321587c0e30bc3eb6441d7c inherit pub_methods_class_drawable_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,40 +121,6 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>: Cody Newman</dd></dl>
 <p>Created on: 08/06/2018 </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae54d321860129c083c72a0e858af581a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae54d321860129c083c72a0e858af581a">&#9670;&nbsp;</a></span>draw()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Capsule::draw </td>
-          <td>(</td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Renders the capsule </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">renderer</td><td>the Renderer to be used </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="class_drawable_object.html#a5ed33cd45e2586ec92a6c6f8919b3889">DrawableObject</a>.</p>
-
-</div>
-</div>
 <a id="ad8ed5a742675ebf81ec497c38b8bc954"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad8ed5a742675ebf81ec497c38b8bc954">&#9670;&nbsp;</a></span>getRotation()</h2>
 

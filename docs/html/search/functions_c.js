@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7egamestate',['~GameState',['../class_game_state.html#adc1bfdf7ee7c1f48e4841995db4e16c3',1,'GameState']]]
+  ['virus',['Virus',['../class_virus.html#a87061e025ce28c7833ce7a73a4d0b01f',1,'Virus']]]
 ];

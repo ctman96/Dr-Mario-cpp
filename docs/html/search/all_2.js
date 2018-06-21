@@ -10,6 +10,6 @@ var searchData=
   ['chill',['chill',['../enums_8h.html#af0f11632042073b26283ebf65c46b25fa7cffc41d578e193f313fb8001259c2ab',1,'enums.h']]],
   ['clear',['clear',['../class_board.html#af74f0d4b43e5aa3faea16d7c6407b05e',1,'Board']]],
   ['clearmatches',['clearMatches',['../namespace_game_utils.html#af650578ed855ecd09a95ba971c39b1bc',1,'GameUtils']]],
-  ['color',['Color',['../enums_8h.html#ab87bacfdad76e61b9412d7124be44c1c',1,'enums.h']]],
+  ['color',['color',['../class_virus.html#aad51162385fda9eae7f6057045115364',1,'Virus::color()'],['../enums_8h.html#ab87bacfdad76e61b9412d7124be44c1c',1,'Color():&#160;enums.h']]],
   ['constants_2eh',['Constants.h',['../_constants_8h.html',1,'']]]
 ];

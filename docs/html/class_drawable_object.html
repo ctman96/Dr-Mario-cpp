@@ -67,7 +67,7 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_drawable_object-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">DrawableObject Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">DrawableObject Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -89,14 +89,18 @@ Inheritance diagram for DrawableObject:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac41cf4bfc6ebce29e0c1123f2c067cf0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#ac41cf4bfc6ebce29e0c1123f2c067cf0">DrawableObject</a> ()</td></tr>
+<tr class="separator:ac41cf4bfc6ebce29e0c1123f2c067cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5224d9e5d516516419c1e10cc56fc903"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#a5224d9e5d516516419c1e10cc56fc903">DrawableObject</a> (int <a class="el" href="class_drawable_object.html#ab159a844e3a7ea020d3b8f4bee1f2423">x</a>, int <a class="el" href="class_drawable_object.html#afd3126c3fa401256d992686a90acd130">y</a>)</td></tr>
+<tr class="separator:a5224d9e5d516516419c1e10cc56fc903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a01d81dd2f1f6def40e93f95e3e8afb"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#a0a01d81dd2f1f6def40e93f95e3e8afb">~DrawableObject</a> ()=default</td></tr>
+<tr class="separator:a0a01d81dd2f1f6def40e93f95e3e8afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8707134c8321587c0e30bc3eb6441d7c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#a8707134c8321587c0e30bc3eb6441d7c">operator&lt;</a> (const <a class="el" href="class_drawable_object.html">DrawableObject</a> &amp;other) const</td></tr>
 <tr class="memdesc:a8707134c8321587c0e30bc3eb6441d7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lessthan comparison based on y and x value.  <a href="#a8707134c8321587c0e30bc3eb6441d7c">More...</a><br /></td></tr>
 <tr class="separator:a8707134c8321587c0e30bc3eb6441d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dd832dc0f59e5cfcd2ba2015d7aa759"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#a8dd832dc0f59e5cfcd2ba2015d7aa759">operator==</a> (const <a class="el" href="class_drawable_object.html">DrawableObject</a> &amp;other) const</td></tr>
 <tr class="memdesc:a8dd832dc0f59e5cfcd2ba2015d7aa759"><td class="mdescLeft">&#160;</td><td class="mdescRight">equal comparison based on x,y value  <a href="#a8dd832dc0f59e5cfcd2ba2015d7aa759">More...</a><br /></td></tr>
 <tr class="separator:a8dd832dc0f59e5cfcd2ba2015d7aa759"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ed33cd45e2586ec92a6c6f8919b3889"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drawable_object.html#a5ed33cd45e2586ec92a6c6f8919b3889">draw</a> (SDL_Renderer *renderer) const =0</td></tr>
-<tr class="separator:a5ed33cd45e2586ec92a6c6f8919b3889"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -112,9 +116,9 @@ Public Attributes</h2></td></tr>
 <p>Provides a basis for game objects that need an x,y position and the ability to be drawn</p>
 <dl class="section author"><dt>Author</dt><dd>: Cody Newman</dd></dl>
 <p>Created on: 17/06/2018 </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5ed33cd45e2586ec92a6c6f8919b3889"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ed33cd45e2586ec92a6c6f8919b3889">&#9670;&nbsp;</a></span>draw()</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac41cf4bfc6ebce29e0c1123f2c067cf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac41cf4bfc6ebce29e0c1123f2c067cf0">&#9670;&nbsp;</a></span>DrawableObject() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -123,30 +127,83 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void DrawableObject::draw </td>
+          <td class="memname">DrawableObject::DrawableObject </td>
           <td>(</td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Renders the object </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">renderer</td><td>the Renderer to be used for rendering </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="class_capsule.html#ae54d321860129c083c72a0e858af581a">Capsule</a>, <a class="el" href="class_block.html#ad0bf1e1f08655b4568e69e12568b1b94">Block</a>, and <a class="el" href="class_virus.html#a13fd334fb664014d98049ba088de7d84">Virus</a>.</p>
 
 </div>
 </div>
+<a id="a5224d9e5d516516419c1e10cc56fc903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5224d9e5d516516419c1e10cc56fc903">&#9670;&nbsp;</a></span>DrawableObject() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DrawableObject::DrawableObject </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0a01d81dd2f1f6def40e93f95e3e8afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a01d81dd2f1f6def40e93f95e3e8afb">&#9670;&nbsp;</a></span>~DrawableObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual DrawableObject::~DrawableObject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8707134c8321587c0e30bc3eb6441d7c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8707134c8321587c0e30bc3eb6441d7c">&#9670;&nbsp;</a></span>operator&lt;()</h2>
 
