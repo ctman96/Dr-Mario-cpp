@@ -119,22 +119,7 @@ bool GameUtils::generateVirus(set<Virus>& viruses, int level) {
 
     // Generate color
     int c = randC(generator);
-    Color color;
-    switch(c){
-        case 0:
-            color = Color::yellow;
-            break;
-        case 1:
-            color = Color::red;
-            break;
-        case 2:
-            color = Color::blue;
-            break;
-        default:
-            printf("Invalid color number generated, using default");
-            color = Color::red;
-            break;
-    }
+    Color color = colorFromInt(c);
 
     // Move across rows and up until virus is placed or reach the top
     while(true){
@@ -186,4 +171,41 @@ void GameUtils::updateActive(const set<Virus> &viruses, const set<DrawableObject
                              Capsule &activeCapsule)
 {
     // TODO drop the active capsule, checking collisions
+}
+
+/*!
+ * Returns a capsule with random color values
+ * @return the generated capsule
+ */
+Capsule GameUtils::generateCapsule(int x, int y) {
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    default_random_engine generator(seed);
+    uniform_int_distribution<int> randC(0,2);
+
+    int c1 = randC(generator);
+    int c2 = randC(generator);
+
+    Color color1 = colorFromInt(c1);
+    Color color2 = colorFromInt(c2);
+    return Capsule(x,y, color1, color2);
+}
+
+/*!
+ * Returns the Color corresponding to the int value given
+ * @param c the int value to be converted to color.
+ * @return the Color corresponding to c
+ */
+Color GameUtils::colorFromInt(int c){
+    c = c%3;
+    switch(c){
+        case 0:
+            return Color::yellow;
+        case 1:
+            return Color::red;
+        case 2:
+            return Color::blue;
+        default:
+            printf("Invalid color number generated, using default");
+            return Color::red;
+    }
 }

@@ -59,6 +59,8 @@ private:
     void drawBlock(SDL_Renderer* renderer, Block* block);
 
     void drawCapsule(SDL_Renderer* renderer, Capsule* capsule);
+
+    void drawNextCapsule(SDL_Renderer* renderer, Capsule c);
 };
 
 

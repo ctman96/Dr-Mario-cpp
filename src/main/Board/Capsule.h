@@ -13,6 +13,10 @@
 
 class Capsule : public DrawableObject{
 public:
+    Capsule();
+
+    Capsule(int x, int y, Color c1, Color c2);
+
     //! Returns the rotation value
     Rotation getRotation() const;
 

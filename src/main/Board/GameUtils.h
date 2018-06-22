@@ -29,6 +29,12 @@ namespace GameUtils {
     //! Updates the activeCapsule
     void updateActive(const std::set<Virus>& viruses, const std::set<DrawableObject*>& blocks, Capsule& activeCapsule);
 
+    //! Generate a random capsule
+    Capsule generateCapsule(int x, int y);
+
+    //! Returns a color value for a given int;
+    Color colorFromInt(int c);
+
 };
 
 

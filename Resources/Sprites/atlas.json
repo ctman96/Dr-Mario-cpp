@@ -66,19 +66,65 @@
       {"name":"Background Purple", "x":5, "y":373, "w":256, "h":224},
       {"name":"Background Grey", "x":266, "y":373, "w":256, "h":224},
       {"name":"Background Green", "x":527, "y":373, "w":256, "h":224},
+
       {"name":"Board Purple", "x":13, "y":187, "w":80, "h":176},
       {"name":"Board Grey", "x":98, "y":187, "w":80, "h":176},
       {"name":"Board Green", "x":183, "y":187, "w":80, "h":176},
+
       {"name":"Title", "x":21, "y":10, "w":88, "h":29},
       {"name":"Mario Area", "x":125, "y":57, "w":56, "h":56},
       {"name":"Virus Area", "x":186, "y":39, "w":80, "h":88},
       {"name":"Scoreboard", "x":351, "y":231, "w":72, "h":78},
       {"name":"Level stats", "x":427, "y":231, "w":64, "h":102},
+
+      {"name":"Text-LEVEL","x":690, "y":246, "w":38, "h":7},
+      {"name":"Text-SPEED","x":689, "y":255, "w":39, "h":7},
+      {"name":"Text-VIRUS","x":689, "y":264, "w":39, "h":7},
+      {"name":"Text-TOP","x":698, "y":273, "w":22, "h":7},
+      {"name":"Text-SCORE","x":689, "y":282, "w":39, "h":7},
+
+      {"name":"Mario Throw 1", "x":40, "y":48, "w":32, "h":40},
+      {"name":"Mario Throw 2", "x":76, "y":48, "w":32, "h":40},
+      {"name":"Mario Throw 3", "x":7, "y":48, "w":32, "h":40},
+      {"name":"Mario Fail 1", "x":6, "y":89, "w":38, "h":38},
+      {"name":"Mario Fail 2", "x":41, "y":89, "w":35, "h":38},
+      {"name":"Mario Fail 3", "x":77, "y":89, "w":38, "h":38},
+
+      {"name":"Virus B Normal 1", "x":274, "y":44, "w":24, "h":24},
+      {"name":"Virus B Normal 2", "x":301, "y":44, "w":24, "h":24},
+      {"name":"Virus B Normal 3", "x":328, "y":44, "w":24, "h":24},
+      {"name":"Virus B Laugh 1", "x":301, "y":44, "w":24, "h":24},
+      {"name":"Virus B Laugh 2", "x":357, "y":44, "w":24, "h":24},
+      {"name":"Virus B Dying 1", "x":385, "y":44, "w":24, "h":24},
+      {"name":"Virus B Dying 2", "x":416, "y":44, "w":24, "h":24},
+
+      {"name":"Virus Y Normal 1", "x":274, "y":73, "w":24, "h":24},
+      {"name":"Virus Y Normal 2", "x":301, "y":73, "w":24, "h":24},
+      {"name":"Virus Y Normal 3", "x":328, "y":73, "w":24, "h":24},
+      {"name":"Virus Y Laugh 1", "x":301, "y":73, "w":24, "h":24},
+      {"name":"Virus Y Laugh 2", "x":357, "y":73, "w":24, "h":24},
+      {"name":"Virus Y Dying 1", "x":385, "y":73, "w":24, "h":24},
+      {"name":"Virus Y Dying 2", "x":416, "y":73, "w":24, "h":24},
+
+      {"name":"Virus R Normal 1", "x":274, "y":102, "w":24, "h":24},
+      {"name":"Virus R Normal 2", "x":301, "y":102, "w":24, "h":24},
+      {"name":"Virus R Normal 3", "x":328, "y":102, "w":24, "h":24},
+      {"name":"Virus R Laugh 1", "x":301, "y":102, "w":24, "h":24},
+      {"name":"Virus R Laugh 2", "x":357, "y":102, "w":24, "h":24},
+      {"name":"Virus R Dying 1", "x":385, "y":102, "w":24, "h":24},
+      {"name":"Virus R Dying 2", "x":416, "y":102, "w":24, "h":24},
+
+      {"name":"Virus Pop", "x":449, "y":73, "w":24, "h":24},
+
       {"name":"Virus Blue 1", "x":85, "y":139, "w":8, "h":8},
       {"name":"Virus Blue 2", "x":96, "y":139, "w":8, "h":8},
       {"name":"Virus Yellow 1", "x":85, "y":150, "w":8, "h":8},
       {"name":"Virus Yellow 2", "x":96, "y":150, "w":8, "h":8},
       {"name":"Virus Red 1", "x":85, "y":161, "w":8, "h":8},
-      {"name":"Virus Red 2", "x":96, "y":161, "w":8, "h":8}
+      {"name":"Virus Red 2", "x":96, "y":161, "w":8, "h":8},
+      {"name":"Block Yellow", "x":71, "y":137, "w":8, "h":8},
+      {"name":"Block Blue", "x":71, "y":148, "w":8, "h":8},
+      {"name":"Block Red", "x":71, "y":159, "w":8, "h":8}
+
   ]}
 ]

@@ -5,6 +5,7 @@
  */
 
 #include <SDL_image.h>
+#include <cmath>
 #include "SinglePlayerState.h"
 #include "../../Resources/spritesheets.h"
 #include "../RenderUtils.h"
@@ -175,24 +176,60 @@ void SinglePlayerState::draw(GameEngine *game) {
     // Level stats
     renderSpriteFromSheet(game->renderer, 176, 114, spritesheet, &spr_game[ 10 ]);
 
+    // Static Text
+
+    // Level
+    renderSpriteFromSheet(game->renderer, 185, 136, spritesheet, &spr_game[ 11 ]);
+    //Speed
+    renderSpriteFromSheet(game->renderer, 185, 160, spritesheet, &spr_game[ 12 ]);
+    //Virus
+    renderSpriteFromSheet(game->renderer, 185, 184, spritesheet, &spr_game[ 13 ]);
+    //Top
+    renderSpriteFromSheet(game->renderer, 18, 49, spritesheet, &spr_game[ 14 ]);
+    //Score
+    renderSpriteFromSheet(game->renderer, 17, 72, spritesheet, &spr_game[ 15 ]);
+
     // Animations / Dynamic
 
-    // Dr Mario/Next Capsule Display
-    //TODO
-    // Viruses Display
+    // Level Stats
     //TODO
     // Scoreboard
     //TODO
-    // Level Stats
+    // Dr Mario/Next Capsule Display
     //TODO
+    renderSpriteFromSheet(game->renderer, 185, 70, spritesheet, &spr_game[ 21 ]);
+    // Viruses Display
+    // Virus animation frame timer
+    int frame = (ticks/250)%6;
+    if (frame >= 3){
+        frame = 5-frame;
+    }
+    //TODO: 42 pixel radius circle, 0=38,151
+    // x = 38+21*cos(time), y = 151+21*sin(time)?
+    double time = ((ticks/420)%360)*3.14/180;
+    int circX = 33;
+    int circY = 146;
+    int r = 17;
+    auto bX = static_cast<int>(circX - r * cos(time));
+    auto bY = static_cast<int>(circY + r * sin(time));
+    renderSpriteFromSheet(game->renderer, bX, bY, spritesheet, &spr_game[22+frame]);
+    auto yX = static_cast<int>(circX - r * cos(time + 400));
+    auto yY = static_cast<int>(circY + r * sin(time + 400));
+    renderSpriteFromSheet(game->renderer, yX, yY, spritesheet, &spr_game[29+frame]);
+    auto rX = static_cast<int>(circX - r * cos(time + 800));
+    auto rY = static_cast<int>(circY + r * sin(time + 800));
+    renderSpriteFromSheet(game->renderer, rX, rY, spritesheet, &spr_game[36+frame]);
 
 
     //Board
+
+    // Draw viruses
     auto viruses = board->getViruses();
-    for( auto itv = viruses.begin(); itv != viruses.end(); ++itv){
-        drawVirus(game->renderer, *itv);
+    for (const auto &virus : viruses) {
+        drawVirus(game->renderer, virus);
     }
-    /*
+
+    // Draw Capsules and blocks
     auto blocks = board->getBlocks();
     auto itb = blocks.begin();
     for(int i = 0; i < blocks.size(); i++){
@@ -204,8 +241,13 @@ void SinglePlayerState::draw(GameEngine *game) {
         }
         next(itb);
     }
-     */
-    //TODO: Draw activeCapsule, nextcapsule
+
+    // Draw the current active capsule
+    Capsule activeCapsule = Capsule(board->getActiveCapsule());
+    drawCapsule(game->renderer, &activeCapsule);
+
+    // Draw the upcoming capsule
+    drawNextCapsule(game->renderer, board->getNextCapsule());
 
     SDL_RenderPresent(game->renderer);
 }
@@ -219,13 +261,13 @@ void SinglePlayerState::drawVirus(SDL_Renderer* renderer, Virus v){
     int y = yoffset - CELL_PIXELS*v.y;
     switch(v.color){
         case Color::blue:
-            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[11+(ticks/275)%2]); //TODO animate
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[44+(ticks/275)%2]); //TODO animate
             break;
         case Color::yellow:
-            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[13+(ticks/275)%2]); //TODO animate
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[46+(ticks/275)%2]); //TODO animate
             break;
         case Color::red:
-            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[15+(ticks/275)%2]); //TODO animate
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[48+(ticks/275)%2]); //TODO animate
             break;
     }
 }
@@ -235,6 +277,10 @@ void SinglePlayerState::drawBlock(SDL_Renderer* renderer, Block* b){
 }
 
 void SinglePlayerState::drawCapsule(SDL_Renderer* renderer, Capsule* c){
+    //TODO
+}
+
+void SinglePlayerState::drawNextCapsule(SDL_Renderer* renderer, Capsule c){
     //TODO
 }
 
