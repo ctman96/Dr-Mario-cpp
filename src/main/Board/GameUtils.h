@@ -17,8 +17,18 @@
 
 
 namespace GameUtils {
+    template <class T>
+    //! Checks if object t is contained in set
+    bool setContains(const std::set<T>& set, T t);
+
     //! Generates the viruses set based on the board level
     bool generateVirus(std::set<Virus>& viruses, int level);
+
+    //! Checks the colors of surrounding cells, such that it wont result in 3+ of the same color in a row
+    bool checkColors(const std::set<Virus>& viruses, Virus& v);
+
+    //! Generate a random capsule
+    Capsule generateCapsule(int x, int y);
 
     //! Updates the blocks set
     void updateBlocks(const std::set<Virus>& viruses, std::set<DrawableObject*>& blocks);
@@ -29,11 +39,14 @@ namespace GameUtils {
     //! Updates the activeCapsule
     void updateActive(const std::set<Virus>& viruses, const std::set<DrawableObject*>& blocks, Capsule& activeCapsule);
 
-    //! Generate a random capsule
-    Capsule generateCapsule(int x, int y);
-
     //! Returns a color value for a given int;
     Color colorFromInt(int c);
+
+    //! Checks if there will be a collision if activeCapsule moves with Move
+    bool checkCollisions(const std::set<Virus>& viruses, const std::set<DrawableObject*>& blocks, Capsule& activeCapsule, Move move);
+
+    //! Checks if the given x,y cooridnates are free of viruses or blocks
+    bool checkFree(const std::set<Virus>& viruses, const std::set<DrawableObject*>& blocks, int x, int y);
 
 };
 

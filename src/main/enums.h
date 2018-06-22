@@ -24,7 +24,7 @@ enum class Color {red, blue, yellow};
 enum class Rotation {l, u, r, d};
 
 //! Movement options
-enum class Move {l, r, cc, ccw};
+enum class Move {l, r, d, cc, ccw};
 
 //! States of a board cell
 enum class Cell {empty, filled}; //TODO: delete if remains unused

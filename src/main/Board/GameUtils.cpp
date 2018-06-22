@@ -12,71 +12,8 @@
 using namespace std;
 
 template <class T>
-bool setContains(const set<T>& set, T t){
+bool GameUtils::setContains(const set<T>& set, T t){
     return set.find(t) != set.end();
-}
-
-/*!
- * Checks if it is safe to insert a virus at a position,
- * in regards to the colors of the viruses around it
- *  (ensuring a board doesn't start with groups of 4+
- *  viruses of the same color in a row).
- * @param viruses the set of viruses being checked against
- * @param v the viruses to be inserted. Color may be changed
- * @return true if safe to insert, false if not
- */
-bool checkColors(const set<Virus>& viruses, Virus& v){
-    // Check in each direction, return true if
-    set<Color> c{};
-
-    //Check Left
-    auto it = viruses.find(Virus(v.x-2,v.y, v.color));
-    if (it != viruses.end()){
-        c.insert((*it).color);
-    }
-    //Check Up
-    it = viruses.find(Virus(v.x,v.y+2, v.color));
-    if (it != viruses.end()){
-        c.insert((*it).color);
-    }
-    //Check Right
-    it = viruses.find(Virus(v.x+2, v.y, v.color));
-    if (it != viruses.end()){
-        c.insert((*it).color);
-    }
-    //Check Down
-    it = viruses.find(Virus(v.x,v.y-2, v.color));
-    if (it != viruses.end()){
-        c.insert((*it).color);
-    }
-
-    bool red = setContains(c, Color::red);
-    bool blue = setContains(c, Color::blue);
-    bool yellow = setContains(c, Color::yellow);
-
-    // Ignore this cell
-    if (red && blue && yellow){
-        return false;
-    }
-
-    // Safe to add
-    if(!setContains(c, v.color)){
-        return true;
-    }
-
-    // else Change color
-    switch(v.color){
-        case Color::yellow:
-            v.color = Color::blue;
-            break;
-        case Color::red:
-            v.color = Color::yellow;
-            break;
-        case Color::blue:
-            v.color = Color::red;
-            break;
-    }
-    return false;
 }
 
 /*!
@@ -144,6 +81,86 @@ bool GameUtils::generateVirus(set<Virus>& viruses, int level) {
 }
 
 /*!
+ * Checks if it is safe to insert a virus at a position,
+ * in regards to the colors of the viruses around it
+ *  (ensuring a board doesn't start with groups of 4+
+ *  viruses of the same color in a row).
+ * @param viruses the set of viruses being checked against
+ * @param v the viruses to be inserted. Color may be changed
+ * @return true if safe to insert, false if not
+ */
+bool GameUtils::checkColors(const set<Virus>& viruses, Virus& v){
+    // Check in each direction, return true if
+    set<Color> c{};
+
+    //Check Left
+    auto it = viruses.find(Virus(v.x-2,v.y, v.color));
+    if (it != viruses.end()){
+        c.insert((*it).color);
+    }
+    //Check Up
+    it = viruses.find(Virus(v.x,v.y+2, v.color));
+    if (it != viruses.end()){
+        c.insert((*it).color);
+    }
+    //Check Right
+    it = viruses.find(Virus(v.x+2, v.y, v.color));
+    if (it != viruses.end()){
+        c.insert((*it).color);
+    }
+    //Check Down
+    it = viruses.find(Virus(v.x,v.y-2, v.color));
+    if (it != viruses.end()){
+        c.insert((*it).color);
+    }
+
+    bool red = setContains(c, Color::red);
+    bool blue = setContains(c, Color::blue);
+    bool yellow = setContains(c, Color::yellow);
+
+    // Ignore this cell
+    if (red && blue && yellow){
+        return false;
+    }
+
+    // Safe to add
+    if(!setContains(c, v.color)){
+        return true;
+    }
+
+    // else Change color
+    switch(v.color){
+        case Color::yellow:
+            v.color = Color::blue;
+            break;
+        case Color::red:
+            v.color = Color::yellow;
+            break;
+        case Color::blue:
+            v.color = Color::red;
+            break;
+    }
+    return false;
+}
+
+/*!
+ * Returns a capsule with random color values
+ * @return the generated capsule
+ */
+Capsule GameUtils::generateCapsule(int x, int y) {
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    default_random_engine generator(seed);
+    uniform_int_distribution<int> randC(0,2);
+
+    int c1 = randC(generator);
+    int c2 = randC(generator);
+
+    Color color1 = colorFromInt(c1);
+    Color color2 = colorFromInt(c2);
+    return Capsule(x,y, color1, color2);
+}
+
+/*!
  * Updates the positions of all blocks, dropping them if there
  * are no collisions
  */
@@ -171,23 +188,7 @@ void GameUtils::updateActive(const set<Virus> &viruses, const set<DrawableObject
                              Capsule &activeCapsule)
 {
     // TODO drop the active capsule, checking collisions
-}
-
-/*!
- * Returns a capsule with random color values
- * @return the generated capsule
- */
-Capsule GameUtils::generateCapsule(int x, int y) {
-    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
-    default_random_engine generator(seed);
-    uniform_int_distribution<int> randC(0,2);
-
-    int c1 = randC(generator);
-    int c2 = randC(generator);
-
-    Color color1 = colorFromInt(c1);
-    Color color2 = colorFromInt(c2);
-    return Capsule(x,y, color1, color2);
+    checkCollisions(viruses, blocks, activeCapsule, Move::d);
 }
 
 /*!
@@ -208,4 +209,73 @@ Color GameUtils::colorFromInt(int c){
             printf("Invalid color number generated, using default");
             return Color::red;
     }
+}
+
+/*!
+ * Checks for collisions if the activeCapsule is changed with Move move.
+ * @param viruses the set of viruses on the board
+ * @param blocks the set of blocks and capsules on the board
+ * @param activeCapsule the capsule being moved
+ * @param move the desired move
+ * @return true if collides, false otherwise
+ */
+bool GameUtils::checkCollisions(const std::set<Virus> &viruses, const std::set<DrawableObject *> &blocks,
+                                Capsule &activeCapsule, Move move) {
+    switch(move){
+        case Move::d:
+            // TODO
+            break;
+        case Move::l:
+            // TODO
+            break;
+        case Move::r:
+            // TODO
+            break;
+        case Move::cc:
+            switch(activeCapsule.getRotation()){
+                case Rotation::l:
+                    // TODO
+                    break;
+                case Rotation::u:
+                    // TODO
+                    break;
+                case Rotation::r:
+                    // TODO
+                    break;
+                case Rotation::d:
+                    // TODO
+                    break;
+            }
+            break;
+        case Move::ccw:
+            switch(activeCapsule.getRotation()){
+                case Rotation::l:
+                    // TODO
+                    break;
+                case Rotation::u:
+                    // TODO
+                    break;
+                case Rotation::r:
+                    // TODO
+                    break;
+                case Rotation::d:
+                    // TODO
+                    break;
+            }
+            break;
+    }
+    return false;
+}
+
+/*!
+ * Checks if a given x,y position is free of viruses, blocks, and capsules
+ * @param viruses the list of viruses on the board
+ * @param blocks the list of blocks on the board
+ * @param x the x coordinate of the cell to check
+ * @param y the y coordinate of the cell to check
+ * @return true if the cell is free
+ */
+bool GameUtils::checkFree(const std::set<Virus> &viruses, const std::set<DrawableObject *> &blocks, int x, int y) {
+    // TODO
+    return false;
 }
