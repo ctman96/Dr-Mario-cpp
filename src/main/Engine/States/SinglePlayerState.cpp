@@ -192,7 +192,22 @@ void SinglePlayerState::draw(GameEngine *game) {
     // Animations / Dynamic
 
     // Level Stats
-    //TODO
+    //Level
+    drawNum(game->renderer, level, 216, 145);
+    //Speed
+    switch(speed){
+        case Speed::low:
+            renderSpriteFromSheet(game->renderer, 209,169, spritesheet, &spr_game[70]);
+            break;
+        case Speed::med:
+            renderSpriteFromSheet(game->renderer, 208,169, spritesheet, &spr_game[71]);
+            break;
+        case Speed::hi:
+            renderSpriteFromSheet(game->renderer, 216,169, spritesheet, &spr_game[72]);
+            break;
+    }
+    //Viruses remaining
+    drawNum(game->renderer, board->getViruses().size(), 216, 193);
     // Scoreboard
     //TODO
     // Dr Mario/Next Capsule Display
@@ -204,8 +219,6 @@ void SinglePlayerState::draw(GameEngine *game) {
     if (frame >= 3){
         frame = 5-frame;
     }
-    //TODO: 42 pixel radius circle, 0=38,151
-    // x = 38+21*cos(time), y = 151+21*sin(time)?
     double time = ((ticks/420)%360)*3.14/180;
     int circX = 33;
     int circY = 146;
@@ -284,6 +297,26 @@ void SinglePlayerState::drawCapsule(SDL_Renderer* renderer, Capsule c){
 
 void SinglePlayerState::drawNextCapsule(SDL_Renderer* renderer, Capsule c){
     //TODO
+}
+
+/*!
+ * Renders a two digit number at the coordinates provided
+ * @param renderer the Renderer to be used
+ * @param num the number to be rendered
+ * @param x the x position to render at
+ * @param y the y position to render at
+ */
+void SinglePlayerState::drawNum(SDL_Renderer* renderer, int num, int x, int y) { //TODO duplicate code in optionstate
+    int x2 = x+8;
+
+    if (num < 0  || num > 99 || x < 0 || y < 0){
+        return; //TODO errors
+    }
+    int tens = num / 10;
+    int ones = num % 10;
+
+    renderSpriteFromSheet(renderer, x,y, spritesheet, &spr_game[73+tens]);
+    renderSpriteFromSheet(renderer, x2, y, spritesheet, &spr_game[73+ones]);
 }
 
 

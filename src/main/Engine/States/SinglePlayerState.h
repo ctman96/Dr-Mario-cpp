@@ -61,6 +61,8 @@ private:
     void drawCapsule(SDL_Renderer* renderer, Capsule capsule);
 
     void drawNextCapsule(SDL_Renderer* renderer, Capsule c);
+
+    void drawNum(SDL_Renderer* renderer, int num, int x, int y);
 };
 
 
