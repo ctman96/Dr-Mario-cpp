@@ -223,28 +223,27 @@ void SinglePlayerState::draw(GameEngine *game) {
 
     //Board
 
-    // Draw viruses
+    // Draw Viruses
     auto viruses = board->getViruses();
     for (const auto &virus : viruses) {
         drawVirus(game->renderer, virus);
     }
 
-    // Draw Capsules and blocks
+    // Draw Blocks
     auto blocks = board->getBlocks();
-    auto itb = blocks.begin();
-    for(int i = 0; i < blocks.size(); i++){
-        if (dynamic_cast<Block*>(*itb) != nullptr){
-            drawBlock(game->renderer, dynamic_cast<Block*>(*itb));
-        }
-        else if (dynamic_cast<Capsule*>(*itb) != nullptr){
-            drawCapsule(game->renderer, dynamic_cast<Capsule*>(*itb));
-        }
-        next(itb);
+    for (const auto &block : blocks){
+        drawBlock(game->renderer, block);
+    }
+
+    // Draw Capsules
+    auto capsules = board->getCapsules();
+    for (const auto &capsule : capsules){
+        drawCapsule(game->renderer, capsule);
     }
 
     // Draw the current active capsule
     Capsule activeCapsule = Capsule(board->getActiveCapsule());
-    drawCapsule(game->renderer, &activeCapsule);
+    drawCapsule(game->renderer, activeCapsule);
 
     // Draw the upcoming capsule
     drawNextCapsule(game->renderer, board->getNextCapsule());
@@ -275,11 +274,11 @@ void SinglePlayerState::drawVirus(SDL_Renderer* renderer, Virus v){
     }
 }
 
-void SinglePlayerState::drawBlock(SDL_Renderer* renderer, Block* b){
+void SinglePlayerState::drawBlock(SDL_Renderer* renderer, Block b){
     //TODO
 }
 
-void SinglePlayerState::drawCapsule(SDL_Renderer* renderer, Capsule* c){
+void SinglePlayerState::drawCapsule(SDL_Renderer* renderer, Capsule c){
     //TODO
 }
 

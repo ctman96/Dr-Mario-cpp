@@ -56,9 +56,9 @@ private:
     //! Helper for drawing virus sprites
     void drawVirus(SDL_Renderer* renderer, Virus virus);
 
-    void drawBlock(SDL_Renderer* renderer, Block* block);
+    void drawBlock(SDL_Renderer* renderer, Block block);
 
-    void drawCapsule(SDL_Renderer* renderer, Capsule* capsule);
+    void drawCapsule(SDL_Renderer* renderer, Capsule capsule);
 
     void drawNextCapsule(SDL_Renderer* renderer, Capsule c);
 };

@@ -51,8 +51,11 @@ public:
     //! Returns the list of viruses on the board
     const std::set<Virus> &getViruses() const;
 
-    //! Returns the list of Blocks and Capsules on the board
-    const std::set<DrawableObject *> &getBlocks() const;
+    //! Returns the list of Blocks on the board
+    const std::set<Block> &getBlocks() const;
+
+    //! Returns the list of Capsules on the board
+    const std::set<Capsule> &getCapsules() const;
 
 private:
     //! The level of the board, 0<level<20
@@ -61,11 +64,14 @@ private:
     //! The state of the board
     BoardState boardState{};
 
-    //! The set of Ciruses currently on the board
+    //! The set of Viruses currently on the board
     std::set<Virus> viruses{};
 
-    //! The set of Blocks and Capsules currently on the board
-    std::set<DrawableObject*> blocks{};
+    //! The set of Blocks currently on the board
+    std::set<Block> blocks{};
+
+    //! The set of Capsules currently on the board
+    std::set<Capsule> capsules{};
 
     //! The active Capsule being controlled
     Capsule activeCapsule;

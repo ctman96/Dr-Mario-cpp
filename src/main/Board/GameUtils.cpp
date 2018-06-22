@@ -161,10 +161,13 @@ Capsule GameUtils::generateCapsule(int x, int y) {
 }
 
 /*!
- * Updates the positions of all blocks, dropping them if there
+ * Updates the positions of all blocks and capsules, dropping them if there
  * are no collisions
+ * @param viruses the set of Viruses on the board
+ * @param blocks the set of Blocks on the board
+ * @param capsules the set of Capsules on the board
  */
-void GameUtils::updateBlocks(const set<Virus> &viruses, set<DrawableObject *> &blocks) {
+void GameUtils::updateBlocks(const set<Virus> &viruses, set<Block> &blocks, set<Capsule>& capsules) {
     auto itb = blocks.end();
     for (int i = 0; i < blocks.size(); i++){
         //TODO update all block positions, checking for collisions
@@ -174,26 +177,33 @@ void GameUtils::updateBlocks(const set<Virus> &viruses, set<DrawableObject *> &b
 
 /*!
  * Clears any horizontal or vertical sequences of
- * same coloured blocks and updates score depending.
+ * same coloured blocks/capsules/viruses and updates score depending.
+ * @param viruses the set of Viruses on the board
+ * @param blocks the set of Blocks on the board
+ * @param capsules the set of Capsules on the board
  */
-void GameUtils::clearMatches(set<Virus> &viruses, set<DrawableObject *> &blocks) {
+void GameUtils::clearMatches(set<Virus> &viruses, set<Block> &blocks, set<Capsule>& capsules) {
     // TODO check lines, delete, add score
 }
 
 /*!
  * Updates the position of the active capsule,
  * dropping it down a row if there is no collision
+ * @param viruses the set of Ciruses on the board
+ * @param blocks the set of Blocks on the board
+ * @param capsules the set of Capsules on the board
+ * @param activeCapsule the active Capsule being moved
  */
-void GameUtils::updateActive(const set<Virus> &viruses, const set<DrawableObject *> &blocks,
+void GameUtils::updateActive(const set<Virus> &viruses, const set<Block> &blocks, set<Capsule>& capsules,
                              Capsule &activeCapsule)
 {
     // TODO drop the active capsule, checking collisions
-    checkCollisions(viruses, blocks, activeCapsule, Move::d);
+    checkCollisions(viruses, blocks, capsules, activeCapsule, Move::d);
 }
 
 /*!
  * Returns the Color corresponding to the int value given
- * @param c the int value to be converted to color.
+ * @param c the int value to be converted to a Color.
  * @return the Color corresponding to c
  */
 Color GameUtils::colorFromInt(int c){
@@ -213,14 +223,15 @@ Color GameUtils::colorFromInt(int c){
 
 /*!
  * Checks for collisions if the activeCapsule is changed with Move move.
- * @param viruses the set of viruses on the board
- * @param blocks the set of blocks and capsules on the board
- * @param activeCapsule the capsule being moved
- * @param move the desired move
+ * @param viruses the set of Viruses on the board
+ * @param blocks the set of Blocks on the board
+ * @param capsules the set of Capsules on the board
+ * @param activeCapsule the Capsule being moved
+ * @param move the desired Move
  * @return true if collides, false otherwise
  */
-bool GameUtils::checkCollisions(const std::set<Virus> &viruses, const std::set<DrawableObject *> &blocks,
-                                Capsule &activeCapsule, Move move) {
+bool GameUtils::checkCollisions(const std::set<Virus> &viruses, const std::set<Block> &blocks,
+                                set<Capsule>& capsules, Capsule &activeCapsule, Move move) {
     switch(move){
         case Move::d:
             // TODO
@@ -268,14 +279,16 @@ bool GameUtils::checkCollisions(const std::set<Virus> &viruses, const std::set<D
 }
 
 /*!
- * Checks if a given x,y position is free of viruses, blocks, and capsules
- * @param viruses the list of viruses on the board
- * @param blocks the list of blocks on the board
+ * Checks if a given x,y position is free of Viruses, Blocks, and Capsules
+ * @param viruses the set of Viruses on the board
+ * @param blocks the set of Blocks on the board
+ * @param capsules the set of Capsules on the board
  * @param x the x coordinate of the cell to check
  * @param y the y coordinate of the cell to check
  * @return true if the cell is free
  */
-bool GameUtils::checkFree(const std::set<Virus> &viruses, const std::set<DrawableObject *> &blocks, int x, int y) {
+bool GameUtils::checkFree(const std::set<Virus> &viruses, const std::set<Block> &blocks, set<Capsule>& capsules,
+                          int x, int y) {
     // TODO
     return false;
 }

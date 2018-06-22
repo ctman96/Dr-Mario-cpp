@@ -58,11 +58,11 @@ void Board::update() {
             break;
         case BoardState::active:
             // TODO create new activeCapsule if necessary
-            updateActive(viruses, blocks, activeCapsule);
+            updateActive(viruses, blocks, capsules, activeCapsule);
             break;
         case BoardState::updating:
-            updateBlocks(viruses, blocks);
-            clearMatches(viruses, blocks);
+            updateBlocks(viruses, blocks, capsules);
+            clearMatches(viruses, blocks, capsules);
             break;
         case BoardState::win:
             //TODO
@@ -98,6 +98,10 @@ const set<Virus> &Board::getViruses() const {
     return viruses;
 }
 
-const set<DrawableObject *> &Board::getBlocks() const {
+const set<Block> &Board::getBlocks() const {
     return blocks;
+}
+
+const set<Capsule> &Board::getCapsules() const {
+    return capsules;
 }
