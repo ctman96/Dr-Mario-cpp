@@ -249,6 +249,9 @@ void SinglePlayerState::draw(GameEngine *game) {
     // Draw the upcoming capsule
     drawNextCapsule(game->renderer, board->getNextCapsule());
 
+
+    //TODO: Gameover/cleared screens
+
     SDL_RenderPresent(game->renderer);
 }
 
