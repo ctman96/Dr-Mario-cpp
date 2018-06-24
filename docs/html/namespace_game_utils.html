@@ -74,18 +74,40 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad7ea15ffd9743992c2462ff6ef551073"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ad7ea15ffd9743992c2462ff6ef551073"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#ad7ea15ffd9743992c2462ff6ef551073">setContains</a> (const std::set&lt; T &gt; &amp;set, T t)</td></tr>
+<tr class="memdesc:ad7ea15ffd9743992c2462ff6ef551073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if object t is contained in set.  <a href="#ad7ea15ffd9743992c2462ff6ef551073">More...</a><br /></td></tr>
+<tr class="separator:ad7ea15ffd9743992c2462ff6ef551073"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50cc347741be16fdb0c8ef0e492dd929"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a50cc347741be16fdb0c8ef0e492dd929">generateVirus</a> (std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, int level)</td></tr>
 <tr class="memdesc:a50cc347741be16fdb0c8ef0e492dd929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates the viruses set based on the board level.  <a href="#a50cc347741be16fdb0c8ef0e492dd929">More...</a><br /></td></tr>
 <tr class="separator:a50cc347741be16fdb0c8ef0e492dd929"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08cc1853a54e3dcfff45366f6a1c0650"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a08cc1853a54e3dcfff45366f6a1c0650">updateBlocks</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, std::set&lt; <a class="el" href="class_drawable_object.html">DrawableObject</a> *&gt; &amp;blocks)</td></tr>
-<tr class="memdesc:a08cc1853a54e3dcfff45366f6a1c0650"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the blocks set.  <a href="#a08cc1853a54e3dcfff45366f6a1c0650">More...</a><br /></td></tr>
-<tr class="separator:a08cc1853a54e3dcfff45366f6a1c0650"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af650578ed855ecd09a95ba971c39b1bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#af650578ed855ecd09a95ba971c39b1bc">clearMatches</a> (std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, std::set&lt; <a class="el" href="class_drawable_object.html">DrawableObject</a> *&gt; &amp;blocks)</td></tr>
-<tr class="memdesc:af650578ed855ecd09a95ba971c39b1bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears any rows of matching blocks.  <a href="#af650578ed855ecd09a95ba971c39b1bc">More...</a><br /></td></tr>
-<tr class="separator:af650578ed855ecd09a95ba971c39b1bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f00083bc8a86f096e487fbd54bc83ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a6f00083bc8a86f096e487fbd54bc83ae">updateActive</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, const std::set&lt; <a class="el" href="class_drawable_object.html">DrawableObject</a> *&gt; &amp;blocks, <a class="el" href="class_capsule.html">Capsule</a> &amp;activeCapsule)</td></tr>
-<tr class="memdesc:a6f00083bc8a86f096e487fbd54bc83ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the activeCapsule.  <a href="#a6f00083bc8a86f096e487fbd54bc83ae">More...</a><br /></td></tr>
-<tr class="separator:a6f00083bc8a86f096e487fbd54bc83ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7db15085f39de985d27f1a8e7926e6dd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a7db15085f39de985d27f1a8e7926e6dd">checkColors</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, <a class="el" href="class_virus.html">Virus</a> &amp;v)</td></tr>
+<tr class="memdesc:a7db15085f39de985d27f1a8e7926e6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the colors of surrounding cells, such that it wont result in 3+ of the same color in a row.  <a href="#a7db15085f39de985d27f1a8e7926e6dd">More...</a><br /></td></tr>
+<tr class="separator:a7db15085f39de985d27f1a8e7926e6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a547634029068e979d5eb2c3afdb672b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_capsule.html">Capsule</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a547634029068e979d5eb2c3afdb672b2">generateCapsule</a> (int x, int y)</td></tr>
+<tr class="memdesc:a547634029068e979d5eb2c3afdb672b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a random capsule.  <a href="#a547634029068e979d5eb2c3afdb672b2">More...</a><br /></td></tr>
+<tr class="separator:a547634029068e979d5eb2c3afdb672b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ecd2fb0f553efce874dd1629b67cf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#ab6ecd2fb0f553efce874dd1629b67cf5">updateBlocks</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;blocks, const std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;capsules)</td></tr>
+<tr class="memdesc:ab6ecd2fb0f553efce874dd1629b67cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the blocks set.  <a href="#ab6ecd2fb0f553efce874dd1629b67cf5">More...</a><br /></td></tr>
+<tr class="separator:ab6ecd2fb0f553efce874dd1629b67cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a059fdebb2d109e4c75d2189d8f9133d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a059fdebb2d109e4c75d2189d8f9133d3">updateCapsules</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, const std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;blocks, std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;capsules)</td></tr>
+<tr class="memdesc:a059fdebb2d109e4c75d2189d8f9133d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the capsules set.  <a href="#a059fdebb2d109e4c75d2189d8f9133d3">More...</a><br /></td></tr>
+<tr class="separator:a059fdebb2d109e4c75d2189d8f9133d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e8a20e7fca2da77b12035732b2040fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a8e8a20e7fca2da77b12035732b2040fd">clearMatches</a> (std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;blocks, std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;capsules)</td></tr>
+<tr class="memdesc:a8e8a20e7fca2da77b12035732b2040fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears any rows of matching blocks.  <a href="#a8e8a20e7fca2da77b12035732b2040fd">More...</a><br /></td></tr>
+<tr class="separator:a8e8a20e7fca2da77b12035732b2040fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62fb32bf01dd3003b398acb12b56bf28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a62fb32bf01dd3003b398acb12b56bf28">updateActive</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, const std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;blocks, const std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;capsules, <a class="el" href="class_capsule.html">Capsule</a> &amp;activeCapsule)</td></tr>
+<tr class="memdesc:a62fb32bf01dd3003b398acb12b56bf28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the activeCapsule.  <a href="#a62fb32bf01dd3003b398acb12b56bf28">More...</a><br /></td></tr>
+<tr class="separator:a62fb32bf01dd3003b398acb12b56bf28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abba3f758cd326e36f60e60848157a8a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="enums_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#abba3f758cd326e36f60e60848157a8a4">colorFromInt</a> (int c)</td></tr>
+<tr class="memdesc:abba3f758cd326e36f60e60848157a8a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a color value for a given int;.  <a href="#abba3f758cd326e36f60e60848157a8a4">More...</a><br /></td></tr>
+<tr class="separator:abba3f758cd326e36f60e60848157a8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f007a63d7cf9757c3ef141665ccb4ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a0f007a63d7cf9757c3ef141665ccb4ab">checkCollisions</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, const std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;blocks, const std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;capsules, <a class="el" href="class_capsule.html">Capsule</a> &amp;activeCapsule, <a class="el" href="enums_8h.html#a19b869a01ca1a58f4164b4f75c2df388">Move</a> move)</td></tr>
+<tr class="memdesc:a0f007a63d7cf9757c3ef141665ccb4ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if there will be a collision if activeCapsule moves with Move.  <a href="#a0f007a63d7cf9757c3ef141665ccb4ab">More...</a><br /></td></tr>
+<tr class="separator:a0f007a63d7cf9757c3ef141665ccb4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a6549bd4a92d3498119b18302d7e51c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_game_utils.html#a7a6549bd4a92d3498119b18302d7e51c">checkFree</a> (const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;viruses, const std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;blocks, std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;capsules, int x, int y)</td></tr>
+<tr class="memdesc:a7a6549bd4a92d3498119b18302d7e51c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the given x,y cooridnates are free of viruses or blocks.  <a href="#a7a6549bd4a92d3498119b18302d7e51c">More...</a><br /></td></tr>
+<tr class="separator:a7a6549bd4a92d3498119b18302d7e51c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides utility functions for the game board. </p>
@@ -93,8 +115,134 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>: Cody Newman</dd></dl>
 <p>Created on: 13/06/2018 </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="af650578ed855ecd09a95ba971c39b1bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af650578ed855ecd09a95ba971c39b1bc">&#9670;&nbsp;</a></span>clearMatches()</h2>
+<a id="a0f007a63d7cf9757c3ef141665ccb4ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f007a63d7cf9757c3ef141665ccb4ab">&#9670;&nbsp;</a></span>checkCollisions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameUtils::checkCollisions </td>
+          <td>(</td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>viruses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>blocks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>capsules</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_capsule.html">Capsule</a> &amp;&#160;</td>
+          <td class="paramname"><em>activeCapsule</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="enums_8h.html#a19b869a01ca1a58f4164b4f75c2df388">Move</a>&#160;</td>
+          <td class="paramname"><em>move</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if there will be a collision if activeCapsule moves with Move. </p>
+
+</div>
+</div>
+<a id="a7db15085f39de985d27f1a8e7926e6dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7db15085f39de985d27f1a8e7926e6dd">&#9670;&nbsp;</a></span>checkColors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameUtils::checkColors </td>
+          <td>(</td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>viruses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_virus.html">Virus</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks the colors of surrounding cells, such that it wont result in 3+ of the same color in a row. </p>
+
+</div>
+</div>
+<a id="a7a6549bd4a92d3498119b18302d7e51c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a6549bd4a92d3498119b18302d7e51c">&#9670;&nbsp;</a></span>checkFree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameUtils::checkFree </td>
+          <td>(</td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>viruses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>blocks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>capsules</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the given x,y cooridnates are free of viruses or blocks. </p>
+
+</div>
+</div>
+<a id="a8e8a20e7fca2da77b12035732b2040fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e8a20e7fca2da77b12035732b2040fd">&#9670;&nbsp;</a></span>clearMatches()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -108,8 +256,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::set&lt; <a class="el" href="class_drawable_object.html">DrawableObject</a> *&gt; &amp;&#160;</td>
-          <td class="paramname"><em>blocks</em>&#160;</td>
+          <td class="paramtype">std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>blocks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>capsules</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -120,6 +274,64 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Clears any rows of matching blocks. </p>
+
+</div>
+</div>
+<a id="abba3f758cd326e36f60e60848157a8a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abba3f758cd326e36f60e60848157a8a4">&#9670;&nbsp;</a></span>colorFromInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="enums_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> GameUtils::colorFromInt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a color value for a given int;. </p>
+<p>Returns the Color corresponding to the int value given </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>the int value to be converted to a Color. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the Color corresponding to c </dd></dl>
+
+</div>
+</div>
+<a id="a547634029068e979d5eb2c3afdb672b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a547634029068e979d5eb2c3afdb672b2">&#9670;&nbsp;</a></span>generateCapsule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_capsule.html">Capsule</a> GameUtils::generateCapsule </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a random capsule. </p>
+<p>Returns a capsule with random color values </p><dl class="section return"><dt>Returns</dt><dd>the generated capsule </dd></dl>
 
 </div>
 </div>
@@ -153,8 +365,40 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6f00083bc8a86f096e487fbd54bc83ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f00083bc8a86f096e487fbd54bc83ae">&#9670;&nbsp;</a></span>updateActive()</h2>
+<a id="ad7ea15ffd9743992c2462ff6ef551073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7ea15ffd9743992c2462ff6ef551073">&#9670;&nbsp;</a></span>setContains()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameUtils::setContains </td>
+          <td>(</td>
+          <td class="paramtype">const std::set&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>set</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if object t is contained in set. </p>
+
+</div>
+</div>
+<a id="a62fb32bf01dd3003b398acb12b56bf28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62fb32bf01dd3003b398acb12b56bf28">&#9670;&nbsp;</a></span>updateActive()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,8 +412,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::set&lt; <a class="el" href="class_drawable_object.html">DrawableObject</a> *&gt; &amp;&#160;</td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>blocks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>capsules</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -189,8 +439,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a08cc1853a54e3dcfff45366f6a1c0650"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08cc1853a54e3dcfff45366f6a1c0650">&#9670;&nbsp;</a></span>updateBlocks()</h2>
+<a id="ab6ecd2fb0f553efce874dd1629b67cf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ecd2fb0f553efce874dd1629b67cf5">&#9670;&nbsp;</a></span>updateBlocks()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,8 +454,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::set&lt; <a class="el" href="class_drawable_object.html">DrawableObject</a> *&gt; &amp;&#160;</td>
-          <td class="paramname"><em>blocks</em>&#160;</td>
+          <td class="paramtype">std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>blocks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>capsules</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -216,6 +472,42 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updates the blocks set. </p>
+
+</div>
+</div>
+<a id="a059fdebb2d109e4c75d2189d8f9133d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a059fdebb2d109e4c75d2189d8f9133d3">&#9670;&nbsp;</a></span>updateCapsules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameUtils::updateCapsules </td>
+          <td>(</td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_virus.html">Virus</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>viruses</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; <a class="el" href="class_block.html">Block</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>blocks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::set&lt; <a class="el" href="class_capsule.html">Capsule</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>capsules</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the capsules set. </p>
 
 </div>
 </div>

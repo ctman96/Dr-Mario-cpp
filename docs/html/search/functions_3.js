@@ -1,4 +1,14 @@
 var searchData=
 [
-  ['handle',['handle',['../class_game_engine.html#ac3f417f518eccabb02c880e781079725',1,'GameEngine::handle()'],['../class_game_state.html#a7ea7f20a88d3a56d321c205e2d0abd57',1,'GameState::handle()'],['../class_main_menu_state.html#a282da93e5e4e7a51f2c02063f9a601f5',1,'MainMenuState::handle()'],['../class_options_state.html#a455c03746ea9349b072385a2b1cd5af1',1,'OptionsState::handle()'],['../class_single_player_state.html#a3c88d47ae342b6dd9df3d9e2f9b73073',1,'SinglePlayerState::handle()']]]
+  ['generatecapsule',['generateCapsule',['../namespace_game_utils.html#a547634029068e979d5eb2c3afdb672b2',1,'GameUtils']]],
+  ['generatevirus',['generateVirus',['../namespace_game_utils.html#a50cc347741be16fdb0c8ef0e492dd929',1,'GameUtils']]],
+  ['getactivecapsule',['getActiveCapsule',['../class_board.html#a6a7c93542d714b328febaaa72f4f19fd',1,'Board']]],
+  ['getblocks',['getBlocks',['../class_board.html#a7d138b03617c6cf33e2991c0e489d3bd',1,'Board']]],
+  ['getboardstate',['getBoardState',['../class_board.html#af7188dffe2b87b568701f5e7a7abcd2f',1,'Board']]],
+  ['getcapsules',['getCapsules',['../class_board.html#a037838aff138d4a0db71caf659d48d2f',1,'Board']]],
+  ['getnextcapsule',['getNextCapsule',['../class_board.html#a719cc33665a4f67c36e81ff077914606',1,'Board']]],
+  ['getrotation',['getRotation',['../class_capsule.html#ad8ed5a742675ebf81ec497c38b8bc954',1,'Capsule']]],
+  ['getviruses',['getViruses',['../class_board.html#a017dc06d3d9a4733977496d56cedf771',1,'Board']]],
+  ['getx2',['getX2',['../class_capsule.html#a59333bdc09527a036ed51e8b6b5502aa',1,'Capsule']]],
+  ['gety2',['getY2',['../class_capsule.html#ac22fd0e02fa0c24ea0c886c6d2e8cb0a',1,'Capsule']]]
 ];

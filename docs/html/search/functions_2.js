@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['generatevirus',['generateVirus',['../namespace_game_utils.html#a50cc347741be16fdb0c8ef0e492dd929',1,'GameUtils']]],
-  ['getactivecapsule',['getActiveCapsule',['../class_board.html#aea52e915d0f8b225132ec95a7ac47628',1,'Board']]],
-  ['getblocks',['getBlocks',['../class_board.html#a908470fa8d0bb0084a3a76b7110a8a12',1,'Board']]],
-  ['getboardstate',['getBoardState',['../class_board.html#af7188dffe2b87b568701f5e7a7abcd2f',1,'Board']]],
-  ['getcolor',['getColor',['../class_block.html#abf6729e6236ee16745eb6f563d358b1a',1,'Block']]],
-  ['getnextcapsule',['getNextCapsule',['../class_board.html#a719cc33665a4f67c36e81ff077914606',1,'Board']]],
-  ['getrotation',['getRotation',['../class_capsule.html#ad8ed5a742675ebf81ec497c38b8bc954',1,'Capsule']]],
-  ['getviruses',['getViruses',['../class_board.html#a017dc06d3d9a4733977496d56cedf771',1,'Board']]]
+  ['draw',['draw',['../class_game_engine.html#a5cbd1eef7917ab2ce33fd739fd537c53',1,'GameEngine::draw()'],['../class_game_state.html#ad1bee19e93f5435a6da8614d6ceaf262',1,'GameState::draw()'],['../class_main_menu_state.html#af5f0cb4e8ef4139cfde0af043ca1a4b2',1,'MainMenuState::draw()'],['../class_options_state.html#a480012022c1fa7765f01ea2c06c12d55',1,'OptionsState::draw()'],['../class_single_player_state.html#a3f063142943d4e8521d391830d4b2466',1,'SinglePlayerState::draw()']]],
+  ['drawableobject',['DrawableObject',['../class_drawable_object.html#ac41cf4bfc6ebce29e0c1123f2c067cf0',1,'DrawableObject::DrawableObject()'],['../class_drawable_object.html#a5224d9e5d516516419c1e10cc56fc903',1,'DrawableObject::DrawableObject(int x, int y)']]]
 ];

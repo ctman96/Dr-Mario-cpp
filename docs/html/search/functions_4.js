@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['init',['init',['../class_board.html#aeb4e0a0153f6c00edaefcefb47deebe5',1,'Board::init()'],['../class_game_engine.html#a0a5260074158d1f1f826e71caa2397e8',1,'GameEngine::init()'],['../class_game_state.html#a10b6e6bb31591c70d08ffcee5f29fa81',1,'GameState::init()'],['../class_main_menu_state.html#ad3db53c4c8e198213d27313640185775',1,'MainMenuState::init()'],['../class_options_state.html#a8b0a2140ea8753873aad10d66771afb4',1,'OptionsState::init()'],['../class_single_player_state.html#a76175685ed9845cba99fbe3bcef37bef',1,'SinglePlayerState::init()']]],
-  ['isrunning',['isRunning',['../class_game_engine.html#ac7fe66907626424cd391f7b4692ba68e',1,'GameEngine']]]
+  ['handle',['handle',['../class_game_engine.html#ac3f417f518eccabb02c880e781079725',1,'GameEngine::handle()'],['../class_game_state.html#a7ea7f20a88d3a56d321c205e2d0abd57',1,'GameState::handle()'],['../class_main_menu_state.html#a282da93e5e4e7a51f2c02063f9a601f5',1,'MainMenuState::handle()'],['../class_options_state.html#a455c03746ea9349b072385a2b1cd5af1',1,'OptionsState::handle()'],['../class_single_player_state.html#a3c88d47ae342b6dd9df3d9e2f9b73073',1,'SinglePlayerState::handle()']]]
 ];

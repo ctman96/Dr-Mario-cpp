@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['renderspritefromsheet',['renderSpriteFromSheet',['../namespace_render_utils.html#a108d017d9bf4198163d662820c6f1e1a',1,'RenderUtils']]]
+  ['quit',['quit',['../class_game_engine.html#ad82b626def2e52b28f0d6c2d167589f6',1,'GameEngine']]]
 ];

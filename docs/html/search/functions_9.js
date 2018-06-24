@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['setrotation',['setRotation',['../class_capsule.html#aa809c3276126d3001d9fc875e355361c',1,'Capsule']]],
-  ['singleplayerstate',['SinglePlayerState',['../class_single_player_state.html#ae284c62dd614f06b1f3328323f9a095f',1,'SinglePlayerState']]]
+  ['renderspritefromsheet',['renderSpriteFromSheet',['../namespace_render_utils.html#a61a92234dc3577f232bcdd27bd99666c',1,'RenderUtils']]],
+  ['rotateccw',['rotateCCW',['../class_capsule.html#abaef3a5c3e52b6ae45c6c8406328876a',1,'Capsule']]],
+  ['rotatecw',['rotateCW',['../class_capsule.html#a63dc72f720f534b43ee0cc8fe38add3b',1,'Capsule']]]
 ];
