@@ -32,20 +32,23 @@ namespace GameUtils {
     Capsule generateCapsule(int x, int y);
 
     //! Updates the blocks set
-    void updateBlocks(const std::set<Virus>& viruses, std::set<Block>& blocks, std::set<Capsule>& capsules);
+    void updateBlocks(const std::set<Virus>& viruses, std::set<Block>& blocks, const std::set<Capsule>& capsules);
+
+    //! Updates the capsules set
+    void updateCapsules(const std::set<Virus>& viruses, const std::set<Block>& blocks, std::set<Capsule>& capsules);
 
     //! Clears any rows of matching blocks
     void clearMatches(std::set<Virus>& viruses, std::set<Block>& blocks, std::set<Capsule>& capsules);
 
     //! Updates the activeCapsule
-    void updateActive(const std::set<Virus>& viruses, const std::set<Block>& blocks, std::set<Capsule>& capsules,
+    void updateActive(const std::set<Virus>& viruses, const std::set<Block>& blocks, const std::set<Capsule>& capsules,
                       Capsule& activeCapsule);
 
     //! Returns a color value for a given int;
     Color colorFromInt(int c);
 
     //! Checks if there will be a collision if activeCapsule moves with Move
-    bool checkCollisions(const std::set<Virus>& viruses, const std::set<Block>& blocks, std::set<Capsule>& capsules,
+    bool checkCollisions(const std::set<Virus>& viruses, const std::set<Block>& blocks, const std::set<Capsule>& capsules,
                          Capsule& activeCapsule, Move move);
 
     //! Checks if the given x,y cooridnates are free of viruses or blocks

@@ -46,7 +46,7 @@ public:
      * @param other the other object being compared
      * @return whether the x and y values of both objects are equal
      */
-    bool operator==(const DrawableObject& other) const{
+    virtual bool operator==(const DrawableObject& other) const{
         return y == other.y && x == other.x;
     }
 

@@ -46,7 +46,7 @@ public:
     const Capsule &getNextCapsule() const;
 
     //! Returns the capsule currently being dropped
-    const Capsule &getActiveCapsule() const;
+    Capsule &getActiveCapsule();
 
     //! Returns the list of viruses on the board
     const std::set<Virus> &getViruses() const;

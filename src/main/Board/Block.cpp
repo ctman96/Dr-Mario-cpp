@@ -6,6 +6,4 @@
 
 #include "Block.h"
 
-Color Block::getColor() const {
-    return color;
-}
+Block::Block(int x, int y, Color color) : DrawableObject(x, y), color(color) {}

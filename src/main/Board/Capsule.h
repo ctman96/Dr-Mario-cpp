@@ -17,18 +17,39 @@ public:
 
     Capsule(int x, int y, Color c1, Color c2);
 
+    //! The colour of the first half of the capsule
+    Color color1{};
+    //! The colour of the second half of the capsule
+    Color color2{};
+
     //! Returns the rotation value
     Rotation getRotation() const;
 
     //! Sets the rotation value
     void setRotation(Rotation rotation);
 
+    //! Rotates the capsule clockwise
+    void rotateCW();
+
+    //! Rotates the capsule counter-clockwise
+    void rotateCCW();
+
+    //! Gets the x value of second half of the capsule
+    int getX2() const;
+
+    //! Gets the y value of second half of the capsule
+    int getY2() const;
+
+    bool operator==(const DrawableObject& other) const override ;
+
 private:
-    //! The colour of the first half of the capsule
-    Color c1{};
-    //! The colour of the second half of the capsule
-    Color c2{};
     //! The rotation of the capsule
+    /*!
+     * The value represents the relative position of 1st half of the capsule (x,y) to the second half (x2,y2)
+     * ie.  l means x = x2 - 1, y = y2
+     *      d means x = x2, y = y2 - 1
+     *      ,etc.
+     */
     Rotation rotation = Rotation::l;
 };
 

@@ -121,6 +121,13 @@ void SinglePlayerState::handle(GameEngine *game) {
                     case SDLK_RIGHT:
                         //TODO
                         break;
+                    case SDLK_q:
+                        //TODO
+                        board->getActiveCapsule().rotateCCW();
+                        break;
+                    case SDLK_e:
+                        board->getActiveCapsule().rotateCW();
+                        break;
                     default:
                         break;
                 }
@@ -211,27 +218,15 @@ void SinglePlayerState::draw(GameEngine *game) {
     // Scoreboard
     //TODO
     // Dr Mario/Next Capsule Display
-    //TODO
-    renderSpriteFromSheet(game->renderer, 185, 70, spritesheet, &spr_game[ 21 ]);
-    // Viruses Display
-    // Virus animation frame timer
-    int frame = (ticks/250)%6;
-    if (frame >= 3){
-        frame = 5-frame;
+    //TODO, this is placeholder
+    if(board->getBoardState() == Board::BoardState::loss) {
+        renderSpriteFromSheet(game->renderer, 185, 70, spritesheet, &spr_game[21]);
     }
-    double time = ((ticks/420)%360)*3.14/180;
-    int circX = 33;
-    int circY = 146;
-    int r = 17;
-    auto bX = static_cast<int>(circX - r * cos(time));
-    auto bY = static_cast<int>(circY + r * sin(time));
-    renderSpriteFromSheet(game->renderer, bX, bY, spritesheet, &spr_game[22+frame]);
-    auto yX = static_cast<int>(circX - r * cos(time + 400));
-    auto yY = static_cast<int>(circY + r * sin(time + 400));
-    renderSpriteFromSheet(game->renderer, yX, yY, spritesheet, &spr_game[29+frame]);
-    auto rX = static_cast<int>(circX - r * cos(time + 800));
-    auto rY = static_cast<int>(circY + r * sin(time + 800));
-    renderSpriteFromSheet(game->renderer, rX, rY, spritesheet, &spr_game[36+frame]);
+    else {
+        renderSpriteFromSheet(game->renderer, 185, 68, spritesheet, &spr_game[16]);
+    }
+    // Viruses Display
+    drawVirusDisplayAnimation(game->renderer);
 
 
     //Board
@@ -251,15 +246,22 @@ void SinglePlayerState::draw(GameEngine *game) {
     // Draw Capsules
     auto capsules = board->getCapsules();
     for (const auto &capsule : capsules){
-        drawCapsule(game->renderer, capsule);
+        int x = xoffset + (CELL_PIXELS)*capsule.x;
+        int y = yoffset - CELL_PIXELS*capsule.y;
+        drawCapsule(game->renderer, capsule, x, y);
     }
 
-    // Draw the current active capsule
-    Capsule activeCapsule = Capsule(board->getActiveCapsule());
-    drawCapsule(game->renderer, activeCapsule);
 
-    // Draw the upcoming capsule
-    drawNextCapsule(game->renderer, board->getNextCapsule());
+    if (!(board->getBoardState() == Board::BoardState::loading)) {
+        // Draw the current active capsule
+        Capsule activeCapsule = board->getActiveCapsule();
+        int x = xoffset + (CELL_PIXELS)*activeCapsule.x;
+        int y = yoffset - CELL_PIXELS*activeCapsule.y;
+        drawCapsule(game->renderer, activeCapsule, x, y);
+
+        // Draw the upcoming capsule
+        drawCapsule(game->renderer, board->getNextCapsule(), 191, 62);
+    }
 
 
     //TODO: Gameover/cleared screens
@@ -269,34 +271,98 @@ void SinglePlayerState::draw(GameEngine *game) {
 
 void SinglePlayerState::drawVirus(SDL_Renderer* renderer, Virus v){
     int ticks = SDL_GetTicks();
-
-    int xoffset = 96;
-    int yoffset = 191;
     int x = xoffset + (CELL_PIXELS)*v.x;
     int y = yoffset - CELL_PIXELS*v.y;
     switch(v.color){
+        case Color::red:
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[48+(ticks/275)%2]);
+            break;
         case Color::blue:
-            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[44+(ticks/275)%2]); //TODO animate
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[44+(ticks/275)%2]);
             break;
         case Color::yellow:
-            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[46+(ticks/275)%2]); //TODO animate
-            break;
-        case Color::red:
-            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[48+(ticks/275)%2]); //TODO animate
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[46+(ticks/275)%2]);
             break;
     }
 }
 
 void SinglePlayerState::drawBlock(SDL_Renderer* renderer, Block b){
-    //TODO
+    int x = xoffset + (CELL_PIXELS)*b.x;
+    int y = yoffset - CELL_PIXELS*b.y;
+    switch(b.color){
+        case Color::red:
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[52]);
+            break;
+        case Color::blue:
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[51]);
+            break;
+        case Color::yellow:
+            renderSpriteFromSheet(renderer, x,y,spritesheet, &spr_game[50]);
+            break;
+    }
 }
 
-void SinglePlayerState::drawCapsule(SDL_Renderer* renderer, Capsule c){
-    //TODO
-}
+void SinglePlayerState::drawCapsule(SDL_Renderer* renderer, Capsule c, int x, int y){
+    int rotation = 0;
+    // TODO: Rotation is weird. Try working around it by adjusting rendering, or else add rotated sprites to the sheet
+    switch(c.getRotation()){
+        case Rotation::l:
+            break;
+        case Rotation::u:
+            rotation = 90;
+            break;
+        case Rotation::r:
+            rotation = 180;
+            break;
+        case Rotation::d:
+            rotation = 270;
+            break;
+    }
 
-void SinglePlayerState::drawNextCapsule(SDL_Renderer* renderer, Capsule c){
-    //TODO
+    int sprite = 0;
+    switch(c.color1){
+        case Color::red:
+            switch(c.color2){
+                case Color::red:
+                    sprite = 59;
+                    break;
+                case Color::blue:
+                    sprite = 60;
+                    break;
+                case Color::yellow:
+                    sprite = 61;
+                    break;
+            }
+            break;
+        case Color::blue:
+            switch(c.color2){
+                case Color::red:
+                    sprite = 58;
+                    break;
+                case Color::blue:
+                    sprite = 56;
+                    break;
+                case Color::yellow:
+                    sprite = 57;
+                    break;
+            }
+            break;
+        case Color::yellow:
+            switch(c.color2){
+                case Color::red:
+                    sprite = 55;
+                    break;
+                case Color::blue:
+                    sprite = 54;
+                    break;
+                case Color::yellow:
+                    sprite = 53;
+                    break;
+            }
+            break;
+    }
+
+    renderSpriteFromSheet(renderer, x, y, spritesheet, &spr_game[sprite], rotation);
 }
 
 /*!
@@ -319,4 +385,25 @@ void SinglePlayerState::drawNum(SDL_Renderer* renderer, int num, int x, int y) {
     renderSpriteFromSheet(renderer, x2, y, spritesheet, &spr_game[73+ones]);
 }
 
+void SinglePlayerState::drawVirusDisplayAnimation(SDL_Renderer* renderer){
+    int ticks = SDL_GetTicks();
+    // Virus animation frame timer
+    int frame = (ticks/250)%6;
+    if (frame >= 3){
+        frame = 5-frame;
+    }
+    double time = ((ticks/420)%360)*3.14/180;
+    int circX = 33;
+    int circY = 146;
+    int r = 17;
+    auto bX = static_cast<int>(circX - r * cos(time));
+    auto bY = static_cast<int>(circY + r * sin(time));
+    renderSpriteFromSheet(renderer, bX, bY, spritesheet, &spr_game[22+frame]);
+    auto yX = static_cast<int>(circX - r * cos(time + 400));
+    auto yY = static_cast<int>(circY + r * sin(time + 400));
+    renderSpriteFromSheet(renderer, yX, yY, spritesheet, &spr_game[29+frame]);
+    auto rX = static_cast<int>(circX - r * cos(time + 800));
+    auto rY = static_cast<int>(circY + r * sin(time + 800));
+    renderSpriteFromSheet(renderer, rX, rY, spritesheet, &spr_game[36+frame]);
+}
 

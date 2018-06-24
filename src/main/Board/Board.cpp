@@ -25,6 +25,9 @@ void Board::init(int level) {
         level = 20;
     }
     this->level = level;
+
+    activeCapsule = generateCapsule(3,15);
+    nextCapsule = generateCapsule(3,15);
 }
 
 /*!
@@ -90,7 +93,7 @@ const Capsule &Board::getNextCapsule() const {
     return nextCapsule;
 }
 
-const Capsule &Board::getActiveCapsule() const {
+Capsule &Board::getActiveCapsule() {
     return activeCapsule;
 }
 

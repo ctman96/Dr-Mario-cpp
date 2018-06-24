@@ -13,12 +13,11 @@
 
 class Block : public DrawableObject{
 public:
-    //! Returns the colour of the block
-    Color getColor() const;
+    Block(int x, int y, Color color);
 
-private:
     //! The colour of the block
     Color color{};
+private:
 };
 
 

@@ -16,7 +16,7 @@
 
 namespace RenderUtils {
     //! Renders a sprite from a spritesheet
-    void renderSpriteFromSheet(SDL_Renderer* renderer, int x, int y, SDL_Texture* spritesheet, const SDL_Rect* sprite);
+    void renderSpriteFromSheet(SDL_Renderer* renderer, int x, int y, SDL_Texture* spritesheet, const SDL_Rect* sprite,int angle = 0);
 };
 
 

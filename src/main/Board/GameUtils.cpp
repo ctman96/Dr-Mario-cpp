@@ -148,8 +148,8 @@ bool GameUtils::checkColors(const set<Virus>& viruses, Virus& v){
  * @return the generated capsule
  */
 Capsule GameUtils::generateCapsule(int x, int y) {
-    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
-    default_random_engine generator(seed);
+    static unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    static default_random_engine generator(seed);
     uniform_int_distribution<int> randC(0,2);
 
     int c1 = randC(generator);
@@ -161,18 +161,25 @@ Capsule GameUtils::generateCapsule(int x, int y) {
 }
 
 /*!
- * Updates the positions of all blocks and capsules, dropping them if there
+ * Updates the positions of all blocks, dropping them if there
  * are no collisions
  * @param viruses the set of Viruses on the board
  * @param blocks the set of Blocks on the board
  * @param capsules the set of Capsules on the board
  */
-void GameUtils::updateBlocks(const set<Virus> &viruses, set<Block> &blocks, set<Capsule>& capsules) {
-    auto itb = blocks.end();
-    for (int i = 0; i < blocks.size(); i++){
-        //TODO update all block positions, checking for collisions
-        next(itb);
-    }
+void GameUtils::updateBlocks(const set<Virus> &viruses, set<Block> &blocks, const set<Capsule>& capsules) {
+    //TODO update all block positions, checking for collisions
+}
+// TODO: Instead of updating all blocks, somehow get the x range and y value of where a match was cleared?
+/*!
+ * Updates the positions of all capsules, dropping them if there
+ * are no collisions
+ * @param viruses the set of Viruses on the board
+ * @param blocks the set of Blocks on the board
+ * @param capsules the set of Capsules on the board
+ */
+void GameUtils::updateCapsules(const set<Virus> &viruses, const set<Block> &blocks, set<Capsule>& capsules) {
+    //TODO update all capsule positions, checking for collisions
 }
 
 /*!
@@ -194,7 +201,7 @@ void GameUtils::clearMatches(set<Virus> &viruses, set<Block> &blocks, set<Capsul
  * @param capsules the set of Capsules on the board
  * @param activeCapsule the active Capsule being moved
  */
-void GameUtils::updateActive(const set<Virus> &viruses, const set<Block> &blocks, set<Capsule>& capsules,
+void GameUtils::updateActive(const set<Virus> &viruses, const set<Block> &blocks, const set<Capsule>& capsules,
                              Capsule &activeCapsule)
 {
     // TODO drop the active capsule, checking collisions
@@ -231,7 +238,7 @@ Color GameUtils::colorFromInt(int c){
  * @return true if collides, false otherwise
  */
 bool GameUtils::checkCollisions(const std::set<Virus> &viruses, const std::set<Block> &blocks,
-                                set<Capsule>& capsules, Capsule &activeCapsule, Move move) {
+                                const set<Capsule>& capsules, Capsule &activeCapsule, Move move) {
     switch(move){
         case Move::d:
             // TODO
@@ -289,6 +296,7 @@ bool GameUtils::checkCollisions(const std::set<Virus> &viruses, const std::set<B
  */
 bool GameUtils::checkFree(const std::set<Virus> &viruses, const std::set<Block> &blocks, set<Capsule>& capsules,
                           int x, int y) {
-    // TODO
-    return false;
+    return !(setContains(viruses, Virus(x,y,Color::red))
+            || setContains(blocks, Block(x,y, Color::red))
+            || setContains(capsules, Capsule(x,y, Color::red, Color::red)));
 }

@@ -56,13 +56,22 @@ private:
     //! Helper for drawing virus sprites
     void drawVirus(SDL_Renderer* renderer, Virus virus);
 
+    //! Helper for drawing block sprites
     void drawBlock(SDL_Renderer* renderer, Block block);
 
-    void drawCapsule(SDL_Renderer* renderer, Capsule capsule);
+    //! Helper for drawing capsule sprites
+    void drawCapsule(SDL_Renderer* renderer, Capsule capsule, int x, int y);
 
-    void drawNextCapsule(SDL_Renderer* renderer, Capsule c);
-
+    //! Helper for drawing two digit numbers
     void drawNum(SDL_Renderer* renderer, int num, int x, int y);
+
+    //! Helper for drawing the animated virus display
+    void drawVirusDisplayAnimation(SDL_Renderer* renderer);
+
+    //! The x position of the top left corner of the bottem left cell of the board
+    int xoffset = 96;
+    //! The y position of the top left cornder of the bottem left cell of the board
+    int yoffset = 191;
 };
 
 
