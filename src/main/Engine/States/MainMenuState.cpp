@@ -9,7 +9,7 @@
 #include "../../Resources/spritesheets.h"
 #include "../../Constants.h"
 #include "OptionsState.h"
-#include "../RenderUtils.h"
+#include "../Rendering/RenderUtils.h"
 
 using namespace RenderUtils;
 

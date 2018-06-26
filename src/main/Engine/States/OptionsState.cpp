@@ -9,7 +9,7 @@
 #include "../../Resources/spritesheets.h"
 #include "MainMenuState.h"
 #include "../../Constants.h"
-#include "../RenderUtils.h"
+#include "../Rendering/RenderUtils.h"
 #include "SinglePlayerState.h"
 
 using namespace RenderUtils;

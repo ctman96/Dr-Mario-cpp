@@ -11,11 +11,11 @@ set(
         Board/Board.cpp Board/Board.h
         Board/GameUtils.cpp Board/GameUtils.h
         Engine/GameEngine.cpp Engine/GameEngine.h
-        Engine/RenderUtils.cpp Engine/RenderUtils.h
+        Engine/Rendering/RenderUtils.cpp Engine/Rendering/RenderUtils.h
         Engine/States/GameState.h
         Engine/States/MainMenuState.cpp Engine/States/MainMenuState.h
         Engine/States/OptionsState.cpp Engine/States/OptionsState.h
-        Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerState.h)
+        Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerState.h Engine/Rendering/Sprite.cpp Engine/Rendering/Sprite.h Engine/Rendering/AnimatedSprite.cpp Engine/Rendering/AnimatedSprite.h)
 
 file(GLOB RESOURCE_FILES Resources/*.h)
 
