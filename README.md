@@ -10,8 +10,7 @@ Requires the following developer libraries
 
 * [SDL2](https://www.libsdl.org/download-2.0.php) 
 * [SDL2_image](https://www.libsdl.org/projects/SDL_image/) 
-* [SDL2_mixer](https://rometools.github.io/rome/) 
-* [SDL2_ttf](https://rometools.github.io/rome/) 
+* [SDL2_mixer](https://www.libsdl.org/projects/SDL_mixer/) 
 
 You will also require [Python](https://www.python.org/) in order to run the script used to embed resources.
 
