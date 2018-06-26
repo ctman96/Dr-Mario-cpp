@@ -13,9 +13,11 @@ set(
         Engine/GameEngine.cpp Engine/GameEngine.h
         Engine/Rendering/RenderUtils.cpp Engine/Rendering/RenderUtils.h
         Engine/States/GameState.h
-        Engine/States/MainMenuState.cpp Engine/States/MainMenuState.h
-        Engine/States/OptionsState.cpp Engine/States/OptionsState.h
-        Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerState.h Engine/Rendering/Sprite.cpp Engine/Rendering/Sprite.h Engine/Rendering/AnimatedSprite.cpp Engine/Rendering/AnimatedSprite.h)
+        Engine/States/MainMenuState.cpp Engine/States/MainMenuStateDraw.cpp Engine/States/MainMenuState.h
+        Engine/States/OptionsState.cpp Engine/States/OptionsStateDraw.cpp Engine/States/OptionsState.h
+        Engine/States/SinglePlayerState.cpp Engine/States/SinglePlayerStateDraw.cpp Engine/States/SinglePlayerState.h
+        Engine/Rendering/Sprite.cpp Engine/Rendering/Sprite.h
+        Engine/Rendering/AnimatedSprite.cpp Engine/Rendering/AnimatedSprite.h)
 
 file(GLOB RESOURCE_FILES Resources/*.h)
 
