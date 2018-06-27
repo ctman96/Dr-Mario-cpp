@@ -13,20 +13,28 @@
 
 
 #include <SDL_render.h>
+#include "../Engine/Rendering/Sprite.h"
 
 class DrawableObject {
 public:
-    //! x position
     int x=0;
 
-    //! y position
     int y=0;
 
-    DrawableObject() : x(0),y(0) {}
+    DrawableObject() : x(0),y(0), sprite(nullptr) {}
 
-    DrawableObject(int x, int y) : x(x), y(y) {}
+    DrawableObject(int x, int y) : x(x), y(y), sprite(nullptr) {}
 
-    virtual ~DrawableObject() = default;
+    virtual ~DrawableObject(){
+        //delete(sprite); //TODO: Why does this segfault?
+    }
+
+    //! Draws the sprite at x and y on the renderer
+    virtual void draw(GameRenderer* renderer, int x, int y){
+        if (sprite != nullptr) {
+            sprite->render(renderer, x, y);
+        }
+    }
 
     //! Lessthan comparison based on y and x value
     /*!
@@ -50,6 +58,8 @@ public:
         return y == other.y && x == other.x;
     }
 
+protected:
+    Sprite* sprite;
 };
 
 

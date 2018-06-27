@@ -13,14 +13,16 @@
 
 class Capsule : public DrawableObject{
 public:
-    Capsule();
-
-    Capsule(int x, int y, Color c1, Color c2);
-
     //! The colour of the first half of the capsule
     Color color1{};
     //! The colour of the second half of the capsule
     Color color2{};
+
+    Capsule();
+
+    Capsule(int x, int y, Color c1, Color c2);
+
+
 
     //! Returns the rotation value
     Rotation getRotation() const;
@@ -40,6 +42,8 @@ public:
     //! Gets the y value of second half of the capsule
     int getY2() const;
 
+    void draw(GameRenderer* renderer, int x, int y) override;
+
     bool operator==(const DrawableObject& other) const override ;
 
 private:
@@ -51,6 +55,9 @@ private:
      *      ,etc.
      */
     Rotation rotation = Rotation::l;
+
+    //! Sets the sprite based on colors
+    void generateSprite();
 };
 
 

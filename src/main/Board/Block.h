@@ -18,6 +18,7 @@ public:
     //! The colour of the block
     Color color{};
 private:
+    void generateSprite();
 };
 
 

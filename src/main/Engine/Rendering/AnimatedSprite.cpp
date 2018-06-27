@@ -1,4 +1,3 @@
-//! Represents a sprite animation with multiple frames
 /*!
  * @author: Cody Newman
  *
@@ -8,16 +7,15 @@
 #include <SDL_timer.h>
 #include "AnimatedSprite.h"
 
-AnimatedSprite::AnimatedSprite(SDL_Texture *spritesheet, SDL_Rect *clip, SDL_Renderer *renderer) : Sprite(spritesheet,
-                                                                                                          clip,
-                                                                                                          renderer) {
+using namespace std;
+
+AnimatedSprite::AnimatedSprite(const SDL_Rect *clip) : Sprite(clip) {
     repeat = false, speed = false, on = false;
+    curFrame = frames.begin();
 }
 
-AnimatedSprite::AnimatedSprite(SDL_Texture *spritesheet, std::vector<SDL_Rect *> frames, SDL_Renderer *renderer,
-                               bool repeat, int speed) : Sprite(spritesheet, frames[0], renderer),
-                                                                        frames(frames), repeat(repeat),
-                                                                        speed(speed) {
+AnimatedSprite::AnimatedSprite(list<const SDL_Rect *> frames, int speed, bool repeat) :
+        Sprite(frames.front()),frames(frames),speed(speed), repeat(repeat) {
     on = false;
 }
 
@@ -25,21 +23,21 @@ AnimatedSprite::~AnimatedSprite() {
     //TODO
 }
 
-void AnimatedSprite::render(int x, int y) {
+void AnimatedSprite::render(GameRenderer* renderer, int x, int y) {
     if(on){
         int ticks = SDL_GetTicks();
         // Change frame if enough time has passed, based on speed
         if(ticks-lastTick > 1000/speed){
             // Playing normally
-            if(curFrame < frames.size()-1) {
+            if(curFrame != frames.end()) {
                 curFrame++;
             } else if (repeat){
-                curFrame = 0;
+                curFrame = frames.begin();
             }
         }
     }
-    clip = frames[curFrame];
-    Sprite::render(x, y);
+    clip = *curFrame;
+    Sprite::render(renderer, x, y);
 }
 
 void AnimatedSprite::play() { on = true; }

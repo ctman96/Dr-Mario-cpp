@@ -13,12 +13,13 @@
 
 class Virus : public DrawableObject {
 public:
-
     //! Constructor, sets position and color
     Virus(int x, int y, Color color);
 
     //! The colour of the virus
     Color color{};
+private:
+    void generateSprite();
 };
 
 

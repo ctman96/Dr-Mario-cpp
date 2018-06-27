@@ -5,9 +5,60 @@
  */
 
 #include "Capsule.h"
+#include "../Resources/spritesheets.h"
 
 Capsule::Capsule(int x, int y, Color c1, Color c2) : DrawableObject(x, y), color1(c1), color2(c2) {
     rotation = Rotation::l;
+    generateSprite();
+}
+
+void Capsule::generateSprite() {
+    if (sprite != nullptr){
+        delete(sprite);
+    }
+    int spr = 0;
+    switch(color1){
+        case Color::red:
+            switch(color2){
+                case Color::red:
+                    spr = 59;
+                    break;
+                case Color::blue:
+                    spr = 60;
+                    break;
+                case Color::yellow:
+                    spr = 61;
+                    break;
+            }
+            break;
+        case Color::blue:
+            switch(color2){
+                case Color::red:
+                    spr = 58;
+                    break;
+                case Color::blue:
+                    spr = 56;
+                    break;
+                case Color::yellow:
+                    spr = 57;
+                    break;
+            }
+            break;
+        case Color::yellow:
+            switch(color2){
+                case Color::red:
+                    spr = 55;
+                    break;
+                case Color::blue:
+                    spr = 54;
+                    break;
+                case Color::yellow:
+                    spr = 53;
+                    break;
+            }
+            break;
+    }
+    sprite = new Sprite(&spr_game[spr]);
 }
 
 Rotation Capsule::getRotation() const {
@@ -160,6 +211,27 @@ int Capsule::getY2() const {
             return y+1;
     }
     return -1; //Prevents compiler warning "control reaches end of non-void function", but is otherwise unnecessary
+}
+
+//! Updates the sprites rotation before drawing
+void Capsule::draw(GameRenderer *renderer, int x, int y) {
+    //TODO set sprite rotation properly (changing center point depending on rotation?)
+    int angle = 0;
+    switch(rotation){
+        case Rotation::l:
+            break;
+        case Rotation::u:
+            angle = 90;
+            break;
+        case Rotation::r:
+            angle = 180;
+            break;
+        case Rotation::d:
+            angle = 270;
+            break;
+    }
+    sprite->setRotation(angle);
+    DrawableObject::draw(renderer, x, y);
 }
 
 /*!

@@ -1,3 +1,4 @@
+//! Represents a sprite animation with multiple frames
 /*!
  * @author: Cody Newman
  *
@@ -9,18 +10,17 @@
 
 
 #include "Sprite.h"
-#include <vector>
+#include <list>
 
 class AnimatedSprite : public Sprite {
 public:
-    AnimatedSprite(SDL_Texture *spritesheet, SDL_Rect *clip, SDL_Renderer *renderer);
+    explicit AnimatedSprite(const SDL_Rect *clip);
 
-    AnimatedSprite(SDL_Texture *spritesheet, std::vector<SDL_Rect *>, SDL_Renderer *renderer,
-                   bool repeat=true, int speed = 1);
+    explicit AnimatedSprite(std::list<const SDL_Rect *>, int speed = 1, bool repeat=true);
 
-    virtual ~AnimatedSprite();
+    ~AnimatedSprite() override;
 
-    void render(int x, int y) override;
+    void render(GameRenderer * renderer, int x, int y) override;
 
     void play();
 
@@ -28,7 +28,7 @@ public:
 
 private:
     //! The locations of each frame of the animation on the spritesheet
-    std::vector<SDL_Rect*> frames;
+    std::list<const SDL_Rect*> frames;
 
     //! Whether or not to loop the animation from the start
     bool repeat;
@@ -43,7 +43,7 @@ private:
     int lastTick = 0;
 
     //! The current frame the animation is on
-    int curFrame = 0;
+    std::list<const SDL_Rect*>::iterator curFrame;
 };
 
 

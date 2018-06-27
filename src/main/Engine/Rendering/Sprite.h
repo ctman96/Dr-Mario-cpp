@@ -10,26 +10,24 @@
 
 
 #include <SDL_render.h>
+#include "GameRenderer.h"
 
 class Sprite {
 public:
-    Sprite(SDL_Texture *spritesheet, SDL_Rect *clip, SDL_Renderer *renderer);
+    Sprite();
+
+    explicit Sprite(const SDL_Rect *clip);
 
     virtual ~Sprite();
 
     void setRotation(int rotation);
 
-    virtual void render(int x, int y);
+    virtual void render(GameRenderer* renderer, int x, int y);
 
 protected:
-    //! The loaded texture of the spritesheet
-    SDL_Texture* spritesheet;
 
     //! The rectangle representing the location of the sprite on the spritesheet
-    SDL_Rect* clip;
-
-
-    SDL_Renderer* renderer;
+    const SDL_Rect* clip;
 
     //! The angle to rotate the sprite
     int rotation = 0;
